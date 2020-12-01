@@ -1,0 +1,17 @@
+.App {
+  text-align: center;
+}
+
+#main {
+  margin: 10px 0px 60px 0px;
+  max-width: 1150px;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
