@@ -5,9 +5,9 @@ import Signup from "../components/SignUp";
 const Index = () => {
   return (
     <Container fluid>
-        <Signup />
-  
-        
+      <Signup />
+      <br />
+      <a href="/home">Login bypass</a>
     </Container>
   );
 };
