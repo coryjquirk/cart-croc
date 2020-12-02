@@ -13,6 +13,7 @@ import NoMatchPage from "./pages/NoMatchPage";
 import Receipts from "./pages/ReceiptsPage";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
+import SignUp from "./components/SignUp";
 
 class App extends Component {
   render() {
