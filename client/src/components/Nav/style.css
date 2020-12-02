@@ -9,4 +9,5 @@ h1{
 #croc{
     width: 25%;
     height: auto;
+    max-width: 100px;
 }
