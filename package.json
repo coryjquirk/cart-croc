@@ -25,10 +25,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "if-env": "^1.0.4",
-<<<<<<< HEAD
-=======
     "morgan": "^1.10.0",
->>>>>>> d5463f2142037336e3df24d617d555f6f5984c68
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.1"
   },
