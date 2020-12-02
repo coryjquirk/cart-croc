@@ -6,10 +6,9 @@ import Logo from '../components/Logo/logo.png';
 const Index = () => {
   return (
     <Container fluid>
-        <img src={Logo} alt="Logo" />
-        <Signup />
-  
-        
+      <Signup />
+      <br />
+      <a href="/home">Login bypass</a>
     </Container>
   );
 };
