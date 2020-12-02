@@ -1,11 +1,11 @@
 import React from "react";
 import { Col, Row, Container } from "../components/Grid";
-import Login from "../components/Login";
+import Signup from "../components/SignUp";
 
 const Index = () => {
   return (
     <Container fluid>
-      <Login class="row"></Login>
+        <Signup />
     </Container>
   );
 };
