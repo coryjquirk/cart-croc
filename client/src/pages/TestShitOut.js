@@ -11,6 +11,8 @@ function Testing() {
     useEffect(() => {
         const getUsers = async () => {
             const users = await API.getAllUsers()
+            console.log(users)
+            console.log(userList)
             setUserList(users)
         }
         getUsers();
