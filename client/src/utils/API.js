@@ -1,4 +1,3 @@
-// import axios from "axios";
 
 // future development if I may use an API for some reason
 
@@ -9,15 +8,12 @@ export default {
   // },
   
   // Gets All Users
-<<<<<<< HEAD
 
   // TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:
   // ======================================================================================================================
   // TODO: Figure out how to get this to return the thign its suppposed to return.
   // ======================================================================================================================
 
-=======
->>>>>>> b27c9768a92d2dfb8c6eb59cf99e2a60570db57b
   getAllUsers: function () {fetch("http://localhost:3001/").then(res => res.json)},
 
   // Deletes the post with the given id
@@ -27,6 +23,7 @@ export default {
   // Saves a post to the database
   saveUser: function (user) {fetch("http://localhost:3001/saveUser", {
     method: "POST",
-    body: user
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(user)
   })}
 };

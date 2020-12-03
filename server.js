@@ -8,12 +8,7 @@ const User = require("./models/User");
 const Inventory = require("./models/Inventory");
 const Receipt = require("./models/Receipt");
 
-<<<<<<< HEAD
-
-mongoose.connect('mongodb://127.0.0.1:27017/cashCroc', { useNewUrlParser: true })
-=======
 mongoose.connect('mongodb://localhost/cashCroc', { useNewUrlParser: true })
->>>>>>> b27c9768a92d2dfb8c6eb59cf99e2a60570db57b
 
 mongoose.connection.once('open', () => {
     console.log("MongoDB connection established successfully")
@@ -24,8 +19,6 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-<<<<<<< HEAD
-=======
 var bodyParser = require('body-parser')
 
 app.use(express.urlencoded({ extended: true }));
@@ -56,33 +49,12 @@ app.use(
 );
 
 
->>>>>>> b27c9768a92d2dfb8c6eb59cf99e2a60570db57b
 app.get("/", (req, res) => {
     User.find((err, users) => {
         if (err) {
             console.log(err);
         } else {
             res.json(users);
-<<<<<<< HEAD
-        }    useEffect(() => {
-          const fetchBooks = async () => {
-              const books = await getSavedBooks()
-              setSavedBooks(books)
-          }
-          fetchBooks();
-      }, [])
-    })
-})
-
-app.post("/saveUser", (req, res) => {
-    const book = new Book(req.body);
-    book
-    .save()
-    .then((book) => {
-        res.json(book);
-    })
-    .chatc((err) => {
-=======
         } 
     })
 })
@@ -100,15 +72,10 @@ console.log(req.body)
         res.json(user);
     })
     .catch((err) => {
->>>>>>> b27c9768a92d2dfb8c6eb59cf99e2a60570db57b
         res.status(500).send(err.message);
     });
 })
 
-<<<<<<< HEAD
-=======
-
->>>>>>> b27c9768a92d2dfb8c6eb59cf99e2a60570db57b
 // Send every request to the React app
 // Define any API routes before this runs
 app.get("*", function(req, res) {

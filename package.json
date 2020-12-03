@@ -27,11 +27,8 @@
     "express": "^4.17.1",
     "if-env": "^1.0.4",
     "mongoose": "^5.11.1",
-<<<<<<< HEAD
-=======
     "morgan": "^1.10.0",
     "react-router-dom": "^5.2.0",
->>>>>>> b27c9768a92d2dfb8c6eb59cf99e2a60570db57b
     "react-scripts": "^4.0.1"
   },
   "engines": {
