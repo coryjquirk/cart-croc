@@ -1,7 +1,7 @@
 import React from "react";
 import { useStoreContext } from "../../utils/GlobalState";
 import "./style.css";
-import Logo from '../Logo/logo.png';
+import Logo from '../Images/logo.png';
 
 function Nav() {
   const [store] = useStoreContext();
@@ -16,10 +16,10 @@ function Nav() {
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="completesale">complete sale</a>
+                <a class="nav-link" href="home">home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="home">home</a>
+                <a class="nav-link" href="completesale">complete sale</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="inventory">inventory</a>
