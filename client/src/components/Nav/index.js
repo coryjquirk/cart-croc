@@ -1,7 +1,7 @@
 import React from "react";
 import { useStoreContext } from "../../utils/GlobalState";
 import "./style.css";
-import Logo from '../Logo/logo.png';
+import Logo from '../Images/logo.png';
 
 function Nav() {
   const [store] = useStoreContext();
