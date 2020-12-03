@@ -20,6 +20,8 @@ export default {
   // deletePost: function(id) {
   //   return axios.delete("/api/posts/" + id);
   // },
+
+  
   // Saves a post to the database
   saveUser: function (user) {fetch("http://localhost:3001/saveUser", {
     method: "POST",
