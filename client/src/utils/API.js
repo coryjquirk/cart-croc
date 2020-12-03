@@ -4,19 +4,26 @@ import axios from "axios";
 
 export default {
   // Gets all posts
-  getPosts: function() {
-    return axios.get("/api/posts");
-  },
-  // Gets the post with the given id
-  getPost: function(id) {
-    return axios.get("/api/posts/" + id);
-  },
+  // getUser: function() {
+  //   return axios.get("/api/posts");
+  // },
+  
+  // Gets All Users
+
+  // TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:
+  // ======================================================================================================================
+  // TODO: Figure out how to get this to return the thign its suppposed to return.
+  // ======================================================================================================================
+
+  getAllUsers: function () {fetch("http://localhost:3001/").then(res => res.json)},
+
   // Deletes the post with the given id
-  deletePost: function(id) {
-    return axios.delete("/api/posts/" + id);
-  },
+  // deletePost: function(id) {
+  //   return axios.delete("/api/posts/" + id);
+  // },
   // Saves a post to the database
-  savePost: function(postData) {
-    return axios.post("/api/posts", postData);
-  }
+  saveUser: function (user) {fetch("http://localhost:3001/saveUser", {
+    method: "POST",
+    body: user
+  })}
 };
