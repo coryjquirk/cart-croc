@@ -4,7 +4,9 @@ import { Col, Row, Container } from "../components/Grid";
 const Inventory = () => {
   return (
     <Container fluid>
-        {/* module in here */}
+      Inventory Page
+      <br />
+      <a href="/home">Home</a>
     </Container>
   );
 };

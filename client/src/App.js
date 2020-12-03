@@ -13,6 +13,8 @@ import NoMatchPage from "./pages/NoMatchPage";
 import Receipts from "./pages/ReceiptsPage";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
+import SignUp from "./components/SignUp";
+import TestingPage from "./pages/TestShitOut";
 
 class App extends Component {
   render() {
@@ -26,6 +28,7 @@ class App extends Component {
                 <Route exact path="/" component={Index} />
                 <Route exact path="/completesale" component={CompleteSale} />
                 <Route exact path="/home" component={Home} />
+                <Route exact path="/testing" component={TestingPage} />
                 <Route exact path="/inventory" component={Inventory} />
                 <Route exact path="/newsale" component={NewSale} />
                 <Route exact path="/printreceipt" component={PrintReceipt} />

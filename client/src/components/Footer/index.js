@@ -6,7 +6,11 @@ function Footer() {
   const [store] = useStoreContext();
 
   return (
-    <div></div>
+<div class="footer">
+        <p>
+        <a href="https://www.github.com/coryjquirk/cart-croc">Github Repo: <p class="fa fa-github"></p></a>
+        </p>
+    </div>    
     );
 }
 

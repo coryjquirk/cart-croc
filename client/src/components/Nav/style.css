@@ -1,0 +1,13 @@
+#crocNav{
+    background-color: rgb(61, 61, 61);
+    color: white;
+}
+h1{
+    font-size: 32px;
+    float: left;
+}
+#croc{
+    width: 25%;
+    height: auto;
+    max-width: 100px;
+}

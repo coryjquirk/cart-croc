@@ -4,7 +4,9 @@ import { Col, Row, Container } from "../components/Grid";
 const CompleteSale = () => {
   return (
     <Container fluid>
-        {/* module in here */}
+      Complete Sale Page
+      <br />
+      <a href="/printreceipt">Complete Transaction</a>
     </Container>
   );
 };
