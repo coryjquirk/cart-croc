@@ -4,7 +4,7 @@ import ReactImageMagnify from 'react-image-magnify';
 var Modal = require('react-bootstrap-modal')
 import { useStoreContext } from "../../utils/GlobalState";
 import "./style.css";
-import Tester from './product1.jpg';
+import Tester from './product.jpg';
 import Texture from '../Images/45-degree-fabric-light.png';
 // https://www.transparenttextures.com/
 
