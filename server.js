@@ -5,8 +5,10 @@ const cors = require("cors");
 const PORT = process.env.PORT || 3001;
 const app = express();
 const User = require("./models/User");
-const Inventory = require("./models/Inventory");
+const InventoryItem = require("./models/InventoryItem");
 const Receipt = require("./models/Receipt");
+require ("dotenv").config();
+// console.log(process.env.mysecret)
 
 
 mongoose.connect('mongodb://localhost/cashCroc', { useNewUrlParser: true })
@@ -52,17 +54,15 @@ app.use(
   })
 );
 
-
-app.get("/", (req, res) => {
+app.get("/users", (req, res) => {
     User.find((err, users) => {
         if (err) {
             console.log(err);
         } else {
             res.json(users);
-        } 
+        }
     })
 })
-
 
 app.post("/saveUser", (req, res) => {
     const user = new User({
@@ -73,6 +73,33 @@ app.post("/saveUser", (req, res) => {
     .save()
     .then((user) => {
         res.json(user);
+    })
+    .catch((err) => {
+        res.status(500).send(err.message);
+    });
+})
+
+app.get("/inventory", (req, res) => {
+  InventoryItem.find((err, users) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.json(users);
+        }
+    })
+})
+
+app.post("/saveItem", (req, res) => {
+    const inventoryItem = new InventoryItem({
+      itemName: req.body.itemName,
+      price: req.body.price,
+      description: req.body.description,
+      quantity: req.body.quantity
+    });
+    inventoryItem
+    .save()
+    .then((inventoryItem) => {
+        res.json(inventoryItem);
     })
     .catch((err) => {
         res.status(500).send(err.message);

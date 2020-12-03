@@ -10,6 +10,6 @@ const inventorySchema = new Schema({
   quantity: { type: Number }
 });
 
-const Inventory = mongoose.model("Inventory", inventorySchema);
+const InventoryItem = mongoose.model("Inventory", inventorySchema);
 
-module.exports = Inventory;
+module.exports = InventoryItem;
