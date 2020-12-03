@@ -76,7 +76,6 @@ console.log(req.body)
     });
 })
 
-
 // Send every request to the React app
 // Define any API routes before this runs
 app.get("*", function(req, res) {

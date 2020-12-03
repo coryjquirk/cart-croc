@@ -3,11 +3,6 @@ import { Col, Row, Container } from "../components/Grid";
 import "../utils/API"
 import API from "../utils/API";
 
-
-
-
-
-
 function Testing() {
     const [userList, setUserList] = useState([]);
     const [newUsername, setUsername] = useState("");
