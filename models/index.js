@@ -1,3 +1,6 @@
 module.exports = {
-  Post: require("./post")
+  User: require("./User"),
+  Receipt: require("./Receipt"),
+  Inventory: require("./Inventory")
+
 };
