@@ -1,9 +1,22 @@
 #productPic{
-    height:150px;
-    width:150px
+    height:auto;
+    width:75%;
 }
 #productCard {
-    width: 250px;
-    height: 300px;
+    width: 30%;
+    height: 40%;
+    margin: 10px;
     border-radius: 5px;
+    float:left;
+}
+
+@media screen and (max-width: 800px) {
+    #productCard{
+        width: 42%;
+    }
+}
+@media screen and (max-width: 600px) {
+    #productCard{
+        width: 95%;
+    }
 }

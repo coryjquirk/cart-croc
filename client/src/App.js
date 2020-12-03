@@ -12,6 +12,7 @@ import PrintReceipt from "./pages/PrintReceiptPage";
 import NoMatchPage from "./pages/NoMatchPage";
 import Receipts from "./pages/ReceiptsPage";
 import Nav from "./components/Nav";
+import SearchBar from "./components/SearchBar";
 import Footer from "./components/Footer";
 import SignUp from "./components/SignUp";
 import TestingPage from "./pages/TestShitOut";
@@ -25,6 +26,7 @@ class App extends Component {
         <div className="App">
           <StoreProvider>
             <Nav />
+            <SearchBar />
             <div id="main">
               <Switch>
                 <Route exact path="/" component={Index} />
