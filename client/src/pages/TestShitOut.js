@@ -11,6 +11,8 @@ function Testing() {
     useEffect(() => {
         const getUsers = async () => {
             const users = await API.getAllUsers()
+            console.log(users)
+            console.log(userList)
             setUserList(users)
         }
         getUsers();
@@ -24,8 +26,6 @@ function Testing() {
             userName: newUsername,
             password: newPassword
         }
-        console.log("USERDATA IS AS FOLLOWS ")
-        console.log(userData)
         API.saveUser(userData);
     }
 

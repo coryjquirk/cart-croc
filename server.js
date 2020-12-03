@@ -8,7 +8,9 @@ const User = require("./models/User");
 const Inventory = require("./models/Inventory");
 const Receipt = require("./models/Receipt");
 
+
 mongoose.connect('mongodb://localhost/cashCroc', { useNewUrlParser: true })
+
 
 mongoose.connection.once('open', () => {
     console.log("MongoDB connection established successfully")
@@ -18,6 +20,8 @@ mongoose.connection.once('open', () => {
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
+
+mongoose.pluralize(null);
 
 var bodyParser = require('body-parser')
 
@@ -61,10 +65,9 @@ app.get("/", (req, res) => {
 
 
 app.post("/saveUser", (req, res) => {
-console.log(req.body)
     const user = new User({
-      userName: req.userName,
-      password: req.password
+      userName: req.body.userName,
+      password: req.body.password
     });
     user
     .save()
