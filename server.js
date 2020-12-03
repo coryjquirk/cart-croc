@@ -7,6 +7,7 @@ const app = express();
 const User = require("./models/User");
 const InventoryItem = require("./models/InventoryItem");
 const Receipt = require("./models/Receipt");
+const userController = require("./controllers/userController");
 require ("dotenv").config();
 // console.log(process.env.mysecret)
 
@@ -78,6 +79,8 @@ app.post("/saveUser", (req, res) => {
         res.status(500).send(err.message);
     });
 })
+
+app.use("/", userController)
 
 app.get("/inventory", (req, res) => {
   InventoryItem.find((err, users) => {

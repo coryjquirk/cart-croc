@@ -7,31 +7,31 @@ function Nav() {
   const [store] = useStoreContext();
 
   return (
-        <nav class="navbar navbar-expand-lg navbar-light bg-light" id="crocNav">
+        <nav className="navbar navbar-expand-lg navbar-light bg-light" id="crocNav">
             <img src={Logo} alt="Logo" id="croc"/>
-            <a class="navbar-brand" href="/">Cart Croc</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            <a className="navbar-brand" href="/">Cart Croc</a>
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="home">home</a>
+            <div className="collapse navbar-collapse" id="navbarNav">
+                <ul className="navbar-nav">
+                <li className="nav-item">
+                    <a className="nav-link" href="home">home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="inventory">inventory</a>
+                <li className="nav-item">
+                    <a className="nav-link" href="inventory">inventory</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="newsale">new sale ("your cart")</a>
+                <li className="nav-item">
+                    <a className="nav-link" href="newsale">new sale ("your cart")</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="completesale">complete sale ("checkout")</a>
+                <li className="nav-item">
+                    <a className="nav-link" href="completesale">complete sale ("checkout")</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="printreceipt">print receipt</a>
+                <li className="nav-item">
+                    <a className="nav-link" href="printreceipt">print receipt</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="receipts">receipts ("order history")</a>
+                <li className="nav-item">
+                    <a className="nav-link" href="receipts">receipts ("order history")</a>
                 </li>
                 </ul>
             </div>
