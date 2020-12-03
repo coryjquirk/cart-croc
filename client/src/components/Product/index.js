@@ -13,13 +13,13 @@ function Product() {
   const [store] = useStoreContext();
 
   return (
-        <p id="productCard" style={cardStyle}>
+        <div id="productCard" style={cardStyle}>
             <p>Name: </p>
             <img id="productPic" src={Tester}/>
             <p>Price:</p>
             <p>Description: </p>
             <p>In stock: </p>
-        </p>
+        </div>
     );
 }
 
