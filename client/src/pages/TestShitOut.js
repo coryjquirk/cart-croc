@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Col, Row, Container } from "../components/Grid";
-import "../utils/API"
+import '../utils/API';
 import API from "../utils/API";
 
 function Testing() {
@@ -10,7 +10,7 @@ function Testing() {
 
     useEffect(() => {
         const getUsers = async () => {
-            const users = await API.getAllUsers()
+            let users = await API.getAllUsers()
             console.log(users)
             console.log(userList)
             setUserList(users)
