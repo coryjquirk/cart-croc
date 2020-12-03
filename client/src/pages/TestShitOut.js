@@ -26,8 +26,6 @@ function Testing() {
             userName: newUsername,
             password: newPassword
         }
-        console.log("USERDATA IS AS FOLLOWS ")
-        console.log(userData)
         API.saveUser(userData);
     }
 
