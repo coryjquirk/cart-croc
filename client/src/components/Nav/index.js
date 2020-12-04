@@ -25,13 +25,13 @@ function Nav() {
                     <a class="nav-link" href="newsale">new sale ("your cart")</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="completesale">complete sale ("checkout")</a>
+                    <a class="nav-link" href="completesale">checkout</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="printreceipt">print receipt</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="receipts">receipts ("order history")</a>
+                    <a class="nav-link" href="receipts">order history</a>
                 </li>
                 </ul>
             </div>
