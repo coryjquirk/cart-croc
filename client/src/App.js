@@ -17,6 +17,10 @@ import Footer from "./components/Footer";
 import SignUp from "./components/SignUp";
 import TestingPage from "./pages/TestShitOut";
 import TestingInventoryPage from "./pages/TestInventoryShitOut";
+import TestEditPage from "./pages/TestEditInventory";
+
+
+
 
 
 class App extends Component {
@@ -33,6 +37,7 @@ class App extends Component {
                 <Route exact path="/completesale" component={CompleteSale} />
                 <Route exact path="/home" component={Home} />
                 <Route exact path="/testing" component={TestingPage} />
+                <Route exact path="/editItem/:id" component={TestEditPage} />
                 <Route exact path="/inventoryTesting" component={TestingInventoryPage} />
                 <Route exact path="/inventory" component={Inventory} />
                 <Route exact path="/newsale" component={NewSale} />

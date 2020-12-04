@@ -25,7 +25,8 @@ if (process.env.NODE_ENV === "production") {
 
 mongoose.pluralize(null);
 
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
+const { Inventory } = require("./models");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -53,6 +54,18 @@ app.use(
     credentials: true,
   })
 );
+
+app.get("/edit/:id", (req, res) => {
+  const id = req.params.id;
+  InventoryItem.findById(id, function (err, data) { 
+    if (err){ 
+        console.log(err); 
+    } 
+    else{ 
+      res.json(data);
+    } 
+  }); 
+});
 
 app.get("/users", (req, res) => {
     User.find((err, users) => {
@@ -89,22 +102,55 @@ app.get("/inventory", (req, res) => {
     })
 })
 
+
+
+
+
+
+
+// app.get("/:id", (req, res) => {
+//   const id = req.params.id;
+//   Todo.findById(id, (err, todo) => {
+//     res.json(todo);
+//   });
+// });
+
 app.post("/saveItem", (req, res) => {
-    const inventoryItem = new InventoryItem({
-      itemName: req.body.itemName,
-      price: req.body.price,
-      description: req.body.description,
-      quantity: req.body.quantity
-    });
-    inventoryItem
-    .save()
-    .then((inventoryItem) => {
-        res.json(inventoryItem);
-    })
-    .catch((err) => {
-        res.status(500).send(err.message);
-    });
+  const inventoryItem = new InventoryItem({
+    itemName: req.body.itemName,
+    price: req.body.price,
+    description: req.body.description,
+    quantity: req.body.quantity
+  });
+  inventoryItem
+  .save()
+  .then((inventoryItem) => {
+      res.json(inventoryItem);
+  })
+  .catch((err) => {
+      res.status(500).send(err.message);
+  });
 })
+
+app.post("/updateItem/:id", (req, res) => {
+  let id = req.params.id;
+  InventoryItem.findById(id, (err, item) => {
+    if (!item) {
+      res.status(401).send("Item not found, something likely went wrong on our end.");
+    } else {
+        item.itemName = req.body.itemName,
+        item.price = req.body.price,
+        item.description = req.body.description,
+        item.quantity = req.body.quantity
+      item
+        .save()
+        .then((item) => {
+          res.json(item);
+        })
+        .catch((err) => res.status(500).send("I hate bologna" + err.message));
+    }
+  });
+});
 
 // Send every request to the React app
 // Define any API routes before this runs
