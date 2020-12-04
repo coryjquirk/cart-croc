@@ -19,10 +19,6 @@ import TestingPage from "./pages/TestShitOut";
 import TestingInventoryPage from "./pages/TestInventoryShitOut";
 import TestEditPage from "./pages/TestEditInventory";
 
-
-
-
-
 class App extends Component {
   render() {
     return (
