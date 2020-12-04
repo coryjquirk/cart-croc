@@ -1,0 +1,14 @@
+#productPreview{
+    height: 75px;
+    width: 75px;
+    margin: 5px 5px 5px 5px;
+}
+#checkoutItem{
+    max-width: 45%;
+}
+#trashIcon{
+margin: 0px 0px 0px 10px
+}
+#trashIcon:hover {
+    color: red
+}
