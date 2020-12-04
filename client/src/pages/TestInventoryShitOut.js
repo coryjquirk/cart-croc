@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Col, Row, Container } from "../components/Grid";
-import '../utils/API';
+import {Link} from 'react-router-dom';
 import API from "../utils/API";
 
 function Testing() {
@@ -11,6 +11,7 @@ function Testing() {
     const [newQuantity, setNewQuantity] = useState("");
 
     useEffect(() => {
+
         const getInventory = async () => {
             let inventoryItems = await API.getAllItems()
             console.log(inventoryItems)
@@ -84,11 +85,14 @@ function Testing() {
                             </tr>
                         </thead>
                         <tbody>
-                            {inventoryList?.map((result, index) => {
+                            {inventoryList?.map((result) => {
                                 return (
-                                    <tr key={index}>
+                                    <tr key={result._id}>
                                         <td>
                                             {result.itemName}
+                                        </td>
+                                        <td>
+                                            <Link to={`/editItem/${result._id}`}>edit</Link>
                                         </td>
                                     </tr>
                                 );
