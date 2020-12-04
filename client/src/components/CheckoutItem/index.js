@@ -14,7 +14,7 @@ function CheckoutItem() {
             id="productPreview"></img>
             Stapler | 
             $6.75 | 
-            Qty: <input type="number" id="checkoutQty" placeholder="8"></input><FontAwesomeIcon icon={faTrashAlt} id="trashIcon"/>
+            Qty: <input type="number" id="checkoutQty" placeholder="8"></input><FontAwesomeIcon icon={faTrashAlt} id="trash icon"/>
       </div>
 )}
 
