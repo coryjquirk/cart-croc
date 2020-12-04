@@ -6,7 +6,7 @@ mongoose.pluralize(null);
 const inventorySchema = new Schema({
   itemName: { type: String, required: true },
   price: { type: Number, required: true },
-  description: { String },
+  description: { type: String },
   quantity: { type: Number }
 });
 
