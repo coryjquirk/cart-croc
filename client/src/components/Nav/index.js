@@ -22,9 +22,6 @@ function Nav() {
                     <a class="nav-link" href="inventory">inventory</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="newsale">new sale ("your cart")</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="completesale">checkout</a>
                 </li>
                 <li class="nav-item">
