@@ -8,8 +8,10 @@
     font-size: 14px
 }
 #searchBar input[type=text] {
-    width: 100%;
-    max-width: 300px;
+    width: 50%;
+    max-width: 150px;
+    float: left;
+    margin-left: 30px;
     display: inline-block;
     box-sizing: border-box;
     border: 2px solid #ccc;
@@ -19,4 +21,20 @@
 }
 #searchBar input[type=text]:focus {
     border: 2px solid #555;
+}
+
+/* for modal */
+#checkout{
+    border-radius: 5px;
+}
+.totalInfo{
+    margin: 0px 0px 0px 10px;
+  clear: both;
+  display: table;
+}
+#checkout button {
+    margin: 5px 5px 5px 5px;
+}
+#checkoutQty{
+    width: 40px;
 }

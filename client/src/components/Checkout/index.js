@@ -2,7 +2,6 @@ import React from "react";
 import { useStoreContext } from "../../utils/GlobalState";
 import "./style.css";
 import Texture from '../Images/45-degree-fabric-light.png';
-import Tester from '../Product/product1.jpg';
 import CheckoutItem from '../CheckoutItem';
 
 const checkoutStyle = {

@@ -1,0 +1,14 @@
+#modalCart{
+    border-radius: 5px;
+}
+.totalInfo{
+    margin: 0px 0px 0px 10px;
+  clear: both;
+  display: table;
+}
+#modalCart button {
+    margin: 5px 5px 5px 5px;
+}
+#checkoutQty{
+    width: 40px;
+}
