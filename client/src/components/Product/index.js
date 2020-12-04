@@ -4,7 +4,7 @@ import ReactImageMagnify from 'react-image-magnify';
 //usage guide: https://www.npmjs.com/package/react-image-magnify
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css"
-import Slider from "react-slick";;
+import Slider from "react-slick";
 import Tester1 from './product1.jpg';
 import Tester2 from './product2.jpg';
 import Tester3 from './product3.jpg';
@@ -31,7 +31,7 @@ export default function Product() {
             <p>Name: </p>
             <Slider {...settings}>
                 <div>
-                            <ReactImageMagnify {...{
+                    <ReactImageMagnify {...{
                         smallImage: {
                             alt: 'Stapler!!!!!!!!!!',
                             isFluidWidth: true,
@@ -44,7 +44,7 @@ export default function Product() {
                             height: 800
                         },
                         enlargedImagePosition: 'over',
-                        enlargedImageContainerDimensions: {width: '50%', height: '200%'}
+                        enlargedImageContainerDimensions: {width: '100%', height: '100%'}
                     }} />
                 </div>
                 <div>
@@ -61,7 +61,7 @@ export default function Product() {
                             height: 800
                         },
                         enlargedImagePosition: 'over',
-                        enlargedImageContainerDimensions: {width: '50%', height: '200%'}
+                        enlargedImageContainerDimensions: {width: '100%', height: '100%'}
                     }} />
                 </div>
                 <div>
@@ -78,7 +78,7 @@ export default function Product() {
                             height: 1800
                         },
                         enlargedImagePosition: 'over',
-                        enlargedImageContainerDimensions: {width: '50%', height: '200%'}
+                        enlargedImageContainerDimensions: {width: '100%', height: '100%'}
                     }} />
                 </div>
                 <div>
@@ -95,7 +95,7 @@ export default function Product() {
                             height: 1800
                         },
                         enlargedImagePosition: 'over',
-                        enlargedImageContainerDimensions: {width: '50%', height: '200%'}
+                        enlargedImageContainerDimensions: {width: '100%', height: '100%'}
                     }} />
                 </div>
             </Slider>
