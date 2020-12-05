@@ -1,13 +1,13 @@
 export default {
-  // TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:TODO:
   // ======================================================================================================================
-  // TODO: Figure out how to get this to return the thign its suppposed to return.
+  // TODO: Have a good one bro
   // ======================================================================================================================
 
 
   // REMINDER: REMINDER: REMINDER: REMINDER: REMINDER: REMINDER: REMINDER: REMINDER: 
   // ======================================================================================================================
   // REMINDER: : REMEMBER THAT HEROKU CAN"T USE LOCALHOST BRUH
+  // which is why the fetch uses just "/" routing instead of localhost:3000/
   // ======================================================================================================================
 
   getAllUsers: function () {
@@ -31,18 +31,12 @@ export default {
   },
 
   updateItem: function (itemData, id) {
-    console.log("THE ITEM DATA IS THIS N =32409I0987")
-    console.log(itemData)
     fetch(`/updateItem/${id}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(itemData)
     }).then(res => res.json());
   },
-
-  //   getAllUsers: function () {
-  //   return fetch("/users").then(res => res.json())
-  // },
 
   getAllItems: function () {
     return fetch("/inventory").then(res => res.json())
@@ -53,7 +47,55 @@ export default {
     ).catch((error) => {
       console.log(error);
     })
-  }
+  },
+
+  //===================================================================
+  // Cart API routes
+
+  getCartItem: function (id) {
+    return fetch(`/cartEdit/${id}`).then(res => res.json()
+    ).catch((error) => {
+      console.log(error);
+    })
+  },
+
+  saveCartItem: function (user) {
+    console.log(user);
+    fetch("/saveCartItem", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(user)
+    })
+  },
+
+  updateCartItem: function (itemData, id) {
+    fetch(`/updateCartItem/${id}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(itemData)
+    }).then(res => res.json());
+  },
+
+  getAllCartItems: function () {
+    return fetch("/cart").then(res => res.json())
+  },
+
+  // Deletes the post with the given id
+  // deleteCartItem: function(id) {
+  //   console.log(id);
+  //   return fetch("/deleteCartItem/"+ id).then(res => res.json())
+  // },
+
+  deleteCartItem: function (id) {
+    fetch('/deleteCartItem/' + id, {
+      method: 'DELETE',
+      headers: { "Content-Type": "application/json" }
+    })
+    .then(res => res.text()) // or res.json()
+    .then(res => console.log(res))
+  },
+
+
 
 };
 
@@ -86,10 +128,7 @@ export default {
   //     });
   // });
 
-  // Deletes the post with the given id
-  //   deletePost: function(id) {
-  //     return axios.delete("/api/posts/" + id);
-  //   },
+
 
   //   deleteMethod: {
   //     method: 'DELETE', // Method itself
