@@ -5,6 +5,8 @@ import API from "../utils/API";
 
 function Cart() {
     const [cartList, setCart] = useState([]);
+    const [bonerpills, setBonerPills] = useState();
+
     // const [newItemName, setNewItemName] = useState("");
     // const [newPrice, setNewPrice] = useState("");
     // const [newDescription, setnewDescription] = useState("");
@@ -17,7 +19,7 @@ function Cart() {
             setCart(cartItems)
         }
         getCart();
-    }, []) 
+    }, [])
 
     // This code looks kinda weird, its nested in the way it is so that we can access
     // the ID passed in to it and still use event.preventdefault, which can only be used on top
@@ -25,46 +27,26 @@ function Cart() {
 
     const deleteCartItem = itemId => {
         return event => {
-          event.preventDefault();
-           API.deleteCartItem(itemId);
+            event.preventDefault();
+            API.deleteCartItem(itemId);
         }
-      };
-    
+    };
 
+    const updateCartItemSellQuantity = itemId => {
+        return event => {
+            event.preventDefault();
+            let newSellQuantity = {
+                sellQuantity: bonerpills
+            }
+            API.updateCartItemSellQuantity(newSellQuantity, itemId);
+        }
+    };
 
-    // function submitThisForm(event) {
-    //     event.preventDefault()
-
-    //     var itemData = {
-    //         itemName: newItemName,
-    //         price: newPrice,
-    //         description: newDescription,
-    //         quantity: newQuantity
-    //     }
-    //     console.log(itemData)
-    //     API.saveItem(itemData);
-    // }
-
-    // function handleNameChange(event) {
-    //     const name = event.target.value;
-    //     console.log(name);
-    //     setNewItemName(name)
-    // }
-
-    // function handlePriceChange(event) {
-    //     const price = event.target.value;
-    //     setNewPrice(price)
-    // }
-
-    // function handleQuantityChange(event) {
-    //     const quantity = event.target.value;
-    //     setNewQuantity(quantity)
-    // }
-
-    // function handleDescriptionChange(event) {
-    //     const description = event.target.value;
-    //     setnewDescription(description)
-    // }
+    function handleQuantityChange(event) {
+        const sellQuantity = event.target.value;
+        console.log("Quantity is now " + sellQuantity)
+        setBonerPills(sellQuantity)
+    }
 
     return (
         <Container fluid>
@@ -91,16 +73,16 @@ function Cart() {
                         <thead>
                             <tr id="tableHeader" className="bg-warning">
                                 <th scope="col">
-                                   Item name
+                                    Item name
                     </th>
-                    <th scope="col">
-                                   Price of the thing
+                                <th scope="col">
+                                    Price of the thing
                     </th>
-                    <th scope="col">
-                                   HOw many is YOU buying bruh
+                                <th scope="col">
+                                    How many IS YOU want bruh
                     </th>
-                    <th scope="col">
-                                   description
+                                <th scope="col">
+                                    description
                     </th>
                             </tr>
                         </thead>
@@ -115,13 +97,18 @@ function Cart() {
                                             {result.price}
                                         </td>
                                         <td>
-                                            {result.sellQuantity}
+                                            <form>
+                                                <input onChange={handleQuantityChange} type="number" placeholder={result.sellQuantity} id="quantity" name="quantity" min={1} max={5} />
+                                            </form>
                                         </td>
                                         <td>
                                             {result.description}
                                         </td>
                                         <td>
                                             <button onClick={deleteCartItem(result._id)} >Del-tete-this</button>
+                                        </td>
+                                        <td>
+                                            <button onClick={updateCartItemSellQuantity(result._id)} >Update number of things</button>
                                         </td>
                                     </tr>
                                 );

@@ -68,7 +68,7 @@ export default {
     })
   },
 
-  updateCartItem: function (itemData, id) {
+  updateCartItemSellQuantity: function (itemData, id) {
     fetch(`/updateCartItem/${id}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },

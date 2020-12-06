@@ -187,7 +187,7 @@ app.post("/saveCartItem", (req, res) => {
     });
 });
 
-app.post("/updateItem/:id", (req, res) => {
+app.post("/updateCartItem/:id", (req, res) => {
   let id = req.params.id;
   CartItem.findById(id, (err, item) => {
     if (!item) {
@@ -195,10 +195,7 @@ app.post("/updateItem/:id", (req, res) => {
         .status(404)
         .send("Item not found, something likely went wrong on our end.");
     } else {
-      (item.itemName = req.body.itemName),
-        (item.price = req.body.price),
-        (item.description = req.body.description),
-        (item.quantity = req.body.quantity);
+      (item.sellQuantity = req.body.sellQuantity),
       item
         .save()
         .then((item) => {
