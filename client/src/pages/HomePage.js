@@ -4,7 +4,8 @@ import { Col, Row, Container } from "../components/Grid";
 const Home = () => {
   return (
     <Container fluid>
-      <a href="/newsale">New Sale</a>
+      <h1>Home</h1>
+      <a href="/checkout">Checkout</a>
       <br />
       <a href="/receipts">Receipts</a>
       <br />
