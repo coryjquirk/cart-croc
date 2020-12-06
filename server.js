@@ -11,8 +11,15 @@ const Receipt = require("./models/Receipt");
 require("dotenv").config();
 // console.log(process.env.mysecret)
 
-mongoose.connect("mongodb://localhost/cashCroc", { useNewUrlParser: true });
-
+mongoose.connect(
+  process.env.MONGODB_URI || "mongodb://localhost/cashCroc",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false
+  }
+);
 mongoose.connection.once("open", () => {
   console.log("MongoDB connection established successfully");
 });
