@@ -22,7 +22,7 @@ function Nav() {
                     <a class="nav-link" href="inventory">inventory</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="completesale">checkout</a>
+                    <a class="nav-link" href="checkout">checkout</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="printreceipt">print receipt</a>

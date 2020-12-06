@@ -51,8 +51,7 @@ function SearchBar() {
           contentLabel="Example Modal"
         >
  
-          <h2>Your cart</h2>
-          <button className="btn btn-danger" onClick={closeModal}><FontAwesomeIcon icon={faWindowClose} id="close window"/></button>
+          <button id="closeCart" className="btn btn-danger" onClick={closeModal}><FontAwesomeIcon icon={faWindowClose} id="close window"/></button>
           <ModalCart></ModalCart>
         </Modal>
     </div>
