@@ -80,12 +80,6 @@ export default {
     return fetch("/cart").then(res => res.json())
   },
 
-  // Deletes the post with the given id
-  // deleteCartItem: function(id) {
-  //   console.log(id);
-  //   return fetch("/deleteCartItem/"+ id).then(res => res.json())
-  // },
-
   deleteCartItem: function (id) {
     fetch('/deleteCartItem/' + id, {
       method: 'DELETE',
@@ -95,56 +89,43 @@ export default {
     .then(res => console.log(res))
   },
 
+  //===================================================================
+  // Order History API routes
 
+  getSingleOrder: function (id) {
+    return fetch(`/orderHistory/${id}`).then(res => res.json()
+    ).catch((error) => {
+      console.log(error);
+    })
+  },
 
+  saveOrderHistory: function (user) {
+    console.log(user);
+    fetch("/saveOrder", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(user)
+    })
+  },
+
+  updateOrderHistory: function (itemData, id) {
+    fetch(`/updateCartItem/${id}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(itemData)
+    }).then(res => res.json());
+  },
+
+  getAllOrderHistory: function () {
+    return fetch("/cart").then(res => res.json())
+  },
+
+  deleteOrderHistory: function (id) {
+    fetch('/deleteCartItem/' + id, {
+      method: 'DELETE',
+      headers: { "Content-Type": "application/json" }
+    })
+    .then(res => res.text()) // or res.json()
+    .then(res => console.log(res))
+  },
 };
-
-
-
-
-
-
-
-
-  // updateItem: function (id) {
-  //   fetch(`/updateItem/${id}`, {
-  //     method: "PUT",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify()
-  //   })
-  // },
-
-  // updateItem: function () {
-  //   fetch("/api/workouts/:id", (req, res) => {
-  //     Inven
-  //   })
-  // }
-  //   ("/api/workouts/:id", (req, res) => {
-  //   Workout.findByIdAndUpdate(req.params.id, { $push: { exercises: req.body } }, { useFindAndModify: false })
-  //     .then((data) => {
-  //       res.json(data);
-  //     }).catch((err) => {
-  //       res.json(err);
-  //     });
-  // });
-
-
-
-  //   deleteMethod: {
-  //     method: 'DELETE', // Method itself
-  //     headers: {
-  //      'Content-type': 'application/json; charset=UTF-8' // Indicates the content 
-  //     },
-  //     // No need to have body, because we don't send nothing to the server.
-  //    }
-  //    // Make the HTTP Delete call using fetch api
-  //    fetch(url, deleteMethod) 
-  //    .then(response => response.json())
-  //    .then(data => console.log(data)) // Manipulate the data retrieved back, if we want to do something with it
-  //    .catch(err => console.log(err)) // Do something with the error
-
-  //    deleteUser: function (user) {fetch("/saveUser", {
-  //     method: "DELETE",
-  //     headers: { "Content-Type": "application/json" },
-  //   })}
-  // };

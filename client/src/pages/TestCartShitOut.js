@@ -6,12 +6,7 @@ import API from "../utils/API";
 function Cart() {
     const [cartList, setCart] = useState([]);
     const [bonerpills, setBonerPills] = useState();
-
-    // const [newItemName, setNewItemName] = useState("");
-    // const [newPrice, setNewPrice] = useState("");
-    // const [newDescription, setnewDescription] = useState("");
-    // const [newQuantity, setNewQuantity] = useState("");
-
+    
     useEffect(() => {
         const getCart = async () => {
             let cartItems = await API.getAllCartItems()
