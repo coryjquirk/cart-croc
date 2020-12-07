@@ -56,15 +56,12 @@ var session = require("express-session");
 // Requiring passport as we've configured it
 // var passport = require("./config/passport");
 
-mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/cashCroc",
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false
-  }
-);
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/cashCroc", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+});
 mongoose.connection.once("open", () => {
   console.log("MongoDB connection established successfully");
 });
@@ -176,18 +173,16 @@ app.post("/updateItem/:id", (req, res) => {
         .send("Item not found, something likely went wrong on our end.");
     } else {
       if (req.body.itemName) {
-        (item.itemName = req.body.itemName)
+        item.itemName = req.body.itemName;
       }
       if (req.body.description) {
-        (item.description = req.body.description)
-
+        item.description = req.body.description;
       }
       if (req.body.price) {
-        (item.price = req.body.price)
-
+        item.price = req.body.price;
       }
       if (req.body.quantity) {
-        (item.quantity = req.body.quantity)
+        item.quantity = req.body.quantity;
       }
       item
         .save()
@@ -231,7 +226,7 @@ app.post("/saveCartItem", (req, res) => {
     description: req.body.description,
     sellQuantity: req.body.cartQuantity,
   });
-  console.log("============== CART ITEM IS ==============")
+  console.log("============== CART ITEM IS ==============");
   console.log(cartItem);
   cartItem
     .save()
@@ -252,25 +247,26 @@ app.post("/updateCartItem/:id", (req, res) => {
         .send("Item not found, something likely went wrong on our end.");
     } else {
       (item.sellQuantity = req.body.sellQuantity),
-      item
-        .save()
-        .then((item) => {
-          res.json(item);
-        })
-        .catch((err) => res.status(500).send("Error message :" + err.message));
+        item
+          .save()
+          .then((item) => {
+            res.json(item);
+          })
+          .catch((err) =>
+            res.status(500).send("Error message :" + err.message)
+          );
     }
   });
 });
 
 app.delete("/deleteCartItem/:id", (req, res) => {
   let id = req.params.id;
-  console.log("THE ID WE IS GETTING IS AS FOLLOWS")
+  console.log("THE ID WE IS GETTING IS AS FOLLOWS");
   console.log(id);
   CartItem.findByIdAndDelete(id, function (err) {
-    if(err) console.log(err);
+    if (err) console.log(err);
     console.log("Successful deletion");
   });
-  
 });
 
 // =============================================================
@@ -304,9 +300,9 @@ app.post("/saveOrder", (req, res) => {
     price: req.body.price,
     description: req.body.description,
     sellQuantity: req.body.sellQuantity,
-    orderDate: Date.now()
+    orderDate: Date.now(),
   });
-  console.log("============== ORDER IS ==============")
+  console.log("============== ORDER IS ==============");
   console.log(order);
   order
     .save()
@@ -327,25 +323,26 @@ app.post("/updateCartItem/:id", (req, res) => {
         .send("Item not found, something likely went wrong on our end.");
     } else {
       (item.sellQuantity = req.body.sellQuantity),
-      item
-        .save()
-        .then((item) => {
-          res.json(item);
-        })
-        .catch((err) => res.status(500).send("Error message :" + err.message));
+        item
+          .save()
+          .then((item) => {
+            res.json(item);
+          })
+          .catch((err) =>
+            res.status(500).send("Error message :" + err.message)
+          );
     }
   });
 });
 
 app.delete("/deleteCartItem/:id", (req, res) => {
   let id = req.params.id;
-  console.log("THE ID WE IS GETTING IS AS FOLLOWS")
+  console.log("THE ID WE IS GETTING IS AS FOLLOWS");
   console.log(id);
   CartItem.findByIdAndDelete(id, function (err) {
-    if(err) console.log(err);
+    if (err) console.log(err);
     console.log("Successful deletion");
   });
-  
 });
 
 // Send every request to the React app

@@ -1,7 +1,21 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import jwt_decode from "jwt-decode";
+import setAuthToken from "./utils/setAuthToken";
+
 import { StoreProvider } from "./utils/GlobalState";
-import "./App.css";
+
+import { setCurrentUser, logoutUser } from "./actions/authActions";
+import { Provider } from "react-redux";
+import store from "./store";
+
+import Navbar from "./components/layout/Navbar";
+import Landing from "./components/layout/Landing";
+import Register from "./components/auth/Register";
+import Login from "./components/auth/Login";
+import PrivateRoute from "./components/private-route/PrivateRoute";
+import Dashboard from "./components/dashboard/Dashboard";
+
 //my components
 import Index from "./pages/IndexPage";
 import CheckoutPage from "./pages/CheckoutPage";
@@ -18,35 +32,101 @@ import shopAdmin from "./pages/shopAdmin";
 import TestEditPage from "./pages/TestEditInventory";
 import TestCartPage from "./pages/TestCartShitOut";
 
+import "./App.css";
+
+// Check for token to keep user logged in
+if (localStorage.jwtToken) {
+  // Set auth token header auth
+  const token = localStorage.jwtToken;
+  setAuthToken(token);
+  // Decode token and get user info and exp
+  const decoded = jwt_decode(token);
+  // Set user and isAuthenticated
+  store.dispatch(setCurrentUser(decoded));
+  // Check for expired token
+  const currentTime = Date.now() / 1000; // to get in milliseconds
+  if (decoded.exp < currentTime) {
+    // Logout user
+    store.dispatch(logoutUser());
+
+    // Redirect to login
+    window.location.href = "./login";
+  }
+}
 class App extends Component {
   render() {
     return (
-      <Router>
-        <div className="App">
-          <StoreProvider>
-            <Nav />
-            <SearchBar />
-            <div id="main">
+      <Provider store={store}>
+        <StoreProvider>
+          <Router>
+            <div className="App">
+              <Nav />
+              <SearchBar />
+              <Route exact path="/" component={Landing} />
+              <Route exact path="/register" component={Register} />
+              <Route exact path="/login" component={Login} />
               <Switch>
-                <Route exact path="/" component={Index} />
-                <Route exact path="/checkout" component={CheckoutPage} />
-                <Route exact path="/home" component={Home} />
-                <Route exact path="/testing" component={TestingPage} />
-                <Route exact path="/editItem/:id" component={TestEditPage} />
-                <Route exact path="/shopAdmin" component={shopAdmin} />
-                <Route exact path="/CartTesting" component={TestCartPage} />
-                <Route exact path="/inventory" component={InventoryPage} />
-                <Route exact path="/printreceipt" component={PrintReceipt} />
-                <Route exact path="/receipts" component={Receipts} />
+                <PrivateRoute exact path="/dashboard" component={Dashboard} />
+                {/* <Route exact path="/" component={Index} /> */}
+                <PrivateRoute exact path="/checkout" component={CheckoutPage} />
+                <PrivateRoute exact path="/home" component={Home} />
+                <PrivateRoute exact path="/testing" component={TestingPage} />
+                <PrivateRoute
+                  exact
+                  path="/editItem/:id"
+                  component={TestEditPage}
+                />
+                <PrivateRoute exact path="/shopAdmin" component={shopAdmin} />
+                <PrivateRoute
+                  exact
+                  path="/CartTesting"
+                  component={TestCartPage}
+                />
+                <PrivateRoute
+                  exact
+                  path="/inventory"
+                  component={InventoryPage}
+                />
+                <PrivateRoute
+                  exact
+                  path="/printreceipt"
+                  component={PrintReceipt}
+                />
+                <PrivateRoute exact path="/receipts" component={Receipts} />
                 <Route component={NoMatchPage} />
               </Switch>
             </div>
-            <Footer />
-          </StoreProvider>
-        </div>
-      </Router>
+          </Router>
+        </StoreProvider>
+      </Provider>
     );
   }
 }
-
 export default App;
+
+// import React, { Component } from "react";
+// import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+// import "./App.css";
+
+// class App extends Component {
+//   render() {
+//     return (
+//       <Router>
+//         <div className="App">
+//           <StoreProvider>
+
+//             <div id="main">
+//               <Switch>
+
+//               </Switch>
+//             </div>
+//             <Footer />
+//           </StoreProvider>
+//         </div>
+//       </Router>
+//     );
+//   }
+// }
+
+// export default App;
