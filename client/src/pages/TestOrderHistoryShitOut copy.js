@@ -4,57 +4,40 @@ import { Link } from 'react-router-dom';
 import API from "../utils/API";
 
 function Cart() {
-    const [cartList, setCart] = useState([]);
-    const [bonerpills, setBonerPills] = useState();
-    
+    // const [cartList, setCart] = useState([]);
+    const [orderHistory, setOrderHistory] = useState();
+
     useEffect(() => {
-        const getCart = async () => {
-            let cartItems = await API.getAllCartItems()
-            console.log(cartItems)
-            setCart(cartItems)
+        // Once we have username available, pass in to getOrderHistoy
+        // So we can access just your users order history.
+        // also change the api to "getUserOrderHistory" or something
+        const fetchOrderHistory = async () => {
+            let orderHistory = await API.getAllOrderHistory()
+                .then(
+                    console.log(orderHistory),
+                    setOrderHistory(orderHistory)
+                )
         }
-        getCart();
+        fetchOrderHistory();
     }, [])
 
     // This code looks kinda weird, its nested in the way it is so that we can access
     // the ID passed in to it and still use event.preventdefault, which can only be used on top
     // level functions
+    // const deleteCartItem = itemId => {
+    //     return event => {
+    //         event.preventDefault();
+    //         API.deleteCartItem(itemId);
+    //     }
+    // };
 
-    const deleteCartItem = itemId => {
-        return event => {
-            event.preventDefault();
-            API.deleteCartItem(itemId);
-        }
-    };
 
-    const updateCartItemSellQuantity = itemId => {
-        return event => {
-            event.preventDefault();
-            let newSellQuantity = {
-                sellQuantity: bonerpills
-            }
-            API.updateCartItemSellQuantity(newSellQuantity, itemId);
-        }
-    };
 
-    function handleQuantityChange(event) {
-        const sellQuantity = event.target.value;
-        console.log("Quantity is now " + sellQuantity)
-        setBonerPills(sellQuantity)
-    }
-
-    const submitOrder = () => {
-        return event => {
-            event.preventDefault();
-            let newOrderData = [];
-            let temp = [];
-            temp = cartList.map((cartItem) => {
-                newOrderData.push(cartItem)
-            })
-            console.log("New Order Data is : " + newOrderData);
-            API.saveOrderHistory(newOrderData);
-        }
-    };
+    // function handleQuantityChange(event) {
+    //     const sellQuantity = event.target.value;
+    //     console.log("Quantity is now " + sellQuantity)
+    //     setBonerPills(sellQuantity)
+    // }
 
     return (
         <Container fluid>
@@ -95,7 +78,7 @@ function Cart() {
                             </tr>
                         </thead>
                         <tbody>
-                            {cartList?.map((result) => {
+                            {orderHistory?.map((result) => {
                                 return (
                                     <tr key={result._id}>
                                         <td>
@@ -111,15 +94,6 @@ function Cart() {
                                         </td>
                                         <td>
                                             {result.description}
-                                        </td>
-                                        <td>
-                                            <button onClick={deleteCartItem(result._id)} >Del-tete-this</button>
-                                        </td>
-                                        <td>
-                                            <button onClick={updateCartItemSellQuantity(result._id)} >Update number of things</button>
-                                        </td>
-                                        <td>
-                                            <button onClick={submitOrder(result)} >GIMME MY SHIT</button>
                                         </td>
                                     </tr>
                                 );

@@ -180,7 +180,7 @@ app.post("/saveCartItem", (req, res) => {
     itemName: req.body.itemName,
     price: req.body.price,
     description: req.body.description,
-    sellQuantity: req.body.sellQuantity,
+    sellQuantity: req.body.cartQuantity,
   });
   console.log("============== CART ITEM IS ==============")
   console.log(cartItem);
@@ -238,30 +238,31 @@ app.get("/cartItem/:id", (req, res) => {
   });
 });
 
-app.get("/cart", (req, res) => {
-  CartItem.find((err, cartItems) => {
+app.get("/orders", (req, res) => {
+  Order.find((err, orderHistory) => {
     if (err) {
       console.log(err);
     } else {
-      res.json(cartItems);
+      res.json(orderHistory);
     }
   });
 });
 
-app.post("/saveCartItem", (req, res) => {
-  const cartItem = new CartItem({
+app.post("/saveOrder", (req, res) => {
+  const order = new Order({
     username: req.body.username,
     itemName: req.body.itemName,
     price: req.body.price,
     description: req.body.description,
     sellQuantity: req.body.sellQuantity,
+    orderDate: Date.now()
   });
-  console.log("============== CART ITEM IS ==============")
-  console.log(cartItem);
-  cartItem
+  console.log("============== ORDER IS ==============")
+  console.log(order);
+  order
     .save()
-    .then((cartItem) => {
-      res.json(cartItem);
+    .then((order) => {
+      res.json(order);
     })
     .catch((err) => {
       res.status(500).send(err.message);

@@ -99,12 +99,12 @@ export default {
     })
   },
 
-  saveOrderHistory: function (user) {
-    console.log(user);
+  saveOrderHistory: function (order) {
+    console.log(order);
     fetch("/saveOrder", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(user)
+      body: JSON.stringify(order)
     })
   },
 
@@ -117,7 +117,7 @@ export default {
   },
 
   getAllOrderHistory: function () {
-    return fetch("/cart").then(res => res.json())
+    return fetch("/orders").then(res => res.json())
   },
 
   deleteOrderHistory: function (id) {
