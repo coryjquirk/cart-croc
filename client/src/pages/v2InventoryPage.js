@@ -2,8 +2,7 @@ import React from "react";
 import { Col, Row, Container } from "../components/Grid";
 import Inventory from "../components/Inventory"
 import Product from "../components/Product"
-
-
+import ProductV2 from "../components/v2Product"
 
 const v2InventoryPage = () => {
     return (
@@ -12,15 +11,8 @@ const v2InventoryPage = () => {
         <br />
         <a href="/home">Home</a>
         <div>
-        <Product/>
-        <Product/>
-        <Product/>
-        <Product/>
-        <Product/>
-        <Product/>
-        <Product/>
+        <ProductV2></ProductV2>
         </div>
-        <Inventory/>
       </Container>
     );
   };
