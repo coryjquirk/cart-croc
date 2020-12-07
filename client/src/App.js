@@ -31,6 +31,7 @@ import TestingInventoryPage from "./pages/TestInventoryShitOut";
 import TestEditPage from "./pages/TestEditInventory";
 
 import "./App.css";
+import { StoreProvider } from "./utils/GlobalState";
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -55,45 +56,48 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <Router>
-          <div className="App">
-            <Navbar />
-            <Route exact path="/" component={Landing} />
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/login" component={Login} />
-            <Switch>
-              <PrivateRoute exact path="/dashboard" component={Dashboard} />
-              {/* our code below VV */}
-              {/* <Route exact path="/" component={Index} /> */}
-              <PrivateRoute
-                exact
-                path="/completesale"
-                component={CompleteSale}
-              />
-              <PrivateRoute exact path="/home" component={Home} />
-              <PrivateRoute exact path="/testing" component={TestingPage} />
-              <PrivateRoute
-                exact
-                path="/editItem/:id"
-                component={TestEditPage}
-              />
-              <PrivateRoute
-                exact
-                path="/inventoryTesting"
-                component={TestingInventoryPage}
-              />
-              <PrivateRoute exact path="/inventory" component={Inventory} />
-              <PrivateRoute exact path="/newsale" component={NewSale} />
-              <PrivateRoute
-                exact
-                path="/printreceipt"
-                component={PrintReceipt}
-              />
-              <PrivateRoute exact path="/receipts" component={Receipts} />
-              <Route component={NoMatchPage} />
-            </Switch>
-          </div>
-        </Router>
+        <StoreProvider>
+          <Router>
+            <div className="App">
+              <Nav />
+              <SearchBar />
+              <Route exact path="/" component={Landing} />
+              <Route exact path="/register" component={Register} />
+              <Route exact path="/login" component={Login} />
+              <Switch>
+                <PrivateRoute exact path="/dashboard" component={Dashboard} />
+                {/* our code below VV */}
+                {/* <Route exact path="/" component={Index} /> */}
+                <PrivateRoute
+                  exact
+                  path="/completesale"
+                  component={CompleteSale}
+                />
+                <PrivateRoute exact path="/home" component={Home} />
+                <PrivateRoute exact path="/testing" component={TestingPage} />
+                <PrivateRoute
+                  exact
+                  path="/editItem/:id"
+                  component={TestEditPage}
+                />
+                <PrivateRoute
+                  exact
+                  path="/inventoryTesting"
+                  component={TestingInventoryPage}
+                />
+                <PrivateRoute exact path="/inventory" component={Inventory} />
+                <PrivateRoute exact path="/newsale" component={NewSale} />
+                <PrivateRoute
+                  exact
+                  path="/printreceipt"
+                  component={PrintReceipt}
+                />
+                <PrivateRoute exact path="/receipts" component={Receipts} />
+                <Route component={NoMatchPage} />
+              </Switch>
+            </div>
+          </Router>
+        </StoreProvider>
       </Provider>
     );
   }
@@ -113,8 +117,7 @@ export default App;
 //       <Router>
 //         <div className="App">
 //           <StoreProvider>
-//             <Nav />
-//             <SearchBar />
+
 //             <div id="main">
 //               <Switch>
 
