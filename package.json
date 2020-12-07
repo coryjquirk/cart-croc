@@ -41,6 +41,7 @@
     "passport-local": "^1.0.0",
     "react-bootstrap-modal": "^4.2.0",
     "react-image-magnify": "^2.7.4",
+    "react-modal": "^3.12.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.1",
     "react-slick": "^0.27.13",
