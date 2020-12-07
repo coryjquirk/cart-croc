@@ -35,7 +35,7 @@ class App extends Component {
                 <Route exact path="/editItem/:id" component={TestEditPage} />
                 <Route exact path="/shopAdmin" component={shopAdmin} />
                 <Route exact path="/CartTesting" component={TestCartPage} />
-                <Route exact path="/inventory" component={InventoryPage} />
+                <Route exact path="/shop" component={InventoryPage} />
                 <Route exact path="/printreceipt" component={PrintReceipt} />
                 <Route exact path="/receipts" component={Receipts} />
                 <Route component={NoMatchPage} />

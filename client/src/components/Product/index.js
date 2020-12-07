@@ -76,6 +76,28 @@ export default function Product() {
             API.updateCartItemSellQuantity(newSellQuantity, itemId);
         }
     };
+    // This code looks kinda weird, its nested in the way it is so that we can access
+    // the ID passed in to it and still use event.preventdefault, which can only be used on top
+    // level functions
+    const getAndAddToCart = itemId => {
+        return event => {
+          event.preventDefault();
+           let itemToAdd = API.getItem(itemId)
+            itemToAdd.then( return_value => {
+                // TODO: when we get actual logged in users, reroute "username" to the loged in user
+                let username = "Placeholder Username";
+                let defaultSellQuantity= 1;
+                return_value = { ...return_value, username , defaultSellQuantity};
+                API.saveCartItem(return_value);
+            })
+
+            let newSellQuantity = {
+                sellQuantity: cartQuantity,
+            }
+            console.log("YAAAAAAAA"+newSellQuantity)
+            API.updateCartItemSellQuantity(newSellQuantity, itemId)
+        }
+    };
     function handleQuantityChange(event) {
         const sellQuantity = event.target.value;
         console.log("Quantity is now " + sellQuantity)
@@ -165,7 +187,7 @@ export default function Product() {
                 <p>In stock: {result.quantity}</p>
                 <div>
                     <input onChange={handleQuantityChange} type="number" placeholder="1" id="quantity" name="quantity" min={1} max={result.quantity} />
-                    <button onClick={updateCartItemSellQuantity(result._id)} >Add to cart</button>
+                    <button onClick={getAndAddToCart(result._id)} >Add to cart</button>
                 </div>
 
             </div>
