@@ -34,7 +34,7 @@ function Nav() {
                     <a class="nav-link" href="receipts">order history</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="inventorytesting">shop admin</a>
+                    <a class="nav-link" href="shopAdmin">shop admin</a>
                 </li>
                 </ul>
             </div>

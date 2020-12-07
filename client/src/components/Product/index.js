@@ -82,7 +82,7 @@ export default function Product() {
         setCartQuantity(sellQuantity)
     }
   return (
-        <div>
+        <div id="inventory">
             {inventoryList?.map((result) => {
                                 return (
                                 

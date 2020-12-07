@@ -3,7 +3,7 @@ import { Col, Row, Container } from "../components/Grid";
 import Inventory from "../components/Inventory"
 import Product from "../components/Product"
 
-const v2InventoryPage = () => {
+const InventoryPage = () => {
     return (
       <Container fluid>
         <h1>Inventory</h1>
@@ -16,4 +16,4 @@ const v2InventoryPage = () => {
     );
   };
   
-  export default v2InventoryPage;
+  export default InventoryPage;

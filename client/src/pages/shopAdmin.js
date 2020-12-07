@@ -3,7 +3,7 @@ import { Col, Row, Container } from "../components/Grid";
 import { Link } from 'react-router-dom';
 import API from "../utils/API";
 
-function Testing() {
+function shopAdmin() {
     const [inventoryList, setinventoryList] = useState([]);
     const [newItemName, setNewItemName] = useState("");
     const [newPrice, setNewPrice] = useState("");
@@ -87,7 +87,7 @@ function Testing() {
                 <div className="form-group">
                     <input type="text" onChange={handleDescriptionChange} className="form-control" placeholder="Description" />
                 </div>
-                <button type="submit" className="btn btn-default  green darken-3">Submit that bad mutha-shut-yo-mouth</button>
+                <button type="submit" className="btn btn-default  green darken-3">Add item to shop inventory</button>
             </form>
 
             {/* <button onClick={API.getAllUsers}>Get Users</button> */}
@@ -100,7 +100,7 @@ function Testing() {
                                     DB Item Names
                     </th>
                     <th scope="col">
-                    <Link to={`/CartTesting`}>Dude, where's my car(t)?</Link>
+                    <Link to={`/inventory`}>Inventory</Link>
                     </th>
                             </tr>
                         </thead>
@@ -128,4 +128,4 @@ function Testing() {
     );
 };
 
-export default Testing;
+export default shopAdmin;
