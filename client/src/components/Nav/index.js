@@ -18,11 +18,11 @@ function Nav() {
                 <li class="nav-item">
                     <a class="nav-link" href="home">home</a>
                 </li>
+                {/* <li class="nav-item">
+                    <a class="nav-link" href="inventory">inventory</a>
+                </li> */}
                 <li class="nav-item">
                     <a class="nav-link" href="inventory">inventory</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="v2inventory">v2inventory</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="checkout">checkout</a>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Col, Row, Container } from "../components/Grid";
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import API from "../utils/API";
 
 function Testing() {
@@ -18,10 +18,26 @@ function Testing() {
             setinventoryList(inventoryItems)
         }
         getInventory();
-    }, [])
+    }, []) 
 
-
-    function submitThisForm (event) {
+    // This code looks kinda weird, its nested in the way it is so that we can access
+    // the ID passed in to it and still use event.preventdefault, which can only be used on top
+    // level functions
+    const getAndAddToCart = itemId => {
+        return event => {
+          event.preventDefault();
+           let itemToAdd = API.getItem(itemId)
+            itemToAdd.then( return_value => {
+                // TODO: when we get actual logged in users, reroute "username" to the loged in user
+                let username = "Placeholder Username";
+                let defaultSellQuantity= 1;
+                return_value = { ...return_value, username , defaultSellQuantity};
+                API.saveCartItem(return_value);
+            })
+        }
+      };
+    
+    function submitThisForm(event) {
         event.preventDefault()
 
         var itemData = {
@@ -82,6 +98,9 @@ function Testing() {
                                 <th scope="col">
                                     DB Item Names
                     </th>
+                    <th scope="col">
+                    <Link to={`/CartTesting`}>Dude, where's my car(t)?</Link>
+                    </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -93,6 +112,9 @@ function Testing() {
                                         </td>
                                         <td>
                                             <Link to={`/editItem/${result._id}`}>edit</Link>
+                                        </td>
+                                        <td>
+                                            <button onClick={getAndAddToCart(result._id)}>AddToCart</button>
                                         </td>
                                     </tr>
                                 );

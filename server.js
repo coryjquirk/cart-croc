@@ -6,6 +6,7 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 const User = require("./models/User");
 const InventoryItem = require("./models/InventoryItem");
+const CartItem = require("./models/Cart")
 const Receipt = require("./models/Receipt");
 require("dotenv").config();
 // console.log(process.env.mysecret)
@@ -58,17 +59,8 @@ app.use(
     credentials: true,
   })
 );
-
-app.get("/edit/:id", (req, res) => {
-  const id = req.params.id;
-  InventoryItem.findById(id, function (err, data) {
-    if (err) {
-      console.log(err);
-    } else {
-      res.json(data);
-    }
-  });
-});
+//===================================================================
+// User DB routes
 
 app.get("/users", (req, res) => {
   User.find((err, users) => {
@@ -95,6 +87,20 @@ app.post("/saveUser", (req, res) => {
     });
 });
 
+//===================================================================
+// Inventory DB routes
+
+app.get("/edit/:id", (req, res) => {
+  const id = req.params.id;
+  InventoryItem.findById(id, function (err, data) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.json(data);
+    }
+  });
+});
+
 app.get("/inventory", (req, res) => {
   InventoryItem.find((err, users) => {
     if (err) {
@@ -104,13 +110,6 @@ app.get("/inventory", (req, res) => {
     }
   });
 });
-
-// app.get("/:id", (req, res) => {
-//   const id = req.params.id;
-//   Todo.findById(id, (err, todo) => {
-//     res.json(todo);
-//   });
-// });
 
 app.post("/saveItem", (req, res) => {
   const inventoryItem = new InventoryItem({
@@ -134,7 +133,7 @@ app.post("/updateItem/:id", (req, res) => {
   InventoryItem.findById(id, (err, item) => {
     if (!item) {
       res
-        .status(401)
+        .status(404)
         .send("Item not found, something likely went wrong on our end.");
     } else {
       (item.itemName = req.body.itemName),
@@ -149,6 +148,80 @@ app.post("/updateItem/:id", (req, res) => {
         .catch((err) => res.status(500).send("I hate bologna" + err.message));
     }
   });
+});
+
+//===================================================================
+// Cart DB routes
+
+app.get("/cartItem/:id", (req, res) => {
+  const id = req.params.id;
+  CartItem.findById(id, function (err, data) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.json(data);
+    }
+  });
+});
+
+app.get("/cart", (req, res) => {
+  CartItem.find((err, cartItems) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.json(cartItems);
+    }
+  });
+});
+
+app.post("/saveCartItem", (req, res) => {
+  const cartItem = new CartItem({
+    username: req.body.username,
+    itemName: req.body.itemName,
+    price: req.body.price,
+    description: req.body.description,
+    sellQuantity: req.body.sellQuantity,
+  });
+  console.log("============== CART ITEM IS ==============")
+  console.log(cartItem);
+  cartItem
+    .save()
+    .then((cartItem) => {
+      res.json(cartItem);
+    })
+    .catch((err) => {
+      res.status(500).send(err.message);
+    });
+});
+
+app.post("/updateCartItem/:id", (req, res) => {
+  let id = req.params.id;
+  CartItem.findById(id, (err, item) => {
+    if (!item) {
+      res
+        .status(404)
+        .send("Item not found, something likely went wrong on our end.");
+    } else {
+      (item.sellQuantity = req.body.sellQuantity),
+      item
+        .save()
+        .then((item) => {
+          res.json(item);
+        })
+        .catch((err) => res.status(500).send("Error message :" + err.message));
+    }
+  });
+});
+
+app.delete("/deleteCartItem/:id", (req, res) => {
+  let id = req.params.id;
+  console.log("THE ID WE IS GETTING IS AS FOLLOWS")
+  console.log(id);
+  CartItem.findByIdAndDelete(id, function (err) {
+    if(err) console.log(err);
+    console.log("Successful deletion");
+  });
+  
 });
 
 // Send every request to the React app

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useStoreContext } from "../../utils/GlobalState";
 import ReactImageMagnify from 'react-image-magnify';
 //usage guide: https://www.npmjs.com/package/react-image-magnify
@@ -13,23 +13,102 @@ import Texture from '../Images/45-degree-fabric-light.png';
 // https://www.transparenttextures.com/
 import "./style.css";
 
+//API stuff
+import API from "../../utils/API";
+import {Link} from 'react-router-dom';
+//API stuff done
+
 const cardStyle = {
     backgroundImage: `url(${Texture})`
 };
 
 export default function Product() {
-  const [store] = useStoreContext();
-  var settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1
-  };
+    const [store] = useStoreContext();
+    const [cartList, setCart] = useState([]);
+    const [cartQuantity, setCartQuantity] = useState();
+
+    var settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1
+    };
+    const [inventoryList, setinventoryList] = useState([]);
+    const [newItemName, setNewItemName] = useState("");
+    const [newPrice, setNewPrice] = useState("");
+    const [newDescription, setnewDescription] = useState("");
+    const [newQuantity, setNewQuantity] = useState("");
+
+    useEffect(() => {
+        const getInventory = async () => {
+            let inventoryItems = await API.getAllItems()
+            console.log(inventoryItems)
+            setinventoryList(inventoryItems)
+        }
+        getInventory();
+        const getCart = async () => {
+            let cartItems = await API.getAllCartItems()
+            console.log(cartItems)
+            setCart(cartItems)
+        }
+        getCart();
+    }, [])
+
+    function submitThisForm (event) {
+        event.preventDefault()
+
+        var itemData = {
+            itemName: newItemName,
+            price: newPrice,
+            description: newDescription,
+            quantity: newQuantity
+        }
+        console.log(itemData)
+        API.saveItem(itemData);
+    }
+
+    function handleNameChange(event) {
+        const name = event.target.value;
+        console.log(name);
+        setNewItemName(name)
+    }
+
+    function handlePriceChange(event) {
+        const price = event.target.value;
+        setNewPrice(price)
+    }
+
+    // function handleQuantityChange(event) {
+    //     const quantity = event.target.value;
+    //     setNewQuantity(quantity)
+    // }
+
+    function handleDescriptionChange(event) {
+        const description = event.target.value;
+        setnewDescription(description)
+    }
+    const updateCartItemSellQuantity = itemId => {
+        return event => {
+            event.preventDefault();
+            let newSellQuantity = {
+                sellQuantity: cartQuantity
+            }
+            API.updateCartItemSellQuantity(newSellQuantity, itemId);
+        }
+    };
+    function handleQuantityChange(event) {
+        const sellQuantity = event.target.value;
+        console.log("Quantity is now " + sellQuantity)
+        setCartQuantity(sellQuantity)
+    }
   return (
-        <div id="productCard" style={cardStyle}>
-            <p>Name: </p>
-            <Slider {...settings}>
+        <div>
+            {inventoryList?.map((result) => {
+                                return (
+                                
+                                <div id="productCard" style={cardStyle} key={result._id}>
+                                    <Slider {...settings}>
                 <div>
                     <ReactImageMagnify {...{
                         smallImage: {
@@ -99,10 +178,22 @@ export default function Product() {
                     }} />
                 </div>
             </Slider>
+            <br/>
+                <p>Name: {result.itemName}
+                </p>
+                <p>Price: ${result.price}</p>
+                <p>Description: {result.description}</p>
+                <p>In stock: {result.quantity}</p>
+                <div>
+                    <input onChange={handleQuantityChange} type="number" placeholder="1" id="quantity" name="quantity" min={1} max={result.quantity} />
+                    <button onClick={updateCartItemSellQuantity(result._id)} >Add to cart</button>
+                </div>
+
+            </div>
             
-            <p>Price: $6.75</p>
-            <p>Description: Magic stapler</p>
-            <p>In stock: 8</p>
+                );
+            })}
+            
         </div>
     );
 }
