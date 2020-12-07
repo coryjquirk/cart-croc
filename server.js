@@ -250,11 +250,9 @@ app.get("/orders", (req, res) => {
 
 app.post("/saveOrder", (req, res) => {
   const order = new Order({
-    username: req.body.username,
-    itemName: req.body.itemName,
-    price: req.body.price,
-    description: req.body.description,
-    sellQuantity: req.body.sellQuantity,
+    // PASSPORT WILL = req.user.username
+    username: "Placeholder Username",
+    order: req.body,
     orderDate: Date.now()
   });
   console.log("============== ORDER IS ==============")

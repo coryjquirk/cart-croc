@@ -5,8 +5,8 @@ import API from "../utils/API";
 
 function Cart() {
     const [cartList, setCart] = useState([]);
-    const [bonerpills, setBonerPills] = useState();
-    
+    const [newCartSellQuantity, setCartNewSellQuantity] = useState();
+
     useEffect(() => {
         const getCart = async () => {
             let cartItems = await API.getAllCartItems()
@@ -31,7 +31,7 @@ function Cart() {
         return event => {
             event.preventDefault();
             let newSellQuantity = {
-                sellQuantity: bonerpills
+                sellQuantity: newCartSellQuantity
             }
             API.updateCartItemSellQuantity(newSellQuantity, itemId);
         }
@@ -40,19 +40,27 @@ function Cart() {
     function handleQuantityChange(event) {
         const sellQuantity = event.target.value;
         console.log("Quantity is now " + sellQuantity)
-        setBonerPills(sellQuantity)
+        setCartNewSellQuantity(sellQuantity)
     }
+
+        const handleQuantityChangeAndThenUpdateSellQuantity = itemId => {
+            return event => {
+                event.preventDefault();
+                const sellQuantity = event.target.value;
+
+                let newSellQuantity = {
+                    sellQuantity: sellQuantity
+                }
+
+                console.log("sell quantity is ", sellQuantity)
+                API.updateCartItemSellQuantity(newSellQuantity, itemId);
+            }
+        };
 
     const submitOrder = () => {
         return event => {
             event.preventDefault();
-            let newOrderData = [];
-            let temp = [];
-            temp = cartList.map((cartItem) => {
-                newOrderData.push(cartItem)
-            })
-            console.log("New Order Data is : " + newOrderData);
-            API.saveOrderHistory(newOrderData);
+            API.saveOrderHistory(cartList);
         }
     };
 
@@ -106,7 +114,7 @@ function Cart() {
                                         </td>
                                         <td>
                                             <form>
-                                                <input onChange={handleQuantityChange} type="number" placeholder={result.sellQuantity} id="quantity" name="quantity" min={1} max={5} />
+                                                <input onChange={handleQuantityChangeAndThenUpdateSellQuantity(result._id)} type="number" placeholder={result.sellQuantity} id="quantity" name="quantity" min={1} max={5} />
                                             </form>
                                         </td>
                                         <td>

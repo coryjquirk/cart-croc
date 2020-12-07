@@ -99,6 +99,17 @@ export default {
     })
   },
 
+
+
+
+
+
+
+
+  
+
+
+
   saveOrderHistory: function (order) {
     console.log(order);
     fetch("/saveOrder", {
@@ -107,6 +118,20 @@ export default {
       body: JSON.stringify(order)
     })
   },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   updateOrderHistory: function (itemData, id) {
     fetch(`/updateCartItem/${id}`, {
