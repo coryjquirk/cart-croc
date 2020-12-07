@@ -16,6 +16,7 @@ import Footer from "./components/Footer";
 import TestingPage from "./pages/TestShitOut";
 import TestingInventoryPage from "./pages/TestInventoryShitOut";
 import TestEditPage from "./pages/TestEditInventory";
+import TestCartPage from "./pages/TestCartShitOut";
 
 class App extends Component {
   render() {
@@ -33,6 +34,7 @@ class App extends Component {
                 <Route exact path="/testing" component={TestingPage} />
                 <Route exact path="/editItem/:id" component={TestEditPage} />
                 <Route exact path="/inventoryTesting" component={TestingInventoryPage} />
+                <Route exact path="/CartTesting" component={TestCartPage} />
                 <Route exact path="/inventory" component={InventoryPage} />
                 <Route exact path="/printreceipt" component={PrintReceipt} />
                 <Route exact path="/receipts" component={Receipts} />

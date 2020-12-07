@@ -3,77 +3,54 @@ import { Col, Row, Container } from "../components/Grid";
 import { Link } from 'react-router-dom';
 import API from "../utils/API";
 
-function Testing() {
-    const [inventoryList, setinventoryList] = useState([]);
-    const [newItemName, setNewItemName] = useState("");
-    const [newPrice, setNewPrice] = useState("");
-    const [newDescription, setnewDescription] = useState("");
-    const [newQuantity, setNewQuantity] = useState("");
+function Cart() {
+    const [cartList, setCart] = useState([]);
+    const [bonerpills, setBonerPills] = useState();
+
+    // const [newItemName, setNewItemName] = useState("");
+    // const [newPrice, setNewPrice] = useState("");
+    // const [newDescription, setnewDescription] = useState("");
+    // const [newQuantity, setNewQuantity] = useState("");
 
     useEffect(() => {
-
-        const getInventory = async () => {
-            let inventoryItems = await API.getAllItems()
-            console.log(inventoryItems)
-            setinventoryList(inventoryItems)
+        const getCart = async () => {
+            let cartItems = await API.getAllCartItems()
+            console.log(cartItems)
+            setCart(cartItems)
         }
-        getInventory();
-    }, []) 
+        getCart();
+    }, [])
 
     // This code looks kinda weird, its nested in the way it is so that we can access
     // the ID passed in to it and still use event.preventdefault, which can only be used on top
     // level functions
-    const getAndAddToCart = itemId => {
+
+    const deleteCartItem = itemId => {
         return event => {
-          event.preventDefault();
-           let itemToAdd = API.getItem(itemId)
-            itemToAdd.then( return_value => {
-                // TODO: when we get actual logged in users, reroute "username" to the loged in user
-                let username = "Placeholder Username";
-                let defaultSellQuantity= 1;
-                return_value = { ...return_value, username , defaultSellQuantity};
-                API.saveCartItem(return_value);
-            })
+            event.preventDefault();
+            API.deleteCartItem(itemId);
         }
-      };
-    
-    function submitThisForm(event) {
-        event.preventDefault()
+    };
 
-        var itemData = {
-            itemName: newItemName,
-            price: newPrice,
-            description: newDescription,
-            quantity: newQuantity
+    const updateCartItemSellQuantity = itemId => {
+        return event => {
+            event.preventDefault();
+            let newSellQuantity = {
+                sellQuantity: bonerpills
+            }
+            API.updateCartItemSellQuantity(newSellQuantity, itemId);
         }
-        console.log(itemData)
-        API.saveItem(itemData);
-    }
-
-    function handleNameChange(event) {
-        const name = event.target.value;
-        console.log(name);
-        setNewItemName(name)
-    }
-
-    function handlePriceChange(event) {
-        const price = event.target.value;
-        setNewPrice(price)
-    }
+    };
 
     function handleQuantityChange(event) {
-        const quantity = event.target.value;
-        setNewQuantity(quantity)
-    }
-
-    function handleDescriptionChange(event) {
-        const description = event.target.value;
-        setnewDescription(description)
+        const sellQuantity = event.target.value;
+        console.log("Quantity is now " + sellQuantity)
+        setBonerPills(sellQuantity)
     }
 
     return (
         <Container fluid>
-            <form className="login" onSubmit={submitThisForm}>
+            {/* <form className="login" onSubmit={submitThisForm}>
                 <div className="form-group">
                     <input type="text" onChange={handleNameChange} className="form-control" placeholder="Item Name" />
                 </div>
@@ -87,7 +64,7 @@ function Testing() {
                     <input type="text" onChange={handleDescriptionChange} className="form-control" placeholder="Description" />
                 </div>
                 <button type="submit" className="btn btn-default  green darken-3">Submit that bad mutha-shut-yo-mouth</button>
-            </form>
+            </form> */}
 
             {/* <button onClick={API.getAllUsers}>Get Users</button> */}
             <div className="container">
@@ -96,25 +73,42 @@ function Testing() {
                         <thead>
                             <tr id="tableHeader" className="bg-warning">
                                 <th scope="col">
-                                    DB Item Names
+                                    Item name
                     </th>
-                    <th scope="col">
-                    <Link to={`/CartTesting`}>Dude, where's my car(t)?</Link>
+                                <th scope="col">
+                                    Price of the thing
+                    </th>
+                                <th scope="col">
+                                    How many IS YOU want bruh
+                    </th>
+                                <th scope="col">
+                                    description
                     </th>
                             </tr>
                         </thead>
                         <tbody>
-                            {inventoryList?.map((result) => {
+                            {cartList?.map((result) => {
                                 return (
                                     <tr key={result._id}>
                                         <td>
                                             {result.itemName}
                                         </td>
                                         <td>
-                                            <Link to={`/editItem/${result._id}`}>edit</Link>
+                                            {result.price}
                                         </td>
                                         <td>
-                                            <button onClick={getAndAddToCart(result._id)}>AddToCart</button>
+                                            <form>
+                                                <input onChange={handleQuantityChange} type="number" placeholder={result.sellQuantity} id="quantity" name="quantity" min={1} max={5} />
+                                            </form>
+                                        </td>
+                                        <td>
+                                            {result.description}
+                                        </td>
+                                        <td>
+                                            <button onClick={deleteCartItem(result._id)} >Del-tete-this</button>
+                                        </td>
+                                        <td>
+                                            <button onClick={updateCartItemSellQuantity(result._id)} >Update number of things</button>
                                         </td>
                                     </tr>
                                 );
@@ -127,4 +121,4 @@ function Testing() {
     );
 };
 
-export default Testing;
+export default Cart;
