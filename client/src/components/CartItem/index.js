@@ -48,34 +48,53 @@ export default function CartItem() {
       setCartQuantity(sellQuantity)
   }
   return (
-    <div id="cartItem">
-      
+    <table id="cartItem">
+      {/* <tr id="tableHeader" className="bg-warning"> */}
+                                {/* <th scope="col">
+                                    Item name
+                    </th>
+                                <th scope="col">
+                                    Price of the thing
+                    </th>
+                                <th scope="col">
+                                    How many IS YOU want bruh
+                    </th>
+                                <th scope="col">
+                                    delete
+                    </th>
+                            </tr> */}
 
 
       {cartList?.map((result) => {
                                 return (
-                                  <div key={result._id}>
-                                    <img
-                                      src={Tester}
-                                      alt="product preview"
-                                      id="productPreview"
-                                    ></img>
-                                    {result.itemName} | ${result.price} | Qty:
-                                    {result.sellQuantity}
-                                    <input
-                                      type="number"
-                                      id="checkoutQty"
-                                      placeholder="8"
-                                    ></input>
-                                    <FontAwesomeIcon
-                                      onClick={deleteCartItem(result._id)}
-                                      icon={faTrashAlt}
-                                      id="trashIcon"
-                                    />
-                                  </div>
+                                    <tr key={result._id}>
+                                      <td>
+                                        <img
+                                          src={Tester}
+                                          alt="product preview"
+                                          id="productPreview"
+                                        ></img>
+                                      </td>
+                                      {result.itemName} | ${result.price} | Qty:
+                                      {result.sellQuantity}
+                                      <td>
+                                        <input
+                                          type="number"
+                                          id="checkoutQty"
+                                          placeholder={result.sellQuantity}
+                                        ></input>
+                                      </td>
+                                      <td>
+                                        <FontAwesomeIcon
+                                          onClick={deleteCartItem(result._id)}
+                                          icon={faTrashAlt}
+                                          id="trashIcon"
+                                        />
+                                      </td>
+                                    </tr>
                                 );
                             })}
 
-    </div>
+    </table>
   );
 }

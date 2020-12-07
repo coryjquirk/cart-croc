@@ -1,6 +1,5 @@
 import React from "react";
 import { Col, Row, Container } from "../components/Grid";
-import Inventory from "../components/Inventory"
 import Product from "../components/Product"
 
 const InventoryPage = () => {
@@ -8,8 +7,8 @@ const InventoryPage = () => {
       <Container fluid>
         <h1>Inventory</h1>
         <br />
-        <a href="/home">Home</a>
-        <div>
+        <br/>
+        <div id="inventory">
         <Product></Product>
         </div>
       </Container>

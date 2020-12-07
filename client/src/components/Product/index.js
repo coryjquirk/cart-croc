@@ -98,30 +98,29 @@ export default function Product() {
     // This code looks kinda weird, its nested in the way it is so that we can access
     // the ID passed in to it and still use event.preventdefault, which can only be used on top
     // level functions
-    const getAndAddToCart = itemId => {
-        return event => {
-          event.preventDefault();
-           let itemToAdd = API.getItem(itemId)
-            itemToAdd.then( return_value => {
-                // TODO: when we get actual logged in users, reroute "username" to the loged in user
-                let username = "Placeholder Username";
-                let defaultSellQuantity= 1;
-                return_value = { ...return_value, username , defaultSellQuantity};
-                API.saveCartItem(return_value);
-            })
+    // const getAndAddToCart = itemId => {
+    //     return event => {
+    //       event.preventDefault();
+    //        let itemToAdd = API.getItem(itemId)
+    //         itemToAdd.then( return_value => {
+    //             // TODO: when we get actual logged in users, reroute "username" to the loged in user
+    //             let username = "Placeholder Username";
+    //             let defaultSellQuantity= 1;
+    //             return_value = { ...return_value, username , defaultSellQuantity};
+    //             API.saveCartItem(return_value);
+    //         })
 
-            let newSellQuantity = {
-                sellQuantity: cartQuantity,
-            }
-            console.log("YAAAAAAAA"+newSellQuantity)
-            API.updateCartItemSellQuantity(newSellQuantity, itemId)
-        }
-    };
+    //         let newSellQuantity = {
+    //             sellQuantity: cartQuantity,
+    //         }
+    //         console.log("YAAAAAAAA"+newSellQuantity)
+    //         API.updateCartItemSellQuantity(newSellQuantity, itemId)
+    //     }
+    // };
     function handleQuantityChange(event) {
         const sellQuantity = event.target.value;
         console.log("Quantity is now " + sellQuantity)
         setCartQuantity(sellQuantity)
-        console.log("CART-quantity is now : " + cartQuantity)
         console.log("CART-quantity is now : " + cartQuantity)
     }
 
