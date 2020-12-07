@@ -73,6 +73,7 @@ function Testing() {
 
     return (
         <Container fluid>
+            <h2>Add items to inventory</h2>
             <form className="login" onSubmit={submitThisForm}>
                 <div className="form-group">
                     <input type="text" onChange={handleNameChange} className="form-control" placeholder="Item Name" />

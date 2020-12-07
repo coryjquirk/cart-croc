@@ -2,7 +2,7 @@ import React from "react";
 import Modal from 'react-modal';
 import { useStoreContext } from "../../utils/GlobalState";
 import "./style.css";
-import CheckoutItem from '../CheckoutItem';
+import CheckoutItem from '../CartItem';
 import Texture from '../Images/45-degree-fabric-light.png';
 
 const checkoutStyle = {
