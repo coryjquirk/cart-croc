@@ -2,15 +2,15 @@ import React from "react";
 import { Col, Row, Container } from "../components/Grid";
 import Checkout from "../components/Checkout";
 
-const CompleteSale = () => {
+const CheckoutPage = () => {
   return (
     <Container fluid>
       <h1>Checkout</h1>
       <br />
-      <a href="/printreceipt">Complete Transaction</a>
+      <br />
       <Checkout/>
     </Container>
   );
 };
 
-export default CompleteSale;
+export default CheckoutPage;
