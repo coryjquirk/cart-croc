@@ -1,16 +1,3 @@
-// const mongoose = require("mongoose");
-// const Schema = mongoose.Schema;
-// mongoose.pluralize(null);
-
-// const userSchema = new Schema({
-//   userName: { type: String },
-//   password: { type: String}
-// });
-
-// const User = mongoose.model("User", userSchema);
-
-// module.exports = User;
-
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const bcrypt = require("bcryptjs");
@@ -20,6 +7,7 @@ mongoose.promise = Promise;
 const userSchema = new Schema({
   username: { type: String, unique: false, required: false },
   password: { type: String, unique: false, required: false },
+  isAdmin: { type: Boolean, unique: false, required: false },
 });
 
 // Define schema methods
