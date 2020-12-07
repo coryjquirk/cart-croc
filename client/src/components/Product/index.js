@@ -86,27 +86,6 @@ export default function Product() {
         console.log(itemData)
         API.saveItem(itemData);
     }
-
-    function handleNameChange(event) {
-        const name = event.target.value;
-        console.log(name);
-        setNewItemName(name)
-    }
-
-    function handlePriceChange(event) {
-        const price = event.target.value;
-        setNewPrice(price)
-    }
-
-    // function handleQuantityChange(event) {
-    //     const quantity = event.target.value;
-    //     setNewQuantity(quantity)
-    // }
-
-    function handleDescriptionChange(event) {
-        const description = event.target.value;
-        setnewDescription(description)
-    }
     const updateCartItemSellQuantity = itemId => {
         return event => {
             event.preventDefault();
@@ -123,6 +102,7 @@ export default function Product() {
         console.log("CART-quantity is now : " + cartQuantity)
         console.log("CART-quantity is now : " + cartQuantity)
     }
+
     return (
         <div>
             {inventoryList?.map((result) => {
