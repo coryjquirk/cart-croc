@@ -18,20 +18,23 @@ function Nav() {
                 <li class="nav-item">
                     <a class="nav-link" href="home">home</a>
                 </li>
+                {/* <li class="nav-item">
+                    <a class="nav-link" href="inventory">inventory</a>
+                </li> */}
                 <li class="nav-item">
                     <a class="nav-link" href="inventory">inventory</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="newsale">new sale ("your cart")</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="completesale">checkout</a>
+                    <a class="nav-link" href="checkout">checkout</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="printreceipt">print receipt</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="receipts">order history</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="shopAdmin">shop admin</a>
                 </li>
                 </ul>
             </div>

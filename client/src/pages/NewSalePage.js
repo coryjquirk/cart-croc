@@ -1,3 +1,6 @@
+//replaced by the modal cart
+//removed from navbar for now
+
 import React from "react";
 import { Col, Row, Container } from "../components/Grid";
 
@@ -12,3 +15,7 @@ const NewSale = () => {
 };
 
 export default NewSale;
+
+//
+// see notes on top
+//
