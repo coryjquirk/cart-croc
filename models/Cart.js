@@ -7,7 +7,8 @@ const cartSchema = new Schema({
   itemName: { type: String, required: true },
   price: { type: Number, required: true },
   description: { type: String },
-  sellQuantity: { type: Number }
+  sellQuantity: { type: Number },
+  imgURL: { type: String }
 });
 
 const CartItem = mongoose.model("Cart", cartSchema);
