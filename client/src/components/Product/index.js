@@ -15,7 +15,7 @@ import "./style.css";
 
 //API stuff
 import API from "../../utils/API";
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 //API stuff done
 
 const cardStyle = {
@@ -55,7 +55,22 @@ export default function Product() {
         getCart();
     }, [])
 
-    function submitThisForm (event) {
+    const getAndAddToCart = itemId => {
+        return event => {
+          event.preventDefault();
+           let itemToAdd = API.getItem(itemId)
+            itemToAdd.then( return_value => {
+                // TODO: when we get actual logged in users, reroute "username" to the loged in user
+                let username = "Placeholder Username";
+                let defaultSellQuantity= 1;
+                return_value = { ...return_value, username , cartQuantity};
+                console.log("============== RETURN VAL IS ==============")
+                console.log(return_value)
+                API.saveCartItem(return_value);
+            })
+        }
+      };
+    function submitThisForm(event) {
         event.preventDefault()
 
         var itemData = {
@@ -76,125 +91,104 @@ export default function Product() {
             API.updateCartItemSellQuantity(newSellQuantity, itemId);
         }
     };
-    // This code looks kinda weird, its nested in the way it is so that we can access
-    // the ID passed in to it and still use event.preventdefault, which can only be used on top
-    // level functions
-    const getAndAddToCart = itemId => {
-        return event => {
-          event.preventDefault();
-           let itemToAdd = API.getItem(itemId)
-            itemToAdd.then( return_value => {
-                // TODO: when we get actual logged in users, reroute "username" to the loged in user
-                let username = "Placeholder Username";
-                let defaultSellQuantity= 1;
-                return_value = { ...return_value, username , defaultSellQuantity};
-                API.saveCartItem(return_value);
-            })
-
-            let newSellQuantity = {
-                sellQuantity: cartQuantity,
-            }
-            console.log("YAAAAAAAA"+newSellQuantity)
-            API.updateCartItemSellQuantity(newSellQuantity, itemId)
-        }
-    };
     function handleQuantityChange(event) {
         const sellQuantity = event.target.value;
         console.log("Quantity is now " + sellQuantity)
         setCartQuantity(sellQuantity)
+        console.log("CART-quantity is now : " + cartQuantity)
     }
-  return (
-        <div id="inventory">
-            {inventoryList?.map((result) => {
-                                return (
-                                
-                                <div id="productCard" style={cardStyle} key={result._id}>
-                                    <Slider {...settings}>
-                <div>
-                    <ReactImageMagnify {...{
-                        smallImage: {
-                            alt: 'Stapler!!!!!!!!!!',
-                            isFluidWidth: true,
-                            src: Tester1,
-                            enlargedImagePosition: 'over',
-                        },
-                        largeImage: {
-                            src: Tester1,
-                            width: 800,
-                            height: 800
-                        },
-                        enlargedImagePosition: 'over',
-                        enlargedImageContainerDimensions: {width: '100%', height: '100%'}
-                    }} />
-                </div>
-                <div>
-                            <ReactImageMagnify {...{
-                        smallImage: {
-                            alt: 'Stapler!!!!!!!!!!',
-                            isFluidWidth: true,
-                            src: Tester2,
-                            enlargedImagePosition: 'over',
-                        },
-                        largeImage: {
-                            src: Tester2,
-                            width: 800,
-                            height: 800
-                        },
-                        enlargedImagePosition: 'over',
-                        enlargedImageContainerDimensions: {width: '100%', height: '100%'}
-                    }} />
-                </div>
-                <div>
-                            <ReactImageMagnify {...{
-                        smallImage: {
-                            alt: 'Stapler!!!!!!!!!!',
-                            isFluidWidth: true,
-                            src: Tester3,
-                            enlargedImagePosition: 'over',
-                        },
-                        largeImage: {
-                            src: Tester3,
-                            width: 1200,
-                            height: 1800
-                        },
-                        enlargedImagePosition: 'over',
-                        enlargedImageContainerDimensions: {width: '100%', height: '100%'}
-                    }} />
-                </div>
-                <div>
-                            <ReactImageMagnify {...{
-                        smallImage: {
-                            alt: 'Stapler!!!!!!!!!!',
-                            isFluidWidth: true,
-                            src: Tester4,
-                            enlargedImagePosition: 'over',
-                        },
-                        largeImage: {
-                            src: Tester4,
-                            width: 1200,
-                            height: 1800
-                        },
-                        enlargedImagePosition: 'over',
-                        enlargedImageContainerDimensions: {width: '100%', height: '100%'}
-                    }} />
-                </div>
-            </Slider>
-            <br/>
-                <p>Name: {result.itemName}
-                </p>
-                <p>Price: ${result.price}</p>
-                <p>Description: {result.description}</p>
-                <p>In stock: {result.quantity}</p>
-                <div>
-                    <input onChange={handleQuantityChange} type="number" placeholder="1" id="quantity" name="quantity" min={1} max={result.quantity} />
-                    <button onClick={getAndAddToCart(result._id)} >Add to cart</button>
-                </div>
 
-            </div>
-            
+    return (
+        <div>
+            {inventoryList?.map((result) => {
+                return (
+
+                    <div id="productCard" style={cardStyle} key={result._id}>
+                        <Slider {...settings}>
+                            <div>
+                                <ReactImageMagnify {...{
+                                    smallImage: {
+                                        alt: 'Stapler!!!!!!!!!!',
+                                        isFluidWidth: true,
+                                        src: Tester1,
+                                        enlargedImagePosition: 'over',
+                                    },
+                                    largeImage: {
+                                        src: Tester1,
+                                        width: 800,
+                                        height: 800
+                                    },
+                                    enlargedImagePosition: 'over',
+                                    enlargedImageContainerDimensions: { width: '100%', height: '100%' }
+                                }} />
+                            </div>
+                            <div>
+                                <ReactImageMagnify {...{
+                                    smallImage: {
+                                        alt: 'Stapler!!!!!!!!!!',
+                                        isFluidWidth: true,
+                                        src: Tester2,
+                                        enlargedImagePosition: 'over',
+                                    },
+                                    largeImage: {
+                                        src: Tester2,
+                                        width: 800,
+                                        height: 800
+                                    },
+                                    enlargedImagePosition: 'over',
+                                    enlargedImageContainerDimensions: { width: '100%', height: '100%' }
+                                }} />
+                            </div>
+                            <div>
+                                <ReactImageMagnify {...{
+                                    smallImage: {
+                                        alt: 'Stapler!!!!!!!!!!',
+                                        isFluidWidth: true,
+                                        src: Tester3,
+                                        enlargedImagePosition: 'over',
+                                    },
+                                    largeImage: {
+                                        src: Tester3,
+                                        width: 1200,
+                                        height: 1800
+                                    },
+                                    enlargedImagePosition: 'over',
+                                    enlargedImageContainerDimensions: { width: '100%', height: '100%' }
+                                }} />
+                            </div>
+                            <div>
+                                <ReactImageMagnify {...{
+                                    smallImage: {
+                                        alt: 'Stapler!!!!!!!!!!',
+                                        isFluidWidth: true,
+                                        src: Tester4,
+                                        enlargedImagePosition: 'over',
+                                    },
+                                    largeImage: {
+                                        src: Tester4,
+                                        width: 1200,
+                                        height: 1800
+                                    },
+                                    enlargedImagePosition: 'over',
+                                    enlargedImageContainerDimensions: { width: '100%', height: '100%' }
+                                }} />
+                            </div>
+                        </Slider>
+                        <br />
+                        <p>Name: {result.itemName}
+                        </p>
+                        <p>Price: ${result.price}</p>
+                        <p>Description: {result.description}</p>
+                        <p>In stock: {result.quantity}</p>
+                        <div>
+                            <input onChange={handleQuantityChange} type="number" placeholder="1" id="quantity" name="quantity" min={1} max={result.quantity} />
+                            <button 
+            className="addToCart btn btn-primary"
+           onClick={getAndAddToCart(result._id)} ><span>Add to cart</span></button>
+                        </div>
+                    </div>
                 );
             })}
-            
         </div>
     );
 }

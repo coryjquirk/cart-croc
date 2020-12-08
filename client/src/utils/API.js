@@ -43,11 +43,45 @@ export default {
   },
 
   getItem: function (id) {
-    return fetch(`/edit/${id}`).then(res => res.json()
+    return fetch(`/getItem/${id}`).then(res => res.json()
     ).catch((error) => {
       console.log(error);
     })
   },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  getItemByName: function (name) {
+    return fetch(`/getItemName/${name}`).then(res => res.json()
+    ).catch((error) => {
+      console.log(error);
+    })
+  },
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   //===================================================================
   // Cart API routes
@@ -99,12 +133,12 @@ export default {
     })
   },
 
-  saveOrderHistory: function (user) {
-    console.log(user);
+  saveOrderHistory: function (order) {
+    console.log(order);
     fetch("/saveOrder", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(user)
+      body: JSON.stringify(order)
     })
   },
 
@@ -117,7 +151,7 @@ export default {
   },
 
   getAllOrderHistory: function () {
-    return fetch("/cart").then(res => res.json())
+    return fetch("/orders").then(res => res.json())
   },
 
   deleteOrderHistory: function (id) {
