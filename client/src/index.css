@@ -8,3 +8,7 @@ body {
   background-position: left;
   background-attachment: fixed;
 }
+
+html {
+  padding-bottom: 50px;
+}
