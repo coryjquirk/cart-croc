@@ -27,9 +27,9 @@ function SearchBar() {
   }
   return (<div id="searchBar">
             <p>Find what you're looking for: </p> <input type="text"
-            placeholder="product search"></input> <button
+            placeholder="product search"></input> <button onClick={openModal}
             className="btn btn-primary"
-          ><FontAwesomeIcon icon={faShoppingCart} onClick={openModal} id="cart icon"/></button>
+          ><FontAwesomeIcon icon={faShoppingCart} id="cart icon"/></button>
             {store.loading ? <a className="navbar-brand ml-auto">loading...</a> : <></>}
 
             <Modal
