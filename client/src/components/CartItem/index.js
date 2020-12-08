@@ -15,12 +15,12 @@ export default function CartItem() {
   const [sellQuantity, setCartQuantity] = useState();
   
   useEffect(() => {
-    let inventoryItems = await API.getAllItems()
+    let inventoryItems = API.getAllItems()
     console.log(inventoryItems)
     setinventoryList(inventoryItems)
 
     const getCart = async () => {
-      let cartItems = await API.getAllCartItems();
+      let cartItems = API.getAllCartItems();
       // We have access to user here.
 
       var userCart = cartItems.filter(function(cartItem){

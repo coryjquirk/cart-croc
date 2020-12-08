@@ -47,7 +47,7 @@ const InventoryItem = require("./models/InventoryItem");
 const CartItem = require("./models/Cart");
 const Order = require("./models/OrderHistory");
 
-const Receipt = require("./models/Receipt");
+// const Receipt = require("./models/Receipt");
 const userController = require("./controllers/userController");
 require ("dotenv").config();
 // console.log(process.env.mysecret)
