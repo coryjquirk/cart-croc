@@ -8,13 +8,9 @@ const NoMatch = () => {
       <Row>
         <Col size="md-12">
           <Jumbotron>
-            <h1>ope!</h1>
-            <h1>404 page not found</h1>
-            <h1>
-              <span role="img" aria-label="Thinking Face Emoji">
+            <h1>ope! 404 page not found <span role="img" aria-label="Thinking Face Emoji">
               🤔
-              </span>
-            </h1>
+              </span></h1>
           </Jumbotron>
         </Col>
       </Row>
