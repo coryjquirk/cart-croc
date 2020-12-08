@@ -1,35 +1,36 @@
-#crocNav{
-    background-color: rgb(61, 61, 61);
-    color: white;
+#crocNav {
+  background-color: rgb(61, 61, 61);
+  color: white;
+  height: 65px;
 }
-h1{
-    font-size: 32px;
-    float: left;
+h1 {
+  font-size: 32px;
+  float: left;
 }
-#croc{
-    width: 25%;
-    height: auto;
-    max-width: 100px;
+#croc {
+  height: 50px;
+  max-width: 100px;
 }
-#heroHeading{
-    width: 380px;
-    margin-left: 10px
+
+#heroHeading {
+  height: 50px;
+  margin-left: 10px;
 }
-@media screen and (max-width: 700px) {
-    #heroHeading{
-        max-width: 55%;
-    }
+/* @media screen and (max-width: 700px) {
+  #heroHeading {
+    max-width: 55%;
+  }
 }
 @media screen and (max-width: 450px) {
-    #croc{
-        max-width: 20%;
-    }
+  #croc {
+    max-width: 20%;
+  }
 }
 @media screen and (max-width: 350px) {
-    #croc{
-        max-width: 18%;
-    }
-    #heroHeading{
-        max-width: 48%;
-    }
-}
+  #croc {
+    max-width: 18%;
+  }
+  #heroHeading {
+    max-width: 48%;
+  }
+} */

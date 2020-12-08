@@ -10,8 +10,8 @@ function Nav() {
   if (loggedIn) {
     return (
       <nav class="navbar navbar-expand-lg navbar-light bg-light" id="crocNav">
-        <img src={Logo} id="croc" alt="Logo" />
         <a href="home">
+          <img src={Logo} id="croc" alt="Logo" />
           <img
             src={Heading}
             id="heroHeading"
