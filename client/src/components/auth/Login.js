@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../../actions/authActions";
 import classnames from "classnames";
+import "./style.css";
+import croc from "../../images/croc.png";
 
 class Login extends Component {
   constructor() {
@@ -53,34 +55,26 @@ class Login extends Component {
     const { errors } = this.state;
 
     return (
-      <div className="container">
-        <div style={{ marginTop: "4rem" }} className="row">
+      <div className="container" id="loginCard">
+        <img src={croc} />
+        <p id="CARTCROC">CART CROC</p>
+        <p id="slogan">Big solutions for small businesses.</p>
+        <div className="row">
           <div className="col s8 offset-s2">
-            <Link to="/" className="btn-flat waves-effect">
-              <i className="material-icons left">keyboard_backspace</i> Back to
-              home
-            </Link>
-            <div className="col s12" style={{ paddingLeft: "11.250px" }}>
-              <h4>
-                <b>Login</b> below
-              </h4>
-              <p className="grey-text text-darken-1">
-                Don't have an account? <Link to="/register">Register</Link>
-              </p>
-            </div>
             <form noValidate onSubmit={this.onSubmit}>
               <div className="input-field col s12">
                 <input
                   onChange={this.onChange}
                   value={this.state.email}
                   error={errors.email}
+                  placeholder="Email"
                   id="email"
                   type="email"
-                  className={classnames("", {
+                  className={classnames("form-control", {
                     invalid: errors.email || errors.emailnotfound,
                   })}
                 />
-                <label htmlFor="email">Email</label>
+
                 <span className="red-text">
                   {errors.email}
                   {errors.emailnotfound}
@@ -91,31 +85,26 @@ class Login extends Component {
                   onChange={this.onChange}
                   value={this.state.password}
                   error={errors.password}
+                  placeholder="Password"
                   id="password"
                   type="password"
-                  className={classnames("", {
+                  className={classnames("form-control", {
                     invalid: errors.password || errors.passwordincorrect,
                   })}
                 />
-                <label htmlFor="password">Password</label>
+
                 <span className="red-text">
                   {errors.password}
                   {errors.passwordincorrect}
                 </span>
               </div>
               <div className="col s12" style={{ paddingLeft: "11.250px" }}>
-                <button
-                  style={{
-                    width: "150px",
-                    borderRadius: "3px",
-                    letterSpacing: "1.5px",
-                    marginTop: "1rem",
-                  }}
-                  type="submit"
-                  className="btn btn-large waves-effect waves-light hoverable blue accent-3"
-                >
+                <button type="submit" className="btn btn-success">
                   Login
                 </button>
+                <p className="grey-text text-darken-1">
+                  Don't have an account? <Link to="/register">Register</Link>
+                </p>
               </div>
             </form>
           </div>
