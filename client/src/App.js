@@ -67,7 +67,6 @@ class App extends Component {
               <Route exact path="/login" component={Login} />
               <Switch>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
-                {/* <Route exact path="/" component={Index} /> */}
                 <PrivateRoute exact path="/checkout" component={CheckoutPage} />
                 <PrivateRoute exact path="/home" component={Home} />
                 <PrivateRoute exact path="/testing" component={TestingPage} />
@@ -84,8 +83,7 @@ class App extends Component {
                 />
                 <PrivateRoute
                   exact
-                  path="/inventory"
-                  component={InventoryPage}
+                  path="/shop" component={InventoryPage}
                 />
                 <PrivateRoute
                   exact
@@ -103,30 +101,3 @@ class App extends Component {
   }
 }
 export default App;
-
-// import React, { Component } from "react";
-// import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
-// import "./App.css";
-
-// class App extends Component {
-//   render() {
-//     return (
-//       <Router>
-//         <div className="App">
-//           <StoreProvider>
-
-//             <div id="main">
-//               <Switch>
-
-//               </Switch>
-//             </div>
-//             <Footer />
-//           </StoreProvider>
-//         </div>
-//       </Router>
-//     );
-//   }
-// }
-
-// export default App;
