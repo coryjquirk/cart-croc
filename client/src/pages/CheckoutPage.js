@@ -5,7 +5,7 @@ import Checkout from "../components/Checkout";
 const CheckoutPage = () => {
   return (
     <Container fluid>
-      <h1>Checkout</h1>
+      <h1 class="pageHeaders">Checkout</h1>
       <br />
       <br />
       <Checkout/>
