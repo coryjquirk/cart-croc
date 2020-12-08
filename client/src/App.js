@@ -62,9 +62,9 @@ class App extends Component {
             <div className="App">
               <Nav />
               <SearchBar />
-              <Route exact path="/" component={Landing} />
+              <Route exact path="/" component={Login} />
               <Route exact path="/register" component={Register} />
-              <Route exact path="/login" component={Login} />
+              {/* <Route exact path="/login" component={Login} /> */}
               <Switch>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
                 <PrivateRoute exact path="/checkout" component={CheckoutPage} />
@@ -81,10 +81,7 @@ class App extends Component {
                   path="/CartTesting"
                   component={TestCartPage}
                 />
-                <PrivateRoute
-                  exact
-                  path="/shop" component={InventoryPage}
-                />
+                <PrivateRoute exact path="/shop" component={InventoryPage} />
                 <PrivateRoute
                   exact
                   path="/printreceipt"
