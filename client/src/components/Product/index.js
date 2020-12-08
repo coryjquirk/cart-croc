@@ -84,15 +84,17 @@ export default function Product() {
           event.preventDefault();
            let itemToAdd = API.getItem(itemId)
             itemToAdd.then( return_value => {
+                if(cartQuantity){
                 // TODO: when we get actual logged in users, reroute "username" to the loged in user
                 let username = user;
                 return_value = { ...return_value, username , cartQuantity};
                 console.log(return_value);
                 API.saveCartItem(return_value);
+                }
             })
         }
       };
-      
+
     function handleQuantityChange(event) {
         const sellQuantity = event.target.value;
         // console.log("Quantity is now " + sellQuantity)
