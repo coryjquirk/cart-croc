@@ -2,7 +2,7 @@
   "name": "cart-croc",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://127.0.0.1:5000",
+  "proxy": "http://localhost:3001",
   "dependencies": {
     "axios": "^0.21.0",
     "classnames": "^2.2.6",
