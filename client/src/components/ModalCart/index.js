@@ -1,28 +1,53 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Modal from 'react-modal';
 import { useStoreContext } from "../../utils/GlobalState";
 import "./style.css";
 import CartItem from '../CartItem';
 import Texture from '../Images/45-degree-fabric-light.png';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faWindowClose } from "@fortawesome/free-solid-svg-icons";
 
-const checkoutStyle = {
-    backgroundImage: `url(${Texture})`
+const modalStyle = {
+    backgroundImage: `url(${Texture})`,
+    padding: "15px"
+
 };
+Modal.setAppElement("#root");
 
 function ModalCart() {
   const [store] = useStoreContext();
-  
-  return (<div id="modalCart" style={checkoutStyle}>
-  <CartItem/>
-  <hr/>
-  <p class="totalInfo">Subtotal: </p>
-  <p class="totalInfo">Sales tax: </p>
-  <p class="totalInfo">Total: </p> 
-<a href="/checkout"><button
-className="btn btn-primary"
->Check out</button></a>
-</div>
-    );
+  const [modalIsOpen, setIsOpen] = React.useState(true);
+  function openModal() {
+    setIsOpen(true);
+  }
+  function afterOpenModal() {
+    // references are now sync'd and can be accessed.
+  }
+  function closeModal() {
+    setIsOpen(false);
+  }
+  return (
+    <Modal
+      isOpen={modalIsOpen}
+      onAfterOpen={afterOpenModal}
+      onRequestClose={closeModal}
+      contentLabel="cart modal"
+    >
+      <div id="modalCart" style={modalStyle}>
+        <button id="closeCart" className="btn btn-danger" onClick={closeModal}>
+          <FontAwesomeIcon icon={faWindowClose} id="close window" />
+        </button>
+        <CartItem />
+        <hr />
+        <p class="totalInfo">Subtotal: </p>
+        <p class="totalInfo">Sales tax: </p>
+        <p class="totalInfo">Total: </p>
+        <a href="/checkout">
+          <button className="btn btn-primary">Check out</button>
+        </a>
+      </div>
+    </Modal>
+  );
 }
 
 export default ModalCart;

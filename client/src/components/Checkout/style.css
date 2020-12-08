@@ -1,5 +1,7 @@
 #checkout{
     border-radius: 5px;
+    background: white;
+    padding: 28px 28px 28px 28px;
 }
 .totalInfo{
     margin: 0px 0px 0px 10px;

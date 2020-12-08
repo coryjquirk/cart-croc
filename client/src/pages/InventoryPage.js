@@ -5,7 +5,7 @@ import Product from "../components/Product"
 const InventoryPage = () => {
     return (
       <Container fluid>
-        <h1>Inventory</h1>
+        <h1 class="pageHeaders">Inventory</h1>
         <br />
         <br/>
         <div id="inventory">

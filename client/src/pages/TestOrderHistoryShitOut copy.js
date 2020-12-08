@@ -21,43 +21,9 @@ function Cart() {
         fetchOrderHistory();
     }, [])
 
-    // This code looks kinda weird, its nested in the way it is so that we can access
-    // the ID passed in to it and still use event.preventdefault, which can only be used on top
-    // level functions
-    // const deleteCartItem = itemId => {
-    //     return event => {
-    //         event.preventDefault();
-    //         API.deleteCartItem(itemId);
-    //     }
-    // };
-
-
-
-    // function handleQuantityChange(event) {
-    //     const sellQuantity = event.target.value;
-    //     console.log("Quantity is now " + sellQuantity)
-    //     setBonerPills(sellQuantity)
-    // }
 
     return (
         <Container fluid>
-            {/* <form className="login" onSubmit={submitThisForm}>
-                <div className="form-group">
-                    <input type="text" onChange={handleNameChange} className="form-control" placeholder="Item Name" />
-                </div>
-                <div className="form-group">
-                    <input type="text" onChange={handlePriceChange} className="form-control" placeholder="Item Price" />
-                </div>
-                <div className="form-group">
-                    <input type="text" onChange={handleQuantityChange} className="form-control" placeholder="# of items" />
-                </div>
-                <div className="form-group">
-                    <input type="text" onChange={handleDescriptionChange} className="form-control" placeholder="Description" />
-                </div>
-                <button type="submit" className="btn btn-default  green darken-3">Submit that bad mutha-shut-yo-mouth</button>
-            </form> */}
-
-            {/* <button onClick={API.getAllUsers}>Get Users</button> */}
             <div className="container">
                 <div id="tableWrapper" className="row">
                     <table className="table table-striped table-hover">
