@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // https://fontawesome.com/how-to-use/on-the-web/using-with/react
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import Modal from "react-modal";
-import ModalCart from "../ModalCart";
 import CartItem from '../CartItem';
 import Texture from '../Images/45-degree-fabric-light.png';
 import { faWindowClose } from "@fortawesome/free-solid-svg-icons";
