@@ -1,15 +1,15 @@
 import React from "react";
 import { Col, Row, Container } from "../components/Grid";
-import Inventory from "../components/Inventory"
+import Product from "../components/Product";
 
 const InventoryPage = () => {
   return (
     <Container fluid>
-      Inventory Page
       <br />
-      <a href="/home">Home</a>
-
-      <Inventory/>
+      <br />
+      <div id="inventory">
+        <Product></Product>
+      </div>
     </Container>
   );
 };

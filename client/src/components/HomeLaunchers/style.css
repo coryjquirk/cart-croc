@@ -1,0 +1,42 @@
+.homeLauncher{
+    width: 280px;
+    height: 40%;
+    margin: 15px auto 15px auto;
+    padding: 28px 28px 28px 28px;
+    border-radius: 12px;
+    clear: both;
+    background-color: white;
+    position: relative;
+    color: black;
+}
+.homeLauncher span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+.homeLauncher:hover{
+    transition: 2s;
+    background-color: rgb(255, 236, 214);
+}
+.homeLauncher span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+.homeLauncher:hover span {
+    padding-right: 25px;
+    color: rgb(0, 0, 0);
+}
+.homeLauncher:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+@media screen and (max-width: 350px) {
+    .homeLauncher{
+        width: 90%;
+    }
+}

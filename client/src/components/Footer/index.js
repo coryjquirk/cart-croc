@@ -6,12 +6,14 @@ function Footer() {
   const [store] = useStoreContext();
 
   return (
-<div class="footer">
-        <p>
-        <a href="https://www.github.com/coryjquirk/cart-croc">Github Repo: <p class="fa fa-github"></p></a>
-        </p>
-    </div>    
-    );
+    <div class="footer">
+      <p>
+        <a href="https://www.github.com/coryjquirk/cart-croc" target="_blank">
+          <p class="fa fa-github"></p>
+        </a>
+      </p>
+    </div>
+  );
 }
 
 export default Footer;

@@ -1,17 +1,76 @@
 .App {
   text-align: center;
+  margin: 0px 0px 100px 0px;
+  font-family: 'Roboto', sans-serif;
 }
-
 #main {
   margin: 10px 0px 60px 0px;
   max-width: 1150px;
 }
+#construction{
+  width: 40%;
+  float: left;
+}
+.pageHeaders{
+  color:black;
+}
+.pageHeaders span:hover{
+  top: -0.25rem;
+  transition: top 0.25s;
+}
+#testingTab{
+  left: 0;
+  position: fixed;
+  width: 10%;
+  min-width: 120px;
+  background-color: white;
+  padding-left: 10px;
+}
 
+input[type=number], input[type=text] {
+  float: left;
+  margin-left: 30px;
+  display: inline-block;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+input[type=number]:focus, input[type=text]:focus {
+  border: 2px solid #555;
+}
 .App-intro {
   font-size: large;
 }
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
+.fader {
+  animation: fadeIn ease 1s;
+  -webkit-animation: fadeIn ease 1s;
+  -moz-animation: fadeIn ease 1s;
+  -o-animation: fadeIn ease 1s;
+  -ms-animation: fadeIn ease 1s;
+  }
+  @keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+  }
+  
+  @-moz-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+  }
+  
+  @-webkit-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+  }
+  
+  @-o-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+  }
+  
+  @-ms-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+  }

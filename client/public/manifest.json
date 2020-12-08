@@ -1,6 +1,6 @@
 {
-  "short_name": "Portfolio",
-  "name": "Cory J. Quirk's Portfolio",
+  "short_name": "cart croc",
+  "name": "cart croc: POS app",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,7 +8,7 @@
       "type": "image/png"
     }
   ],
-  "start_url": "./index.html",
+  "start_url": "/",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
