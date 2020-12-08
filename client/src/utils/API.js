@@ -43,11 +43,45 @@ export default {
   },
 
   getItem: function (id) {
-    return fetch(`/edit/${id}`).then(res => res.json()
+    return fetch(`/getItem/${id}`).then(res => res.json()
     ).catch((error) => {
       console.log(error);
     })
   },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  getItemByName: function (name) {
+    return fetch(`/getItemName/${name}`).then(res => res.json()
+    ).catch((error) => {
+      console.log(error);
+    })
+  },
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   //===================================================================
   // Cart API routes
