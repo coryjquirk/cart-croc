@@ -8,16 +8,12 @@ import { StoreProvider } from "./utils/GlobalState";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
 import { Provider } from "react-redux";
 import store from "./store";
-
-import Navbar from "./components/layout/Navbar";
-import Landing from "./components/layout/Landing";
+//passport components
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
-
-//my components
-import Index from "./pages/IndexPage";
+//custom components
 import CheckoutPage from "./pages/CheckoutPage";
 import Home from "./pages/HomePage";
 import InventoryPage from "./pages/InventoryPage";
