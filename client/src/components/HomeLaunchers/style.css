@@ -1,6 +1,6 @@
 .homeLauncher{
     width: 280px;
-        height: 40%;
+    height: 40%;
     margin: 15px auto 15px auto;
     padding: 28px 28px 28px 28px;
     border-radius: 12px;
@@ -17,7 +17,7 @@
 }
 .homeLauncher:hover{
     transition: 2s;
-    background-color: rgba(210, 180, 140, 0.966);
+    background-color: rgb(255, 236, 214);
 }
 .homeLauncher span:after {
     content: '\00bb';
