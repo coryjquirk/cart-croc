@@ -63,6 +63,25 @@ const DeleteAll = () => {
     location.reload();
   }
 };
+
+const submitOrder = () => {
+  return async (event) => {
+      event.preventDefault();
+
+      API.saveOrderHistory(userCart);
+
+      userCart.forEach(cartItem => {
+          API.getItemByName(cartItem.itemName)
+          .then(tempInventoryItem => {
+              let id = tempInventoryItem._id
+              let newInventoryQuantity = (tempInventoryItem.quantity - cartItem.sellQuantity) 
+              let newInventoryObj = {quantity : newInventoryQuantity}
+              API.updateItem(newInventoryObj, id);
+           });
+      });
+  }
+};
+
   return (
     <div id="checkout" style={checkoutStyle}>
       <CartItem />
@@ -85,7 +104,7 @@ const DeleteAll = () => {
       <p className="totalInfo">Subtotal: </p>
       <p className="totalInfo">Sales tax: </p>
       <p className="totalInfo">Total: </p>
-      <button className="btn btn-primary totalInfo">Submit order</button>
+      <button onClick={submitOrder()} className="btn btn-primary totalInfo">Submit order</button>
     </div>
   );
 }
