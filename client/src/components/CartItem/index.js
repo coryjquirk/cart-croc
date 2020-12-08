@@ -41,7 +41,7 @@ export default function CartItem() {
       return event => {
           event.preventDefault();
           API.deleteCartItem(itemId);
-          location.reload();
+          // location.reload();
       }
   };
 
