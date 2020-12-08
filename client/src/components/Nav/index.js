@@ -10,8 +10,9 @@ function Nav() {
     if (loggedIn) {
       return (
         <nav class="navbar navbar-expand-lg navbar-light bg-light" id="crocNav">
-          <img src={Logo} alt="Logo" id="croc" />
-          <img src={Heading} id="heroHeading" class="navbar-brand" href="/" alt="cart croc"/>
+          <img src={Logo} id="croc" alt="Logo"/>
+                <a href="home">
+                <img src={Heading} id="heroHeading" class="navbar-brand" href="/" alt="cart croc"/></a>
           <button
             class="navbar-toggler"
             type="button"

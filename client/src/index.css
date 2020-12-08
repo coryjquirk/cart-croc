@@ -5,5 +5,6 @@ body {
   font-family: sans-serif;
   background-image: url("images/bg.jpg");
   background-size: cover;
-  background-position: bottom;
+  background-position: left;
+  background-attachment: fixed;
 }
