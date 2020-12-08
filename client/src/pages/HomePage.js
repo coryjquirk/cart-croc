@@ -5,7 +5,7 @@ import HomeLaunchers from "../components/HomeLaunchers";
 const Home = () => {
   return (
     <Container fluid>
-      <h1>Home</h1>
+      <h1 class="pageHeaders">Home</h1>
       <HomeLaunchers/>
     </Container>
   );

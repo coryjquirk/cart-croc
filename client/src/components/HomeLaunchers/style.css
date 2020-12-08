@@ -1,5 +1,5 @@
 .homeLauncher{
-    width: 30%;
+    width: 280px;
         height: 40%;
     margin: 15px auto 15px auto;
     padding: 28px 28px 28px 28px;
@@ -34,4 +34,9 @@
 .homeLauncher:hover span:after {
     opacity: 1;
     right: 0;
+}
+@media screen and (max-width: 350px) {
+    .homeLauncher{
+        width: 90%;
+    }
 }

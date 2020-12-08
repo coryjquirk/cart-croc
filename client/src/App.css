@@ -11,6 +11,9 @@
   width: 40%;
   float: left;
 }
+.pageHeaders{
+  color:white
+}
 input[type=number], input[type=text] {
   float: left;
   margin-left: 30px;
