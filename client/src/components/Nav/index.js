@@ -1,6 +1,7 @@
 import React from "react";
 import { useStoreContext } from "../../utils/GlobalState";
 import "./style.css";
+import Heading from "./cartcroc-hero.png";
 import Logo from '../Images/logo.png';
 
 function Nav() {
@@ -9,7 +10,7 @@ function Nav() {
   return (
         <nav class="navbar navbar-expand-lg navbar-light bg-light" id="crocNav">
             <img src={Logo} alt="Logo" id="croc"/>
-            <a class="navbar-brand" href="/">Cart Croc</a>
+            <img src={Heading} id="heroHeading" class="navbar-brand" href="/" alt="cart croc"/>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
