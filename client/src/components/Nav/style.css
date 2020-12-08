@@ -11,3 +11,25 @@ h1{
     height: auto;
     max-width: 100px;
 }
+#heroHeading{
+    width: 380px;
+    margin-left: 10px
+}
+@media screen and (max-width: 700px) {
+    #heroHeading{
+        max-width: 55%;
+    }
+}
+@media screen and (max-width: 450px) {
+    #croc{
+        max-width: 20%;
+    }
+}
+@media screen and (max-width: 350px) {
+    #croc{
+        max-width: 18%;
+    }
+    #heroHeading{
+        max-width: 48%;
+    }
+}
