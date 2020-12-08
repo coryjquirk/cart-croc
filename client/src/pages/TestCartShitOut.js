@@ -5,21 +5,14 @@ import API from "../utils/API";
 
 function Cart() {
     const [cartList, setCart] = useState([]);
-    const [newCartSellQuantity, setCartNewSellQuantity] = useState();
-
 
     useEffect(() => {
         const getCart = async () => {
             let cartItems = await API.getAllCartItems()
-            console.log("PLEASE GOD STOP ME", cartItems)
             setCart(cartItems)
         }
         getCart();
     }, [])
-
-    // This code looks kinda weird, its nested in the way it is so that we can access
-    // the ID passed in to it and still use event.preventdefault, which can only be used on top
-    // level functions
 
     const deleteCartItem = itemId => {
         return event => {
@@ -27,7 +20,6 @@ function Cart() {
             API.deleteCartItem(itemId);
         }
     };
-
 
     const handleQuantityChangeAndThenUpdateSellQuantity = itemId => {
         return event => {
@@ -42,49 +34,27 @@ function Cart() {
         }
     };
 
-
-    // {this.props.characters.map((character)=>{
-    //     return(<li key={character.id}>{character.name}
-    //         <div
-    //         onClick={() => this.props.addCharacterById(character.id)}
-
     const submitOrder = () => {
         return async (event) => {
             event.preventDefault();
             let cartItems = await API.getAllCartItems()
-            console.log("CART ITEMS IS THIS SHIT", cartItems)
             API.saveOrderHistory(cartItems);
 
             cartItems.forEach(cartItem => {
-                console.log(cartItem.itemName),
                 API.getItemByName(cartItem.itemName)
+                .then(tempInventoryItem => {
+                    let id = tempInventoryItem._id
+                    let newInventoryQuantity = (tempInventoryItem.quantity - cartItem.sellQuantity) 
+                    let newInventoryObj = {quantity : newInventoryQuantity}
+
+                    API.updateItem(newInventoryObj, id);
+                 });
             });
-            //PSEUDO CODE.
-            // For each item in cart items
-            // newItemToEdit = getitembyname(cartitem.name)
-            // updateInventoryItem(newItemToEdit)
         }
     };
 
     return (
         <Container fluid>
-            {/* <form className="login" onSubmit={submitThisForm}>
-                <div className="form-group">
-                    <input type="text" onChange={handleNameChange} className="form-control" placeholder="Item Name" />
-                </div>
-                <div className="form-group">
-                    <input type="text" onChange={handlePriceChange} className="form-control" placeholder="Item Price" />
-                </div>
-                <div className="form-group">
-                    <input type="text" onChange={handleQuantityChange} className="form-control" placeholder="# of items" />
-                </div>
-                <div className="form-group">
-                    <input type="text" onChange={handleDescriptionChange} className="form-control" placeholder="Description" />
-                </div>
-                <button type="submit" className="btn btn-default  green darken-3">Submit that bad mutha-shut-yo-mouth</button>
-            </form> */}
-
-            {/* <button onClick={API.getAllUsers}>Get Users</button> */}
             <div className="container">
                 <div id="tableWrapper" className="row">
                     <table className="table table-striped table-hover">
