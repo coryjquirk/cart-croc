@@ -48,7 +48,8 @@ const CartItem = require("./models/Cart");
 const Order = require("./models/OrderHistory");
 
 const Receipt = require("./models/Receipt");
-require("dotenv").config();
+const userController = require("./controllers/userController");
+require ("dotenv").config();
 // console.log(process.env.mysecret)
 // passport???
 var session = require("express-session");
@@ -148,6 +149,8 @@ app.get("/getItemName/:name", (req, res) => {
     }
   })
 });
+
+app.use("/", userController)
 
 app.get("/inventory", (req, res) => {
   InventoryItem.find((err, users) => {
