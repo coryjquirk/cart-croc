@@ -125,7 +125,7 @@ app.post("/saveUser", (req, res) => {
 //===================================================================
 // Inventory DB routes
 
-app.get("/edit/:id", (req, res) => {
+app.get("/getItem/:id", (req, res) => {
   const id = req.params.id;
   InventoryItem.findById(id, function (err, data) {
     if (err) {
@@ -134,6 +134,19 @@ app.get("/edit/:id", (req, res) => {
       res.json(data);
     }
   });
+});
+
+
+app.get("/getItemName/:name", (req, res) => {
+  const name = req.params.name;
+  InventoryItem.findOne({ itemName: name }, function (err, inventoryItem) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("SEARCH BY NAME RESULTS", inventoryItem)
+      res.json(inventoryItem);
+    }
+  })
 });
 
 app.get("/inventory", (req, res) => {
@@ -251,6 +264,7 @@ app.post("/updateCartItem/:id", (req, res) => {
           .then((item) => {
             res.json(item);
           })
+
           .catch((err) =>
             res.status(500).send("Error message :" + err.message)
           );
@@ -294,15 +308,13 @@ app.get("/orders", (req, res) => {
 
 app.post("/saveOrder", (req, res) => {
   const order = new Order({
-    username: req.body.username,
-    itemName: req.body.itemName,
-    price: req.body.price,
-    description: req.body.description,
-    sellQuantity: req.body.sellQuantity,
-    orderDate: Date.now(),
+
+    // PASSPORT WILL = req.user.username
+    username: "Placeholder Username",
+    order: req.body,
+    orderDate: Date.now()
   });
-  console.log("============== ORDER IS ==============");
-  console.log(order);
+
   order
     .save()
     .then((order) => {
