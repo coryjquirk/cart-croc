@@ -2,7 +2,6 @@ let express = require('express');
 let router = express.Router();
 let passport = require('passport');
 let LocalStrategy = require('passport-local').Strategy;
-let User = require('../client/src/components/SignUp');
 
 // register
 router.get('/register', function (req, res) {
