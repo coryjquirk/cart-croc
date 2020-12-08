@@ -49,39 +49,12 @@ export default {
     })
   },
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   getItemByName: function (name) {
     return fetch(`/getItemName/${name}`).then(res => res.json()
     ).catch((error) => {
       console.log(error);
     })
   },
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   //===================================================================
   // Cart API routes

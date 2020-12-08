@@ -13,6 +13,7 @@ import Texture from '../Images/45-degree-fabric-light.png';
 // https://www.transparenttextures.com/
 import "./style.css";
 import API from "../../utils/API";
+const user = JSON.parse(localStorage.getItem('username'));
 
 const cardStyle = {
     backgroundImage: `url(${Texture})`,
@@ -67,9 +68,15 @@ export default function Product() {
         }
         getInventory();
         const getCart = async () => {
-            let cartItems = await API.getAllCartItems()
-            console.log(cartItems)
-            setCart(cartItems)
+            let cartItems = await API.getAllCartItems();
+            // We have access to user here.
+      
+            var userCart = cartItems.filter(function(cartItem){
+              return cartItem.username == user;
+          });
+      
+            console.log(userCart);
+            setCart(userCart);
         }
         getCart();
     }, [])
@@ -80,41 +87,19 @@ export default function Product() {
            let itemToAdd = API.getItem(itemId)
             itemToAdd.then( return_value => {
                 // TODO: when we get actual logged in users, reroute "username" to the loged in user
-                let username = "Placeholder Username";
-                let defaultSellQuantity= 1;
+                let username = user;
                 return_value = { ...return_value, username , cartQuantity};
-                console.log("============== RETURN VAL IS ==============")
-                console.log(return_value)
+                console.log(return_value);
                 API.saveCartItem(return_value);
             })
         }
       };
-    function submitThisForm(event) {
-        event.preventDefault()
-
-        var itemData = {
-            itemName: newItemName,
-            price: newPrice,
-            description: newDescription,
-            quantity: newQuantity
-        }
-        console.log(itemData)
-        API.saveItem(itemData);
-    }
-    const updateCartItemSellQuantity = itemId => {
-        return event => {
-            event.preventDefault();
-            let newSellQuantity = {
-                sellQuantity: cartQuantity
-            }
-            API.updateCartItemSellQuantity(newSellQuantity, itemId);
-        }
-    };
+      
     function handleQuantityChange(event) {
         const sellQuantity = event.target.value;
-        console.log("Quantity is now " + sellQuantity)
+        // console.log("Quantity is now " + sellQuantity)
         setCartQuantity(sellQuantity)
-        console.log("CART-quantity is now : " + cartQuantity)
+        // console.log("CART-quantity is now : " + cartQuantity)
     }
 
     return (

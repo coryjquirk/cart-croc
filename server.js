@@ -241,8 +241,6 @@ app.post("/saveCartItem", (req, res) => {
     description: req.body.description,
     sellQuantity: req.body.cartQuantity,
   });
-  console.log("============== CART ITEM IS ==============");
-  console.log(cartItem);
   cartItem
     .save()
     .then((cartItem) => {

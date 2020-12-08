@@ -6,16 +6,29 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import API from "../../utils/API";
 import {Link} from 'react-router-dom';
+const user = JSON.parse(localStorage.getItem('username'));
+
 
 export default function CartItem() {
+  const [inventoryList, setinventoryList] = useState([]);
   const [cartList, setCart] = useState([]);
   const [sellQuantity, setCartQuantity] = useState();
   
   useEffect(() => {
-      const getCart = async () => {
-          let cartItems = await API.getAllCartItems()
-          console.log(cartItems)
-          setCart(cartItems)
+    let inventoryItems = await API.getAllItems()
+    console.log(inventoryItems)
+    setinventoryList(inventoryItems)
+
+    const getCart = async () => {
+      let cartItems = await API.getAllCartItems();
+      // We have access to user here.
+
+      var userCart = cartItems.filter(function(cartItem){
+        return cartItem.username == user;
+    });
+
+      console.log(userCart);
+      setCart(userCart);
       }
       getCart();
   }, [])
@@ -60,8 +73,7 @@ export default function CartItem() {
                                           id="productPreview"
                                         ></img>
                                       </td>
-                                      {result.itemName} | ${result.price} | Qty:
-                                      {result.sellQuantity}
+                                      {result.itemName} | ${result.price}
                                       <td>
                                         <input
                                           type="number"
