@@ -47,6 +47,7 @@ class Login extends Component {
       email: this.state.email,
       password: this.state.password,
     };
+    
     localStorage.setItem('username', JSON.stringify(userData.email))
     this.props.loginUser(userData);
   };
