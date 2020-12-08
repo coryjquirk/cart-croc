@@ -70,10 +70,6 @@ export default function Product() {
             })
         }
       };
-
-      // TODO WHEN YOU GET BACK -------- GET QUANTITY TO UPDATE INTO THE API CALL
-      // RIGHT NOW ITS PULLING INVENTORY QUANTITY WHICH AINT RIGHT
-
     function submitThisForm(event) {
         event.preventDefault()
 
@@ -99,7 +95,6 @@ export default function Product() {
         const sellQuantity = event.target.value;
         console.log("Quantity is now " + sellQuantity)
         setCartQuantity(sellQuantity)
-        console.log("CART-quantity is now : " + cartQuantity)
         console.log("CART-quantity is now : " + cartQuantity)
     }
 
@@ -187,7 +182,9 @@ export default function Product() {
                         <p>In stock: {result.quantity}</p>
                         <div>
                             <input onChange={handleQuantityChange} type="number" placeholder="1" id="quantity" name="quantity" min={1} max={result.quantity} />
-                            <button onClick={getAndAddToCart(result._id)} >Add to cart</button>
+                            <button 
+            className="addToCart btn btn-primary"
+           onClick={getAndAddToCart(result._id)} ><span>Add to cart</span></button>
                         </div>
                     </div>
                 );
