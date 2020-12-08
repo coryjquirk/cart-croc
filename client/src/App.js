@@ -63,8 +63,6 @@ class App extends Component {
               <Nav />
               <SearchBar />
 
-              {/* <Route exact path="/login" component={Login} /> */}
-
               <Switch>
                 <Route exact path="/" component={Login} />
                 <Route exact path="/register" component={Register} />

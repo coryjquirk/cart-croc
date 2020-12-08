@@ -1,13 +1,15 @@
-#productPic{
-    height:auto;
-    width:75%;
-}
 #productCard {
     width: 30%;
     height: 40%;
     margin: 10px;
+    padding: 28px 28px 28px 28px;
     border-radius: 5px;
     float:left;
+    background-color: white;
+    position: relative;
+}
+#controls{
+    position:absolute; bottom:0;
 }
 .addToCart{
     -webkit-transition-duration: 0.4s; /* Safari */

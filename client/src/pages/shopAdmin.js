@@ -73,29 +73,28 @@ function shopAdmin() {
 
     return (
         <Container fluid>
+            <div id="shopAdmin">
             <h2>Add items to inventory</h2>
             <form className="login" onSubmit={submitThisForm}>
                 <div className="form-group">
-                    <input type="text" onChange={handleNameChange} className="form-control" placeholder="Item Name" />
+                    <input type="text" onChange={handleNameChange} id="adminForm" className="form-control" placeholder="Item Name" />
                 </div>
                 <div className="form-group">
-                    <input type="text" onChange={handlePriceChange} className="form-control" placeholder="Item Price" />
+                    <input type="text" onChange={handlePriceChange} id="adminForm" className="form-control" placeholder="Item Price" />
                 </div>
                 <div className="form-group">
-                    <input type="text" onChange={handleQuantityChange} className="form-control" placeholder="# of items" />
+                    <input type="text" onChange={handleQuantityChange} id="adminForm" className="form-control" placeholder="# of items" />
                 </div>
                 <div className="form-group">
-                    <input type="text" onChange={handleDescriptionChange} className="form-control" placeholder="Description" />
+                    <input type="text" onChange={handleDescriptionChange} id="adminForm" className="form-control" placeholder="Description" />
                 </div>
                 <button type="submit" className="btn btn-default  green darken-3">Add item to shop inventory</button>
             </form>
-
-            {/* <button onClick={API.getAllUsers}>Get Users</button> */}
             <div className="container">
                 <div id="tableWrapper" className="row">
                     <table className="table table-striped table-hover">
                         <thead>
-                            <tr id="tableHeader" className="bg-warning">
+                            <tr id="tableHeader">
                                 <th scope="col">
                                     DB Item Names
                     </th>
@@ -115,7 +114,7 @@ function shopAdmin() {
                                             <Link to={`/editItem/${result._id}`}>edit</Link>
                                         </td>
                                         <td>
-                                            <button onClick={getAndAddToCart(result._id)}>AddToCart</button>
+                                            <button class="addToCart"onClick={getAndAddToCart(result._id)}>AddToCart</button>
                                         </td>
                                     </tr>
                                 );
@@ -123,6 +122,7 @@ function shopAdmin() {
                         </tbody>
                     </table>
                 </div>
+            </div>
             </div>
         </Container>
     );

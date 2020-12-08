@@ -12,16 +12,33 @@ import Tester4 from './product4.jpg';
 import Texture from '../Images/45-degree-fabric-light.png';
 // https://www.transparenttextures.com/
 import "./style.css";
-
-//API stuff
 import API from "../../utils/API";
-import { Link } from 'react-router-dom';
-//API stuff done
 
 const cardStyle = {
-    backgroundImage: `url(${Texture})`
+    backgroundImage: `url(${Texture})`,
+    maxWidth: '400px'
 };
-
+// https://react-slick.neostack.com/docs/example/custom-arrows/
+function NextArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{ ...style, display: "block", background: "black", borderRadius: "9px" }}
+        onClick={onClick}
+      />
+    );
+  }
+  function PrevArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{ ...style, display: "block", background: "black", borderRadius: "9px" }}
+        onClick={onClick}
+      />
+    );
+  }
 export default function Product() {
     const [store] = useStoreContext();
     const [cartList, setCart] = useState([]);
@@ -32,7 +49,9 @@ export default function Product() {
         infinite: true,
         speed: 500,
         slidesToShow: 1,
-        slidesToScroll: 1
+        slidesToScroll: 1,
+        nextArrow: <NextArrow />,
+      prevArrow: <PrevArrow />
     };
     const [inventoryList, setinventoryList] = useState([]);
     const [newItemName, setNewItemName] = useState("");
@@ -112,6 +131,7 @@ export default function Product() {
                                         isFluidWidth: true,
                                         src: Tester1,
                                         enlargedImagePosition: 'over',
+                                        // width:'10%'
                                     },
                                     largeImage: {
                                         src: Tester1,

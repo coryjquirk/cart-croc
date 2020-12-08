@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import { Col, Row, Container } from "../Grid";
+import "./style.css"
 
 class Dashboard extends Component {
   onLogoutClick = (e) => {
@@ -15,20 +16,22 @@ class Dashboard extends Component {
 
     return (
       <Container fluid>
-        <p>{user.name.split(" ")[0]}, are you sure you want to log out?</p>
-        <br />
-        <button
-          style={{
-            width: "150px",
-            borderRadius: "3px",
-            letterSpacing: "1.5px",
-            marginTop: "1rem",
-          }}
-          onClick={this.onLogoutClick}
-          className="btn btn-large waves-effect waves-light hoverable blue accent-3"
-        >
-          Logout
-        </button>
+        <div id="logout">
+          <p>{user.name.split(" ")[0]}, are you sure you want to log out?</p>
+          <br />
+          <button
+            style={{
+              width: "150px",
+              borderRadius: "3px",
+              letterSpacing: "1.5px",
+              marginTop: "1rem",
+            }}
+            onClick={this.onLogoutClick}
+            className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+          >
+            Logout
+          </button>
+        </div>
       </Container>
       // <div style={{ height: "75vh" }} className="container valign-wrapper">
       //   <div className="row">
