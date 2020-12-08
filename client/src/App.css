@@ -7,8 +7,23 @@
   margin: 10px 0px 60px 0px;
   max-width: 1150px;
 }
-
-
+#construction{
+  width: 40%;
+  float: left;
+}
+input[type=number], input[type=text] {
+  float: left;
+  margin-left: 30px;
+  display: inline-block;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+input[type=number]:focus, input[type=text]:focus {
+  border: 2px solid #555;
+}
 .App-intro {
   font-size: large;
 }

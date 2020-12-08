@@ -175,12 +175,13 @@ export default function Product() {
                             </div>
                         </Slider>
                         <br />
-                        <p>Name: {result.itemName}
-                        </p>
-                        <p>Price: ${result.price}</p>
-                        <p>Description: {result.description}</p>
-                        <p>In stock: {result.quantity}</p>
-                        <div>
+                        <div id="namePriceEtc">
+                        <p class="productInfo">Name: {result.itemName}</p>
+                        <p class="productInfo">Price: ${result.price}</p>
+                        <p class="productInfo">Description: {result.description}</p>
+                        <p class="productInfo">In stock: {result.quantity}</p>
+                        </div>
+                        <div id="controls">
                             <input onChange={handleQuantityChange} type="number" placeholder="1" id="quantity" name="quantity" min={1} max={result.quantity} />
                             <button 
             className="addToCart btn btn-primary"

@@ -42,6 +42,13 @@
     box-shadow: 0 5px #666;
     transform: translateY(4px);
 }
+.productInfo, #namePriceEtc{
+    float: left;
+    clear: both;
+}
+#namePriceEtc, #controls{
+    padding: 10px;
+}
 
 @media screen and (max-width: 800px) {
     #productCard{

@@ -2,6 +2,7 @@
     background-color: rgb(255, 236, 214);
     padding: 5px;
     width: 100%;
+    height: 50px;
 }
 #searchBar p{
     float:left;
@@ -24,6 +25,10 @@
 }
 
 /* for modal */
+#cartBtn{
+    float: right;
+    display: inline-block;
+}
 #checkout{
     border-radius: 5px;
 }
@@ -37,4 +42,12 @@
 }
 #checkoutQty{
     width: 40px;
+}
+@media screen and (max-width: 450px) {
+    #searchBar input[type=text]{
+        width: 40%;
+    }
+    #searchPrompt {
+        display: none;
+    }
 }
