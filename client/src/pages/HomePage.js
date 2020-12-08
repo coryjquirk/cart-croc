@@ -11,6 +11,8 @@ const Home = () => {
       <br />
       <a href="/inventory">Inventory</a>
       <br />
+      <br />
+      <a href="/dashboard">Logout</a>
     </Container>
   );
 };
