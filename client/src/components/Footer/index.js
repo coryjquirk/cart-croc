@@ -6,7 +6,7 @@ function Footer() {
   const [store] = useStoreContext();
 
   return (
-    <div class="footer">
+    <div className="footer fixed-bottom">
       <p>
         <a href="https://www.github.com/coryjquirk/cart-croc" target="_blank">
           <p class="fa fa-github"></p>
