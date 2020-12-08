@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Modal from 'react-modal';
-import { useStoreContext } from "../../utils/GlobalState";
 import "./style.css";
 import CartItem from '../CartItem';
 import Texture from '../Images/45-degree-fabric-light.png';
@@ -10,13 +9,11 @@ import { faWindowClose } from "@fortawesome/free-solid-svg-icons";
 const modalStyle = {
     backgroundImage: `url(${Texture})`,
     padding: "15px"
-
 };
 Modal.setAppElement("#root");
 
 function ModalCart() {
-  const [store] = useStoreContext();
-  const [modalIsOpen, setIsOpen] = React.useState(true);
+  const [modalIsOpen, setIsOpen] = React.useState(false);
   function openModal() {
     setIsOpen(true);
   }
