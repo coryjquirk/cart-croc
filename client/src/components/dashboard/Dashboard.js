@@ -15,12 +15,7 @@ class Dashboard extends Component {
 
     return (
       <Container fluid>
-        <h1>{user.name.split(" ")[0]}</h1>
-        <a href="/checkout">Checkout</a>
-        <br />
-        <a href="/receipts">Receipts</a>
-        <br />
-        <a href="/inventory">Inventory</a>
+        <p>{user.name.split(" ")[0]}, are you sure you want to log out?</p>
         <br />
         <button
           style={{
