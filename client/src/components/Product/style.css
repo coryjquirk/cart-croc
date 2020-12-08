@@ -9,6 +9,39 @@
     border-radius: 5px;
     float:left;
 }
+.addToCart{
+    -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+}
+.addToCart span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+.addToCart span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+.addToCart:hover span {
+    padding-right: 25px;
+}
+.addToCart:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+.addToCart:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
 
 @media screen and (max-width: 800px) {
     #productCard{

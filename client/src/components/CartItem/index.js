@@ -49,22 +49,7 @@ export default function CartItem() {
   }
   return (
     <table id="cartItem">
-      {/* <tr id="tableHeader" className="bg-warning"> */}
-                                {/* <th scope="col">
-                                    Item name
-                    </th>
-                                <th scope="col">
-                                    Price of the thing
-                    </th>
-                                <th scope="col">
-                                    How many IS YOU want bruh
-                    </th>
-                                <th scope="col">
-                                    delete
-                    </th>
-                            </tr> */}
-
-
+    
       {cartList?.map((result) => {
                                 return (
                                     <tr key={result._id}>

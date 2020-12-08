@@ -8,17 +8,6 @@ import { faWindowClose } from '@fortawesome/free-solid-svg-icons'
 import Modal from 'react-modal';
 import ModalCart from "../ModalCart";
 
-const customStyles = {
-  content : {
-    // top                   : '50%',
-    // left                  : '50%',
-    // right                 : 'auto',
-    // bottom                : 'auto',
-    // marginRight           : '-50%',
-    // transform             : 'translate(-50%, -50%)'
-  }
-};
-
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement('#root')
 
@@ -47,7 +36,6 @@ function SearchBar() {
           isOpen={modalIsOpen}
           onAfterOpen={afterOpenModal}
           onRequestClose={closeModal}
-          style={customStyles}
           contentLabel="Example Modal"
         >
  

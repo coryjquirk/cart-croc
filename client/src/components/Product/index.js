@@ -208,7 +208,9 @@ export default function Product() {
                         <p>In stock: {result.quantity}</p>
                         <div>
                             <input onChange={handleQuantityChange} type="number" placeholder="1" id="quantity" name="quantity" min={1} max={result.quantity} />
-                            <button onClick={getAndAddToCart(result._id)} >Add to cart</button>
+                            <button 
+            className="addToCart btn btn-primary"
+           onClick={getAndAddToCart(result._id)} ><span>Add to cart</span></button>
                         </div>
                     </div>
                 );
