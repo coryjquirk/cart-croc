@@ -62,6 +62,7 @@ class App extends Component {
             <div className="App">
               <Nav />
               <SearchBar />
+              <Footer />
 
               <Switch>
                 <Route exact path="/" component={Login} />
