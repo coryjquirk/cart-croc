@@ -69,8 +69,6 @@ export default function Product() {
         getInventory();
         const getCart = async () => {
             let cartItems = await API.getAllCartItems();
-            // We have access to user here.
-      
             var userCart = cartItems.filter(function(cartItem){
               return cartItem.username == user;
           });
