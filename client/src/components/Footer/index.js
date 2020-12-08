@@ -8,7 +8,7 @@ function Footer() {
   return (
     <div class="footer">
       <p>
-        <a href="https://www.github.com/coryjquirk/cart-croc">
+        <a href="https://www.github.com/coryjquirk/cart-croc" target="_blank">
           <p class="fa fa-github"></p>
         </a>
       </p>
