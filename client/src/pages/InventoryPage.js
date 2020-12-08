@@ -1,18 +1,17 @@
 import React from "react";
 import { Col, Row, Container } from "../components/Grid";
-import Product from "../components/Product"
+import Product from "../components/Product";
 
 const InventoryPage = () => {
-    return (
-      <Container fluid>
-        <h1 class="pageHeaders">Inventory</h1>
-        <br />
-        <br/>
-        <div id="inventory">
+  return (
+    <Container fluid>
+      <br />
+      <br />
+      <div id="inventory">
         <Product></Product>
-        </div>
-      </Container>
-    );
-  };
-  
-  export default InventoryPage;
+      </div>
+    </Container>
+  );
+};
+
+export default InventoryPage;
