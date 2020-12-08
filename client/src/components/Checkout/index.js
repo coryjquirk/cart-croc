@@ -4,6 +4,7 @@ import Texture from "../Images/45-degree-fabric-light.png";
 import CartItem from "../CartItem";
 import API from "../../utils/API";
 import Modal from 'react-modal';
+const { user } = this.props.auth;
 // https://www.npmjs.com/package/react-modal
 const checkoutStyle = {
   backgroundImage: `url(${Texture})`,
@@ -40,6 +41,7 @@ export default function Checkout() {
   useEffect(() => {
     const getCart = async () => {
       let cartItems = await API.getAllCartItems();
+      alert("Hello! User is", user.name)
       setCart(cartItems);
     };
     getCart();
