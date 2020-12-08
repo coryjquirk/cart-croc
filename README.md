@@ -1,20 +1,27 @@
 # Cart Croc
+
 POS app
 
+![screenshot](./client/src/images/screenshot.png)
+
 ## Links
-* Deployed application: https://cart-croc.herokuapp.com
-* Github Repository: https://github.com/coryjquirk/cart-croc
+
+- Deployed application: https://cart-croc.herokuapp.com
+- Github Repository: https://github.com/coryjquirk/cart-croc
+
 ### App demo
-* Coming soon
+
+- Coming soon
 
 ## Features
-* Coming soon
+
+- Coming soon
 
 ### Resources used
-* React.js
-* Bootstrap
+
+- React.js
+- Bootstrap
 
 ## License Information
-* The Unlicense
 
-
+- The Unlicense
