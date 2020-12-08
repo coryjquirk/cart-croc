@@ -80,7 +80,7 @@ app.post("/saveUser", (req, res) => {
 //===================================================================
 // Inventory DB routes
 
-app.get("/edit/:id", (req, res) => {
+app.get("/getItem/:id", (req, res) => {
   const id = req.params.id;
   InventoryItem.findById(id, function (err, data) {
     if (err) {
@@ -90,6 +90,32 @@ app.get("/edit/:id", (req, res) => {
     }
   });
 });
+
+
+app.get("/getItemName/:name", (req, res) => {
+  const name = req.params.name;
+  InventoryItem.findOne({ itemName: name }, function (err, inventoryItem) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("SEARCH BY NAME RESULTS", inventoryItem)
+      res.json(inventoryItem);
+    }
+  })
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 app.get("/inventory", (req, res) => {
   InventoryItem.find((err, users) => {
@@ -203,12 +229,12 @@ app.post("/updateCartItem/:id", (req, res) => {
         .send("Item not found, something likely went wrong on our end.");
     } else {
       (item.sellQuantity = req.body.sellQuantity),
-      item
-        .save()
-        .then((item) => {
-          res.json(item);
-        })
-        .catch((err) => res.status(500).send("Error message :" + err.message));
+        item
+          .save()
+          .then((item) => {
+            res.json(item);
+          })
+          .catch((err) => res.status(500).send("Error message :" + err.message));
     }
   });
 });
@@ -218,10 +244,10 @@ app.delete("/deleteCartItem/:id", (req, res) => {
   console.log("THE ID WE IS GETTING IS AS FOLLOWS")
   console.log(id);
   CartItem.findByIdAndDelete(id, function (err) {
-    if(err) console.log(err);
+    if (err) console.log(err);
     console.log("Successful deletion");
   });
-  
+
 });
 
 // =============================================================
@@ -255,8 +281,6 @@ app.post("/saveOrder", (req, res) => {
     order: req.body,
     orderDate: Date.now()
   });
-  console.log("============== ORDER IS ==============")
-  console.log(order);
   order
     .save()
     .then((order) => {
@@ -276,12 +300,12 @@ app.post("/updateCartItem/:id", (req, res) => {
         .send("Item not found, something likely went wrong on our end.");
     } else {
       (item.sellQuantity = req.body.sellQuantity),
-      item
-        .save()
-        .then((item) => {
-          res.json(item);
-        })
-        .catch((err) => res.status(500).send("Error message :" + err.message));
+        item
+          .save()
+          .then((item) => {
+            res.json(item);
+          })
+          .catch((err) => res.status(500).send("Error message :" + err.message));
     }
   });
 });
@@ -291,10 +315,10 @@ app.delete("/deleteCartItem/:id", (req, res) => {
   console.log("THE ID WE IS GETTING IS AS FOLLOWS")
   console.log(id);
   CartItem.findByIdAndDelete(id, function (err) {
-    if(err) console.log(err);
+    if (err) console.log(err);
     console.log("Successful deletion");
   });
-  
+
 });
 
 // Send every request to the React app

@@ -7,10 +7,11 @@ function Cart() {
     const [cartList, setCart] = useState([]);
     const [newCartSellQuantity, setCartNewSellQuantity] = useState();
 
+
     useEffect(() => {
         const getCart = async () => {
             let cartItems = await API.getAllCartItems()
-            console.log(cartItems)
+            console.log("PLEASE GOD STOP ME", cartItems)
             setCart(cartItems)
         }
         getCart();
@@ -27,40 +28,41 @@ function Cart() {
         }
     };
 
-    const updateCartItemSellQuantity = itemId => {
+
+    const handleQuantityChangeAndThenUpdateSellQuantity = itemId => {
         return event => {
             event.preventDefault();
+            const sellQuantity = event.target.value;
             let newSellQuantity = {
-                sellQuantity: newCartSellQuantity
+                sellQuantity: sellQuantity
             }
-            API.updateCartItemSellQuantity(newSellQuantity, itemId);
+            console.log("sell quantity is ", sellQuantity)
+            API.updateCartItemSellQuantity(newSellQuantity, itemId)
+
         }
     };
 
-    function handleQuantityChange(event) {
-        const sellQuantity = event.target.value;
-        console.log("Quantity is now " + sellQuantity)
-        setCartNewSellQuantity(sellQuantity)
-    }
 
-        const handleQuantityChangeAndThenUpdateSellQuantity = itemId => {
-            return event => {
-                event.preventDefault();
-                const sellQuantity = event.target.value;
-
-                let newSellQuantity = {
-                    sellQuantity: sellQuantity
-                }
-
-                console.log("sell quantity is ", sellQuantity)
-                API.updateCartItemSellQuantity(newSellQuantity, itemId);
-            }
-        };
+    // {this.props.characters.map((character)=>{
+    //     return(<li key={character.id}>{character.name}
+    //         <div
+    //         onClick={() => this.props.addCharacterById(character.id)}
 
     const submitOrder = () => {
-        return event => {
+        return async (event) => {
             event.preventDefault();
-            API.saveOrderHistory(cartList);
+            let cartItems = await API.getAllCartItems()
+            console.log("CART ITEMS IS THIS SHIT", cartItems)
+            API.saveOrderHistory(cartItems);
+
+            cartItems.forEach(cartItem => {
+                console.log(cartItem.itemName),
+                API.getItemByName(cartItem.itemName)
+            });
+            //PSEUDO CODE.
+            // For each item in cart items
+            // newItemToEdit = getitembyname(cartitem.name)
+            // updateInventoryItem(newItemToEdit)
         }
     };
 
@@ -122,9 +124,6 @@ function Cart() {
                                         </td>
                                         <td>
                                             <button onClick={deleteCartItem(result._id)} >Del-tete-this</button>
-                                        </td>
-                                        <td>
-                                            <button onClick={updateCartItemSellQuantity(result._id)} >Update number of things</button>
                                         </td>
                                         <td>
                                             <button onClick={submitOrder(result)} >GIMME MY SHIT</button>
