@@ -15,7 +15,7 @@ Cart Croc is a point of sale (POS) application optimized for: Tracking consumers
 * Github Repository: https://github.com/coryjquirk/cart-croc
 
 # Demo:
-<img src="https://media.giphy.com/media/Pj11Y6l80MFN0FG9Bl/giphy.gif" alt="demo gif">
+<img src="https://media.giphy.com/media/Pj11Y6l80MFN0FG9Bl/source.gif" alt="demo gif">
 
 # User Overview:
 - New users can register themselves with credentials of their choosing.
