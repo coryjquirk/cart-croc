@@ -1,4 +1,4 @@
-import React from "react";
+import React, {state} from "react";
 import { useStoreContext } from "../../utils/GlobalState";
 import "./style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -27,7 +27,6 @@ function SearchBar() {
   function closeModal() {
     setIsOpen(false);
   }
-
   const loggedIn = localStorage.getItem("jwtToken");
   if (loggedIn) {
     return (

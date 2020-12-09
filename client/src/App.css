@@ -26,6 +26,9 @@
   background-color: white;
   padding-left: 10px;
 }
+#adminForm{
+  width: 75%;
+}
 
 input[type="number"],
 input[type="text"] {

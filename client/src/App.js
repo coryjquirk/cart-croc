@@ -57,7 +57,6 @@ class App extends Component {
           <Router>
             <div className="App">
               <Nav />
-              <SearchBar />
               <Footer />
               <div className="fader">
               <Switch>
@@ -65,8 +64,8 @@ class App extends Component {
                 <Route exact path="/register" component={Register} />
                 <Route exact path="/login" component={Login} />
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
-                <PrivateRoute exact path="/checkout" component={CheckoutPage} />
-                <PrivateRoute exact path="/home" component={Home} />
+                <PrivateRoute path="/checkout" component={CheckoutPage} />
+                <PrivateRoute path="/home" component={Home} />
                 <PrivateRoute exact path="/testing" component={TestingPage} />
                 <PrivateRoute
                   exact
