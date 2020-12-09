@@ -57,6 +57,7 @@ class App extends Component {
           <Router>
             <div className="App">
               <Nav />
+              <SearchBar/>
               <Footer />
               <div className="fader">
               <Switch>

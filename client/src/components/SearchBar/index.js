@@ -31,8 +31,7 @@ function SearchBar() {
   if (loggedIn) {
     return (
       <div id="searchBar">
-            <p id="searchPrompt">Find what you're looking for: </p> <input type="text"
-            placeholder="product search"></input> <button id="cartBtn" onClick={openModal}
+             <button id="cartBtn" onClick={openModal}
             className="btn btn-primary"
           ><FontAwesomeIcon icon={faShoppingCart} id="cart icon"/></button>
             {store.loading ? <a className="navbar-brand ml-auto">loading...</a> : <></>}
