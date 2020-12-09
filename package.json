@@ -45,6 +45,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.1",
     "react-slick": "^0.27.13",
+    "react-toast-notifications": "^2.4.0",
     "slick-carousel": "^1.8.1",
     "validator": "^13.5.1"
   },

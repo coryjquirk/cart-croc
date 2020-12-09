@@ -8,6 +8,7 @@ const cartSchema = new Schema({
   price: { type: Number, required: true },
   description: { type: String },
   sellQuantity: { type: Number },
+  inventoryQuantity: { type: Number },
   imgURL: { type: String }
 });
 

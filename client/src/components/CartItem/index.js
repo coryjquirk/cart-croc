@@ -15,12 +15,13 @@ export default function CartItem() {
   const [inventoryList, setinventoryList] = useState([]);
   const [cartList, setCart] = useState([]);
   const [sellQuantity, setCartQuantity] = useState();
+  const [checkoutQTY, setCheckoutQTY] = useState();
   function openModal() {
     setIsOpen(true);
   }
   useEffect(() => {
     let inventoryItems = API.getAllItems()
-    console.log(inventoryItems)
+
     setinventoryList(inventoryItems)
     const getCart = async () => {
       API.getAllCartItems()
@@ -33,6 +34,7 @@ export default function CartItem() {
     }
     getCart();
   }, [])
+
   function reloadOMatic(){
     API.getAllCartItems()
         .then(tempCart => {
@@ -42,6 +44,7 @@ export default function CartItem() {
           setCart(userCart);
         })
   }
+
   // This code looks kinda weird, its nested in the way it is so that we can access
   // the ID passed in to it and still use event.preventdefault, which can only be used on top
   // level functions
@@ -62,16 +65,27 @@ export default function CartItem() {
     }
   };
 
-  function handleQuantityChange(event) {
-    const sellQuantity = event.target.value;
-    console.log("Quantity is now " + sellQuantity)
-    setCartQuantity(sellQuantity)
-  }
+  const handleQuantityChangeAndThenUpdateSellQuantity = itemId => {
+    return event => {
+        event.preventDefault();
+        const sellQuantity = event.target.value;
+        console.log(sellQuantity)
+        let newSellQuantity = {
+            sellQuantity: sellQuantity
+        }
+        console.log(newSellQuantity)
+        API.updateCartItemSellQuantity(newSellQuantity, itemId)
+        location.reload();
+    }
+};
+
+
   return (
     <table id="cartItem">
 
       {cartList?.map((result) => {
         return (
+
           <tr id="cartRow" key={result._id}>
             <td>
               <img
@@ -83,9 +97,14 @@ export default function CartItem() {
             <td>{result.itemName} | ${result.price}</td>
             <td class="rColumnCheckout">
               <input
+              // TODO: make this do tthe thing
+              onChange={handleQuantityChangeAndThenUpdateSellQuantity(result._id)}
                 type="number"
                 id="checkoutQty"
-                placeholder={result.sellQuantity} 
+                max ={result.inventoryQuantity}
+                min="0"
+                defaultValue={result.sellQuantity}
+
               ></input>
             </td>
             <td class="rColumnCheckout"

@@ -202,9 +202,10 @@ app.post("/updateItem/:id", (req, res) => {
       item
         .save()
         .then((item) => {
+          console.log(item);
           res.json(item);
         })
-        .catch((err) => res.status(500).send("I hate bologna" + err.message));
+        .catch((err) => res.status(500).send(err.message));
     }
   });
 });
@@ -240,6 +241,7 @@ app.post("/saveCartItem", (req, res) => {
     price: req.body.price,
     description: req.body.description,
     sellQuantity: req.body.cartQuantity,
+    inventoryQuantity: req.body.inventoryQuantity
   });
   cartItem
     .save()

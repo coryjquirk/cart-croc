@@ -68,118 +68,68 @@ function shopAdmin() {
     setNewQuantity(quantity);
   }
 
-  return (
-    <div>
-      <div id="shopAdmin">
-        <h2>Add items to inventory</h2>
-        <form onSubmit={submitThisForm}>
-          <div className="form-group">
-            <input
-              type="text"
-              onChange={handleNameChange}
-              id="adminForm"
-              className="form-control"
-              placeholder="Item Name"
-            />
-          </div>
-          <div className="form-group">
-            <input
-              type="text"
-              onChange={handlePriceChange}
-              id="adminForm"
-              className="form-control"
-              placeholder="Item Price"
-            />
-          </div>
-          <div className="form-group">
-            <input
-              type="text"
-              onChange={handleQuantityChange}
-              id="adminForm"
-              className="form-control"
-              placeholder="# of items"
-            />
-          </div>
-          {/* <div className="form-group">
-            <input
-              type="url"
-              onChange={setImgLinkFunction1}
-              id="adminForm"
-              className="form-control"
-              placeholder="link to image 1"
-            />
-          </div>
-          <div className="form-group">
-            <input
-              type="url"
-              onChange={setImgLinkFunction2}
-              id="adminForm"
-              className="form-control"
-              placeholder="link to image 2"
-            />
-          </div>
-          <div className="form-group">
-            <input
-              type="url"
-              onSubmit={handleImg3}
-              id="adminForm"
-              className="form-control"
-              placeholder="link to image 3"
-            />
-          </div>
-          <div className="form-group">
-            <input
-              type="url"
-              onSubmit={handleImg4}
-              id="adminForm"
-              className="form-control"
-              placeholder="link to image 4"
-            />
-          </div> */}
-          <button type="submit" className="btn btn-primary adminShopAdd">
-            Add item to shop inventory
-          </button>
-        </form>
-      </div>
-      <div id="tableWrapper">
-        <div className="row">
-          <table className="table table-striped table-hover">
-            <thead>
-              <tr id="tableHeader">
-                <th scope="col">DB Item Names</th>
-                <th scope="col">
-                  <Link to={`/inventory`}>Inventory</Link>
-                </th>
-                <th scope="col">
-                  <Link to={`/inventory`}>Inventory</Link>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {inventoryList?.map((result) => {
-                return (
-                  <tr key={result._id}>
-                    <td>{result.itemName}</td>
-                    <td>
-                      <Link to={`/editItem/${result._id}`}>edit</Link>
-                    </td>
-                    <td>
-                      <button id="shopAdder"onClick={getAndAddToCart(result._id)}
-                      > Add To Cart
-                      </button>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <div id="ghostDiv">
-        {/* this is just here cuz I couldn't get margin-bottom to do ANYTHING */}
-      </div>
-    </div>
-  );
-}
+  function handleDescriptionChange(event) {
+    const description = event.target.value;
+    setnewDescription(description);
+  }
+
+    return (
+        <Container fluid>
+            <div id="shopAdmin" style={{"minWidth": "350px"}}>
+            <h2>Add items to inventory</h2>
+            <form className="login mb-5" onSubmit={submitThisForm}>
+                <div className="form-group">
+                    <input type="text" onChange={handleNameChange} id="adminForm" className="form-control" placeholder="Item Name" />
+                </div>
+                <div className="form-group">
+                    <input type="text" onChange={handlePriceChange} id="adminForm" className="form-control" placeholder="Item Price" />
+                </div>
+                <div className="form-group">
+                    <input type="text" onChange={handleQuantityChange} id="adminForm" className="form-control" placeholder="# of items" />
+                </div>
+                <div className="form-group">
+                    <input type="text" onChange={handleDescriptionChange} id="adminForm" className="form-control" placeholder="Description" />
+                </div>
+                <button type="submit" className="btn btn-default  green darken-3">Add item to shop inventory</button>
+            </form >
+            <div className="container" >
+                <div id="tableWrapper" className="row" style={{"minWidth": "295px"}}>
+                  <div >
+                    <table className="table table-striped table-hover" >
+                        <thead>
+                            <tr id="tableHeader">
+                                <th scope="col">
+                                    DB Item Names
+                    </th>
+                    <th scope="col">
+                    <Link to={`/shop`}>View Shop</Link>
+                    </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {inventoryList?.map((result) => {
+                                return (
+                                    <tr key={result._id}>
+                                        <td>
+                                            {result.itemName}
+                                        </td>
+                                        <td>
+                                            <Link to={`/editItem/${result._id}`}>edit</Link>
+                                        </td>
+                                        <td>
+                                            <button class="addToCart"onClick={getAndAddToCart(result._id)}>AddToCart</button>
+                                        </td>
+                                    </tr>
+                                );
+                            })}
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+            </div>
+            </div>
+        </Container>
+    );
+};
 
 export default shopAdmin;

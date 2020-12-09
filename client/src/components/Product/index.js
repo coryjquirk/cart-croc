@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useStoreContext } from "../../utils/GlobalState";
-import ReactImageMagnify from 'react-image-magnify';
+import ReactImageMagnify from "react-image-magnify";
 //usage guide: https://www.npmjs.com/package/react-image-magnify
 import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css"
+import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import stapler1 from './images/stapler/1.jpg';
 import stapler2 from './product2.jpg';
@@ -14,98 +14,123 @@ import Texture from "../Images/45-degree-fabric-light.png";
 import "./style.css";
 import API from "../../utils/API";
 import { Col, Row, Container } from "../Grid";
-const user = JSON.parse(localStorage.getItem('username'));
+import { useToasts } from "react-toast-notifications";
+
+const user = JSON.parse(localStorage.getItem("username"));
 
 const cardStyle = {
-    backgroundImage: `url(${Texture})`,
-    maxWidth: '400px'
+  backgroundImage: `url(${Texture})`,
+  maxWidth: "400px",
 };
+
+const Toaster = () => {
+  const { addToast } = useToasts();
+  return () =>
+    addToast("Item added to cart", {
+      appearance: "success",
+      autoDismissTimeout: 2000,
+      autoDismiss: true,
+    });
+};
+
 // https://react-slick.neostack.com/docs/example/custom-arrows/
 function NextArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        className={className}
-        style={{ ...style, display: "block", background: "black", borderRadius: "9px" }}
-        onClick={onClick}
-      />
-    );
-  }
-  function PrevArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        className={className}
-        style={{ ...style, display: "block", background: "black", borderRadius: "9px" }}
-        onClick={onClick}
-      />
-    );
-  }
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{
+        ...style,
+        display: "block",
+        background: "black",
+        borderRadius: "9px",
+      }}
+      onClick={onClick}
+    />
+  );
+}
+function PrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{
+        ...style,
+        display: "block",
+        background: "black",
+        borderRadius: "9px",
+      }}
+      onClick={onClick}
+    />
+  );
+}
 export default function Product() {
-    const [store] = useStoreContext();
-    const [cartList, setCart] = useState([]);
-    const [cartQuantity, setCartQuantity] = useState();
+  const [store] = useStoreContext();
+  const [cartList, setCart] = useState([]);
+  const [cartQuantity, setCartQuantity] = useState();
 
-    var settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        nextArrow: <NextArrow />,
-      prevArrow: <PrevArrow />
+  var settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
+  };
+  const [inventoryList, setinventoryList] = useState([]);
+  const [newItemName, setNewItemName] = useState("");
+  const [newPrice, setNewPrice] = useState("");
+  const [newDescription, setnewDescription] = useState("");
+  const [newQuantity, setNewQuantity] = useState("");
+
+  useEffect(() => {
+    const getInventory = async () => {
+      let inventoryItems = await API.getAllItems();
+      console.log(inventoryItems);
+      setinventoryList(inventoryItems);
     };
-    const [inventoryList, setinventoryList] = useState([]);
-    const [newItemName, setNewItemName] = useState("");
-    const [newPrice, setNewPrice] = useState("");
-    const [newDescription, setnewDescription] = useState("");
-    const [newQuantity, setNewQuantity] = useState(""); 
+    getInventory();
+    const getCart = async () => {
+      let cartItems = await API.getAllCartItems();
+      var userCart = cartItems.filter(function (cartItem) {
+        return cartItem.username == user;
+      });
 
-    useEffect(() => {
-        const getInventory = async () => {
-            let inventoryItems = await API.getAllItems()
-            console.log(inventoryItems)
-            setinventoryList(inventoryItems)
+      console.log(userCart);
+      setCart(userCart);
+    };
+    getCart();
+  }, []);
+
+  const getAndAddToCart = (itemId) => {
+    return (event) => {
+      event.preventDefault();
+      let itemToAdd = API.getItem(itemId);
+      itemToAdd.then((return_value) => {
+        if (cartQuantity) {
+          let inventoryQuantity = return_value.quantity;
+          let username = user;
+          return_value = {
+            ...return_value,
+            username,
+            cartQuantity,
+            inventoryQuantity,
+          };
+          API.saveCartItem(return_value);
         }
-        getInventory();
-        const getCart = async () => {
-            let cartItems = await API.getAllCartItems();
-            var userCart = cartItems.filter(function(cartItem){
-              return cartItem.username == user;
-          });
-      
-            console.log(userCart);
-            setCart(userCart);
-        }
-        getCart();
-    }, [])
+      });
+    };
+  };
 
-    const getAndAddToCart = itemId => {
-        return event => {
-          event.preventDefault();
-           let itemToAdd = API.getItem(itemId)
-            itemToAdd.then( return_value => {
-                if(cartQuantity){
-                // TODO: when we get actual logged in users, reroute "username" to the loged in user
-                let username = user;
-                return_value = { ...return_value, username , cartQuantity};
-                console.log(return_value);
-                API.saveCartItem(return_value);
-                }
-            })
-        }
-      };
-
-    function handleQuantityChange(event) {
-        const sellQuantity = event.target.value;
-        setCartQuantity(sellQuantity)
-    }
-
-    return (
-        <div>
-            {inventoryList?.map((result) => {
-                return (
-
+  function handleQuantityChange(event) {
+    const sellQuantity = event.target.value;
+    setCartQuantity(sellQuantity);
+  }
+  return (
+    <div>
+      {inventoryList?.map((result) => {
+        return (
                     <div id="productCard" class="col" style={cardStyle} key={result._id}>
                         <Slider {...settings}>
                             <div>

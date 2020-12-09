@@ -30,7 +30,6 @@ function Cart() {
             }
             console.log("sell quantity is ", sellQuantity)
             API.updateCartItemSellQuantity(newSellQuantity, itemId)
-
         }
     };
 

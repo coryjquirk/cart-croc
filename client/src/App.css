@@ -49,15 +49,15 @@ input[type="text"]:focus {
   font-size: large;
 }
 .fader {
-  animation: fadeIn ease 1s;
-  -webkit-animation: fadeIn ease 1s;
-  -moz-animation: fadeIn ease 1s;
-  -o-animation: fadeIn ease 1s;
-  -ms-animation: fadeIn ease 1s;
+  animation: fadeIn ease .3s;
+  -webkit-animation: fadeIn ease .3s;
+  -moz-animation: fadeIn ease .3s;
+  -o-animation: fadeIn ease .3s;
+  -ms-animation: fadeIn ease .3s;
 }
 @keyframes fadeIn {
   0% {
-    opacity: 0;
+    opacity: .5;
   }
   100% {
     opacity: 1;
