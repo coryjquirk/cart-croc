@@ -15,9 +15,7 @@ Cart Croc is a point of sale (POS) application optimized for: Tracking consumers
 * Github Repository: https://github.com/coryjquirk/cart-croc
 
 # Demo:
-![demo gif](https://media.giphy.com/media/Pj11Y6l80MFN0FG9Bl/giphy.gif)
-
-
+![demo gif](demo.gif)
 
 # User Overview:
 - New users can register themselves with credentials of their choosing.
@@ -41,7 +39,6 @@ Cart Croc is a point of sale (POS) application optimized for: Tracking consumers
 
 ![Inventory](inventory.jpeg)
 
-
 # Technologies: 
 - Back-End:
     - Database: MongoDB
@@ -56,6 +53,7 @@ Cart Croc is a point of sale (POS) application optimized for: Tracking consumers
     * Styling: HTML5, CSS3 (Bootstrap)
     * Images:
         * [react-modal-image](https://github.com/aautio/react-modal-image)
+        * [react-image-magnify](https://github.com/ethanselzer/react-image-magnify)
         * [react-slick](https://github.com/akiran/react-slick) (image carousel)
     * Fontawesome (icons)
 
