@@ -1,8 +1,6 @@
 # Cart Croc
-
-# Summary:
-
-- Cart Croc - Big Solutions for Small Businesses. Cart Croc is a point of sale (POS) application optimized for: Tracking consumers, managing inventory, and logging sales. This application was created using the MERN stack.
+## Big Solutions for Small Businesses. 
+Cart Croc is a point of sale (POS) application optimized for: Tracking consumers, managing inventory, and logging sales. This application was created using the MERN stack.
 
 # Creators:
 - [Cory Quirk](https://github.com/coryjquirk "Cory")
@@ -16,8 +14,8 @@
 
 * Github Repository: https://github.com/coryjquirk/cart-croc
 
-# App Demo:
-* Coming soon
+# Demo:
+<img src="https://i.imgur.com/pvUSD7I.mp4" alt="demo gif">
 
 # User Overview:
 - New users can register themselves with credentials of their choosing.
@@ -61,8 +59,6 @@
     - Framework: React.js
 
     - Styling: HTML5, CSS3 (Bootstrap)
-
-
 
 - Deployment:
 
