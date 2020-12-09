@@ -60,7 +60,7 @@ Cart Croc is a point of sale (POS) application optimized for: Tracking consumers
     * [Transparent Textures](https://www.transparenttextures.com/)
 
 - Deployment:
-    - Heroku
+    - [Heroku](https://dashboard.heroku.com/apps)
 
 # License Information
 * The Unlicense
