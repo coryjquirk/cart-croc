@@ -243,15 +243,20 @@ export default function Product() {
               />
               <button
                 className="addToCart btn btn-primary"
-                onClick={(getAndAddToCart(result._id), Toaster())}
+                onClick={getAndAddToCart(result._id)}
               >
                 <span>Add to cart</span>
               </button>
-              <Toaster />
             </div>
           </div>
         );
       })}
     </div>
   );
+}
+{
+  /* <button
+className="addToCart btn btn-primary"
+onClick={getAndAddToCart(result._id)}
+> */
 }
