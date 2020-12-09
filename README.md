@@ -49,13 +49,15 @@ Cart Croc is a point of sale (POS) application optimized for: Tracking consumers
         - [mern-auth](https://github.com/rishipr/mern-auth)
 
 * Front-End:
-    * Framework: React.js
-    * Styling: HTML5, CSS3 (Bootstrap)
+    * Design framework: 
+        * [React.js](https://reactjs.org/)
+        * [Bootstrap](https://getbootstrap.com/)
     * Images:
         * [react-modal-image](https://github.com/aautio/react-modal-image)
         * [react-image-magnify](https://github.com/ethanselzer/react-image-magnify)
         * [react-slick](https://github.com/akiran/react-slick) (image carousel)
-    * Fontawesome (icons)
+    * [Fontawesome icons](https://fontawesome.com/icons?d=gallery)
+    * [Transparent Textures](https://www.transparenttextures.com/)
 
 - Deployment:
     - Heroku
