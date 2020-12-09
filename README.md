@@ -67,7 +67,3 @@ Cart Croc is a point of sale (POS) application optimized for: Tracking consumers
 
 # License Information
 * The Unlicense
-
-## License Information
-
-- The Unlicense
