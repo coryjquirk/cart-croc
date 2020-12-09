@@ -5,11 +5,11 @@ import ReactImageMagnify from 'react-image-magnify';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css"
 import Slider from "react-slick";
-import Tester1 from './product1.jpg';
-import Tester2 from './product2.jpg';
-import Tester3 from './product3.jpg';
-import Tester4 from './product4.jpg';
-import Texture from '../Images/45-degree-fabric-light.png';
+import stapler1 from './images/stapler/1.jpg';
+import stapler2 from './product2.jpg';
+import stapler3 from './product3.jpg';
+import stapler4 from './product4.jpg';
+import Texture from "../Images/45-degree-fabric-light.png";
 // https://www.transparenttextures.com/
 import "./style.css";
 import API from "../../utils/API";
@@ -59,7 +59,7 @@ export default function Product() {
     const [newItemName, setNewItemName] = useState("");
     const [newPrice, setNewPrice] = useState("");
     const [newDescription, setnewDescription] = useState("");
-    const [newQuantity, setNewQuantity] = useState("");
+    const [newQuantity, setNewQuantity] = useState(""); 
 
     useEffect(() => {
         const getInventory = async () => {
@@ -111,14 +111,13 @@ export default function Product() {
                             <div>
                                 <ReactImageMagnify {...{
                                     smallImage: {
-                                        alt: 'Stapler!!!!!!!!!!',
+                                        alt: 'stapler1',
                                         isFluidWidth: true,
-                                        src: Tester1,
+                                        src: result.itemName+1,
                                         enlargedImagePosition: 'over',
-                                        // width:'10%'
                                     },
                                     largeImage: {
-                                        src: Tester1,
+                                        src: "./images/"+(result.itemName)+"/1.jpg",
                                         width: 800,
                                         height: 800
                                     },
@@ -129,13 +128,13 @@ export default function Product() {
                             <div>
                                 <ReactImageMagnify {...{
                                     smallImage: {
-                                        alt: 'Stapler!!!!!!!!!!',
+                                        alt: 'stapler2!!!!!!!!!!',
                                         isFluidWidth: true,
-                                        src: Tester2,
+                                        src: stapler2,
                                         enlargedImagePosition: 'over',
                                     },
                                     largeImage: {
-                                        src: Tester2,
+                                        src: stapler2,
                                         width: 800,
                                         height: 800
                                     },
@@ -146,13 +145,13 @@ export default function Product() {
                             <div>
                                 <ReactImageMagnify {...{
                                     smallImage: {
-                                        alt: 'Stapler!!!!!!!!!!',
+                                        alt: 'stapler3!!!!!!!!!!',
                                         isFluidWidth: true,
-                                        src: Tester3,
+                                        src: stapler3,
                                         enlargedImagePosition: 'over',
                                     },
                                     largeImage: {
-                                        src: Tester3,
+                                        src: stapler3,
                                         width: 1200,
                                         height: 1800
                                     },
@@ -163,13 +162,13 @@ export default function Product() {
                             <div>
                                 <ReactImageMagnify {...{
                                     smallImage: {
-                                        alt: 'Stapler!!!!!!!!!!',
+                                        alt: 'stapler4!!!!!!!!!!',
                                         isFluidWidth: true,
-                                        src: Tester4,
+                                        src: stapler4,
                                         enlargedImagePosition: 'over',
                                     },
                                     largeImage: {
-                                        src: Tester4,
+                                        src: stapler4,
                                         width: 1200,
                                         height: 1800
                                     },

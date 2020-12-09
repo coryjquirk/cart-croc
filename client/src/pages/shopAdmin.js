@@ -69,7 +69,6 @@ function shopAdmin() {
     const description = event.target.value;
     setnewDescription(description);
   }
-
   return (
     <div>
       <div id="shopAdmin">
@@ -116,8 +115,8 @@ function shopAdmin() {
           </button>
         </form>
       </div>
-      <div>
-        <div id="tableWrapper" className="row">
+      <div id="tableWrapper">
+        <div className="row">
           <table className="table table-striped table-hover">
             <thead>
               <tr id="tableHeader">
@@ -149,6 +148,9 @@ function shopAdmin() {
             </tbody>
           </table>
         </div>
+      </div>
+      <div id="ghostDiv">
+        {/* this is just here cuz I couldn't get margin-bottom to do ANYTHING */}
       </div>
     </div>
   );

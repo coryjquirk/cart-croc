@@ -24,12 +24,16 @@
 #itemEdit{
     height: 300px
 }
+#ghostDiv{
+    height: 10px;
+    background: none;
+}
 #tableWrapper{
     height: auto;
-    margin-bottom: 50px;
+    margin-bottom: 100px;
 }
 .adminShopAdd{
-margin: 10px 10px 10px 10px;
+    margin: 10px 10px 10px 10px;
   clear: both;
   display: table;
 }
