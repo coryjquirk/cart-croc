@@ -40,6 +40,7 @@ function ModalCart() {
         <p class="totalInfo">Sales tax: </p>
         <p class="totalInfo">Total: </p>
         <a href="/checkout">
+          
           <button className="btn btn-primary">Check out</button>
         </a>
       </div>

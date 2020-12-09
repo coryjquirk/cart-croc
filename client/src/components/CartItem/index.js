@@ -27,6 +27,7 @@ export default function CartItem() {
           });
           setCart(userCart);
         })
+
     }
     getCart();
   }, [])
@@ -64,6 +65,7 @@ export default function CartItem() {
       {cartList?.map((result) => {
         return (
           <tr key={result._id}>
+            {console.log(result)}
             <td>
               <img
                 src={Tester}
@@ -74,9 +76,13 @@ export default function CartItem() {
             {result.itemName} | ${result.price}
             <td>
               <input
+              // TODO: make this do tthe thing
+              onChange={handleQuantityChange}
                 type="number"
                 id="checkoutQty"
-                placeholder={result.sellQuantity}
+                max ={result.inventoryQuantity}
+                min="0"
+                defaultValue={result.sellQuantity}
               ></input>
             </td>
             <td>

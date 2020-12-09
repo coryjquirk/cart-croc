@@ -99,7 +99,7 @@ function shopAdmin() {
                                     DB Item Names
                     </th>
                     <th scope="col">
-                    <Link to={`/inventory`}>Inventory</Link>
+                    <Link to={`/shop`}>View Shop</Link>
                     </th>
                             </tr>
                         </thead>

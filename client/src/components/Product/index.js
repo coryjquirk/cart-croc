@@ -85,10 +85,9 @@ export default function Product() {
            let itemToAdd = API.getItem(itemId)
             itemToAdd.then( return_value => {
                 if(cartQuantity){
-                // TODO: when we get actual logged in users, reroute "username" to the loged in user
+                let inventoryQuantity = return_value.quantity;
                 let username = user;
-                return_value = { ...return_value, username , cartQuantity};
-                console.log(return_value);
+                return_value = { ...return_value, username , cartQuantity, inventoryQuantity};
                 API.saveCartItem(return_value);
                 }
             })
@@ -97,9 +96,7 @@ export default function Product() {
 
     function handleQuantityChange(event) {
         const sellQuantity = event.target.value;
-        // console.log("Quantity is now " + sellQuantity)
         setCartQuantity(sellQuantity)
-        // console.log("CART-quantity is now : " + cartQuantity)
     }
 
     return (

@@ -240,6 +240,7 @@ app.post("/saveCartItem", (req, res) => {
     price: req.body.price,
     description: req.body.description,
     sellQuantity: req.body.cartQuantity,
+    inventoryQuantity: req.body.inventoryQuantity
   });
   cartItem
     .save()
