@@ -3,10 +3,12 @@
     width: 75px;
     margin: 5px 5px 5px 5px;
 }
-
 #trashIcon{
-    margin: 0px 0px 0px 10px
+    padding-right: 10px;
 }
 #trashIcon:hover {
     color: red
+}
+#cartRow{
+    border: 1px solid rgba(0,0,0,.1);
 }

@@ -7,18 +7,21 @@ import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import API from "../../utils/API";
 import { Link } from 'react-router-dom';
 const user = JSON.parse(localStorage.getItem('username'));
-
+import Modal from 'react-modal';
+Modal.setAppElement("#root");
 
 export default function CartItem() {
+  const [modalIsOpen, setIsOpen] = React.useState(false);
   const [inventoryList, setinventoryList] = useState([]);
   const [cartList, setCart] = useState([]);
   const [sellQuantity, setCartQuantity] = useState();
-
+  function openModal() {
+    setIsOpen(true);
+  }
   useEffect(() => {
     let inventoryItems = API.getAllItems()
     console.log(inventoryItems)
     setinventoryList(inventoryItems)
-    let usercart;
     const getCart = async () => {
       API.getAllCartItems()
         .then(tempCart => {
@@ -30,19 +33,25 @@ export default function CartItem() {
     }
     getCart();
   }, [])
-
+  function reloadOMatic(){
+    API.getAllCartItems()
+        .then(tempCart => {
+          var userCart = tempCart.filter(function (cartItem) {
+            return cartItem.username == user;
+          });
+          setCart(userCart);
+        })
+  }
   // This code looks kinda weird, its nested in the way it is so that we can access
   // the ID passed in to it and still use event.preventdefault, which can only be used on top
   // level functions
-
   const deleteCartItem = itemId => {
-    return event => {
-      event.preventDefault();
-      API.deleteCartItem(itemId);
-      location.reload();
-    }
-  };
-
+      return event => {
+          event.preventDefault();
+          API.deleteCartItem(itemId);
+          reloadOMatic();
+        }
+  }
   const updateCartItemSellQuantity = itemId => {
     return event => {
       event.preventDefault();
@@ -63,7 +72,7 @@ export default function CartItem() {
 
       {cartList?.map((result) => {
         return (
-          <tr key={result._id}>
+          <tr id="cartRow" key={result._id}>
             <td>
               <img
                 src={Tester}
@@ -71,19 +80,19 @@ export default function CartItem() {
                 id="productPreview"
               ></img>
             </td>
-            {result.itemName} | ${result.price}
-            <td>
+            <td>{result.itemName} | ${result.price}</td>
+            <td class="rColumnCheckout">
               <input
                 type="number"
                 id="checkoutQty"
-                placeholder={result.sellQuantity}
+                placeholder={result.sellQuantity} 
               ></input>
             </td>
-            <td>
+            <td class="rColumnCheckout"
+                id="trashIcon">
               <FontAwesomeIcon
                 onClick={deleteCartItem(result._id)}
                 icon={faTrashAlt}
-                id="trashIcon"
               />
             </td>
           </tr>

@@ -5,11 +5,12 @@ import CartItem from '../CartItem';
 import Texture from '../Images/45-degree-fabric-light.png';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWindowClose } from "@fortawesome/free-solid-svg-icons";
+import Modal from 'react-modal';
 
 const modalStyle = {
     backgroundImage: `url(${Texture})`,
     padding: "15px"
-};
+  };
 Modal.setAppElement("#root");
 
 function ModalCart() {
