@@ -62,10 +62,11 @@ Cart Croc is a point of sale (POS) application optimized for: Tracking consumers
 - Deployment:
     - [Heroku](https://dashboard.heroku.com/apps)
     
-## Future development:
-    * iOS/Android app
-    * Secure credit card payments
-    * Expanded shop admin controls
-    * Email/text receipts
+# Future development:
+- iOS/Android app
+- Secure credit card payments
+- Expanded shop admin controls
+- Email/text receipts
+
 # License Information
 * The Unlicense
