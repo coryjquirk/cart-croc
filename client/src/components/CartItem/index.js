@@ -30,6 +30,7 @@ export default function CartItem() {
           });
           setCart(userCart);
         })
+
     }
     getCart();
   }, [])
@@ -72,6 +73,7 @@ export default function CartItem() {
 
       {cartList?.map((result) => {
         return (
+
           <tr id="cartRow" key={result._id}>
             <td>
               <img
@@ -83,9 +85,14 @@ export default function CartItem() {
             <td>{result.itemName} | ${result.price}</td>
             <td class="rColumnCheckout">
               <input
+              // TODO: make this do tthe thing
+              onChange={handleQuantityChange}
                 type="number"
                 id="checkoutQty"
-                placeholder={result.sellQuantity} 
+                max ={result.inventoryQuantity}
+                min="0"
+                defaultValue={result.sellQuantity}
+
               ></input>
             </td>
             <td class="rColumnCheckout"

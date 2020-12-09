@@ -70,88 +70,61 @@ function shopAdmin() {
     setnewDescription(description);
   }
 
-  return (
-    <div>
-      <div id="shopAdmin">
-        <h2>Add items to inventory</h2>
-        <form className="login" onSubmit={submitThisForm}>
-          <div className="form-group">
-            <input
-              type="text"
-              onChange={handleNameChange}
-              id="adminForm"
-              className="form-control"
-              placeholder="Item Name"
-            />
-          </div>
-          <div className="form-group">
-            <input
-              type="text"
-              onChange={handlePriceChange}
-              id="adminForm"
-              className="form-control"
-              placeholder="Item Price"
-            />
-          </div>
-          <div className="form-group">
-            <input
-              type="text"
-              onChange={handleQuantityChange}
-              id="adminForm"
-              className="form-control"
-              placeholder="# of items"
-            />
-          </div>
-          <div className="form-group">
-            <input
-              type="text"
-              onChange={handleDescriptionChange}
-              id="adminForm"
-              className="form-control"
-              placeholder="Description"
-            />
-          </div>
-          <button type="submit" className="btn btn-primary adminShopAdd">
-            Add item to shop inventory
-          </button>
-        </form>
-      </div>
-      <div>
-        <div id="tableWrapper" className="row">
-          <table className="table table-striped table-hover">
-            <thead>
-              <tr id="tableHeader">
-                <th scope="col">DB Item Names</th>
-                <th scope="col">
-                  <Link to={`/inventory`}>Inventory</Link>
-                </th>
-                <th scope="col">
-                  <Link to={`/inventory`}>Inventory</Link>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {inventoryList?.map((result) => {
-                return (
-                  <tr key={result._id}>
-                    <td>{result.itemName}</td>
-                    <td>
-                      <Link to={`/editItem/${result._id}`}>edit</Link>
-                    </td>
-                    <td>
-                      <button id="shopAdder"onClick={getAndAddToCart(result._id)}
-                      > Add To Cart
-                      </button>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  );
-}
+    return (
+        <Container fluid>
+            <div id="shopAdmin">
+            <h2>Add items to inventory</h2>
+            <form className="login" onSubmit={submitThisForm}>
+                <div className="form-group">
+                    <input type="text" onChange={handleNameChange} id="adminForm" className="form-control" placeholder="Item Name" />
+                </div>
+                <div className="form-group">
+                    <input type="text" onChange={handlePriceChange} id="adminForm" className="form-control" placeholder="Item Price" />
+                </div>
+                <div className="form-group">
+                    <input type="text" onChange={handleQuantityChange} id="adminForm" className="form-control" placeholder="# of items" />
+                </div>
+                <div className="form-group">
+                    <input type="text" onChange={handleDescriptionChange} id="adminForm" className="form-control" placeholder="Description" />
+                </div>
+                <button type="submit" className="btn btn-default  green darken-3">Add item to shop inventory</button>
+            </form>
+            <div className="container">
+                <div id="tableWrapper" className="row">
+                    <table className="table table-striped table-hover">
+                        <thead>
+                            <tr id="tableHeader">
+                                <th scope="col">
+                                    DB Item Names
+                    </th>
+                    <th scope="col">
+                    <Link to={`/shop`}>View Shop</Link>
+                    </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {inventoryList?.map((result) => {
+                                return (
+                                    <tr key={result._id}>
+                                        <td>
+                                            {result.itemName}
+                                        </td>
+                                        <td>
+                                            <Link to={`/editItem/${result._id}`}>edit</Link>
+                                        </td>
+                                        <td>
+                                            <button class="addToCart"onClick={getAndAddToCart(result._id)}>AddToCart</button>
+                                        </td>
+                                    </tr>
+                                );
+                            })}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            </div>
+        </Container>
+    );
+};
 
 export default shopAdmin;
