@@ -30,6 +30,24 @@ import TestCartPage from "./pages/TestCartShitOut";
 
 import "./App.css";
 
+import { ToastProvider, useToasts } from "react-toast-notifications";
+
+const FormWithToasts = () => {
+  const { addToast } = useToasts();
+
+  const onSubmit = async (value) => {
+    const { error } = await dataPersistenceLayer(value);
+
+    if (error) {
+      addToast(error.message, { appearance: "error" });
+    } else {
+      addToast("Saved Successfully", { appearance: "success" });
+    }
+  };
+
+  return <form onSubmit={onSubmit}>...</form>;
+};
+
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
   // Set auth token header auth
@@ -54,41 +72,61 @@ class App extends Component {
     return (
       <Provider store={store}>
         <StoreProvider>
-          <Router>
-            <div className="App">
-              <Nav />
-              <SearchBar/>
-              <Footer />
-              <Switch>
-                <Route exact path="/" component={Login} />
-                <Route exact path="/register" component={Register} />
-                <Route exact path="/login" component={Login} />
-                <PrivateRoute exact path="/dashboard" component={Dashboard} />
-                <PrivateRoute path="/checkout" component={CheckoutPage} />
-                <PrivateRoute path="/home" component={Home} />
-                <PrivateRoute exact path="/testing" component={TestingPage} />
-                <PrivateRoute
-                  exact
-                  path="/editItem/:id"
-                  component={TestEditPage}
-                />
-                <PrivateRoute exact path="/shopAdmin" component={shopAdmin} />
-                <PrivateRoute
-                  exact
-                  path="/CartTesting"
-                  component={TestCartPage}
-                />
-                <PrivateRoute exact path="/shop" component={InventoryPage} />
-                <PrivateRoute
-                  exact
-                  path="/printreceipt"
-                  component={PrintReceipt}
-                />
-                <PrivateRoute exact path="/receipts" component={Receipts} />
-                <Route component={NoMatchPage} />
-              </Switch>
-            </div>
-          </Router>
+          <ToastProvider>
+            <Router>
+              <div className="App">
+                <Nav />
+                <SearchBar />
+                <Footer />
+                <div className="fader">
+                  <Switch>
+                    <Route exact path="/" component={Login} />
+                    <Route exact path="/register" component={Register} />
+                    <Route exact path="/login" component={Login} />
+                    <PrivateRoute
+                      exact
+                      path="/dashboard"
+                      component={Dashboard}
+                    />
+                    <PrivateRoute path="/checkout" component={CheckoutPage} />
+                    <PrivateRoute path="/home" component={Home} />
+                    <PrivateRoute
+                      exact
+                      path="/testing"
+                      component={TestingPage}
+                    />
+                    <PrivateRoute
+                      exact
+                      path="/editItem/:id"
+                      component={TestEditPage}
+                    />
+                    <PrivateRoute
+                      exact
+                      path="/shopAdmin"
+                      component={shopAdmin}
+                    />
+                    <PrivateRoute
+                      exact
+                      path="/CartTesting"
+                      component={TestCartPage}
+                    />
+                    <PrivateRoute
+                      exact
+                      path="/shop"
+                      component={InventoryPage}
+                    />
+                    <PrivateRoute
+                      exact
+                      path="/printreceipt"
+                      component={PrintReceipt}
+                    />
+                    <PrivateRoute exact path="/receipts" component={Receipts} />
+                    <Route component={NoMatchPage} />
+                  </Switch>
+                </div>
+              </div>
+            </Router>
+          </ToastProvider>
         </StoreProvider>
       </Provider>
     );
