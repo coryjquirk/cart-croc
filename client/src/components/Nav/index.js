@@ -48,7 +48,7 @@ function Nav() {
                 checkout
               </a>
             </li>
-            <li class="nav-item">
+            {/* <li class="nav-item">
               <a class="nav-link" href="/printreceipt">
                 print receipt
               </a>
@@ -57,7 +57,7 @@ function Nav() {
               <a class="nav-link" href="/receipts">
                 order history
               </a>
-            </li>
+            </li> */}
             <li class="nav-item">
               <a class="nav-link" href="/shopAdmin">
                 admin
