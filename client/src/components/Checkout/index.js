@@ -42,10 +42,6 @@ export default function Checkout() {
     setIsOpen(false);
   }
 
-  function setMoneys () {
-    
-  }
-
   useEffect(() => {
     let tempSubTotal = 0;
     let tempTax = 0;
@@ -56,10 +52,10 @@ export default function Checkout() {
     });
       setCart(userCart);
       userCart.forEach(item => {
-        tempSubTotal += item.price
+        tempSubTotal += (item.price * item.sellQuantity)
       });
       setsubtotal(tempSubTotal);
-      tempTax= tempSubTotal * taxRate;
+      tempTax = +((tempSubTotal * taxRate).toFixed(2));
       setSalesTax(tempTax);
       setOrderTotal(tempSubTotal + tempTax)
     };
@@ -99,6 +95,7 @@ const submitOrder = () => {
       });
   }
 };
+
 
   return (
     <div id="checkout" style={checkoutStyle}>
