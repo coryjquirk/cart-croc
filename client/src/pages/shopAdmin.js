@@ -9,6 +9,7 @@ function shopAdmin() {
   const [newPrice, setNewPrice] = useState("");
   const [newDescription, setnewDescription] = useState("");
   const [newQuantity, setNewQuantity] = useState("");
+  const [newImgArray, setImgArray] = useState([]);
 
   useEffect(() => {
     const getInventory = async () => {
@@ -39,11 +40,13 @@ function shopAdmin() {
   function submitThisForm(event) {
     event.preventDefault();
 
+
     var itemData = {
       itemName: newItemName,
       price: newPrice,
       description: newDescription,
       quantity: newQuantity,
+      images: newImgArray
     };
     console.log(itemData);
     API.saveItem(itemData);

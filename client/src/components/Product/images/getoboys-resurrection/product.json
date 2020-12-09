@@ -1,0 +1,13 @@
+{
+    "itemName" : "Stapler",
+    "price" : 4,
+    "description" : "Excuse me, I believe you have my stapler.",
+    "quantity" :30,
+    "__v" : 0,
+    "images" :[ 
+        "https://i.imgur.com/WeXjJcU.jpg", 
+        "https://i.imgur.com/LgNxEAa.jpg", 
+        "https://i.imgur.com/XDtpnyf.jpg", 
+        "https://i.imgur.com/xGJokja.jpg"
+    ]
+}

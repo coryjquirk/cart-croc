@@ -2,15 +2,9 @@ import React, { useState, useEffect } from "react";
 import Modal from 'react-modal';
 import "./style.css";
 import CartItem from '../CartItem';
-import Texture from '../Images/45-degree-fabric-light.png';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWindowClose } from "@fortawesome/free-solid-svg-icons";
 import Modal from 'react-modal';
-
-const modalStyle = {
-    backgroundImage: `url(${Texture})`,
-    padding: "15px"
-  };
 Modal.setAppElement("#root");
 
 function ModalCart() {
@@ -31,7 +25,7 @@ function ModalCart() {
       onRequestClose={closeModal}
       contentLabel="cart modal"
     >
-      <div id="modalCart" style={modalStyle}>
+      <div id="modalCart">
         <button id="closeCart" className="btn btn-danger" onClick={closeModal}>
           <FontAwesomeIcon icon={faWindowClose} id="close window" />
         </button>
