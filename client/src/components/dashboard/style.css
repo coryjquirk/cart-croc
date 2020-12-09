@@ -8,13 +8,28 @@
     border-radius: 5px;
     background-color: white;
 }
-#shopAdmin{
+#shopAdmin, #itemEdit, #tableWrapper{
     width: 75%;
+    max-width: 700px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 30px;
-    height: 40%;
     padding: 28px 28px 28px 28px;
     border-radius: 5px;
     background-color: white;
+}
+#shopAdmin{
+    height: 350px;
+}
+#itemEdit{
+    height: 300px
+}
+#tableWrapper{
+    height: auto;
+    margin-bottom: 50px;
+}
+.adminShopAdd{
+margin: 10px 10px 10px 10px;
+  clear: both;
+  display: table;
 }

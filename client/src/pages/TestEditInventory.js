@@ -64,58 +64,80 @@ function Testing() {
     }
 
     return (
-        <Container fluid>
-            <form className="login" onSubmit={submitThisForm}>
-                <div className="form-group">
-                    <input type="text" onChange={handleNameChange} className="form-control" placeholder="Item Name" />
-                </div>
-                <div className="form-group">
-                    <input type="text" onChange={handlePriceChange} className="form-control" placeholder="Item Price" />
-                </div>
-                <div className="form-group">
-                    <input type="text" onChange={handleQuantityChange} className="form-control" placeholder="# of items" />
-                </div>
-                <div className="form-group">
-                    <input type="text" onChange={handleDescriptionChange} className="form-control" placeholder="Description" />
-                </div>
-                <button type="submit" className="btn btn-default  green darken-3">EDIT THAT BAD MUTHA</button>
-            </form>
+      <Container fluid>
+        <form className="login" onSubmit={submitThisForm}>
+          <div id="itemEdit">
+          <div className="form-group">
+            <input
+              type="text"
+              onChange={handleNameChange}
+              className="form-control"
+              placeholder="Item Name"
+              id="adminForm"
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="text"
+              onChange={handlePriceChange}
+              className="form-control"
+              placeholder="Item Price"
+              id="adminForm"
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="text"
+              onChange={handleQuantityChange}
+              className="form-control"
+              placeholder="# of items"
+              id="adminForm"
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="text"
+              onChange={handleDescriptionChange}
+              className="form-control"
+              placeholder="Description"
+              id="adminForm"
+            />
+          </div>
+          <button type="submit" className="btn btn-primary">
+            Edit
+          </button>
+          </div>
+        </form>
 
-            {/* <button onClick={API.getAllUsers}>Get Users</button> */}
-            <div className="container">
-                <div id="tableWrapper" className="row">
-                    <table className="table table-striped table-hover">
-                        <thead>
-                            <tr id="tableHeader" className="bg-warning">
-                                <th scope="col">
-                                    The Thing You IS TRYNNA EDIT
-                    </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {item?.map((result) => {
-                                return (
-                                    <tr key={result._id}>
-                                        <td>
-                                            {result.itemName}
-                                        </td>
-                                        <td>
-                                            {result.price}
-                                        </td>
-                                        {/* <td>
+        {/* <button onClick={API.getAllUsers}>Get Users</button> */}
+        <div className="container">
+          <div id="tableWrapper" className="row">
+            <table className="table table-striped table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">Item to edit</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Stock</th>
+                </tr>
+              </thead>
+              <tbody>
+                {item?.map((result) => {
+                  return (
+                    <tr key={result._id}>
+                      <td>{result.itemName}</td>
+                      <td>{result.price}</td>
+                      {/* <td>
                                             {result.description}
                                         </td> */}
-                                        <td>
-                                            {result.quantity}
-                                        </td>
-                                    </tr>
-                                );
-                            })}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </Container>
+                      <td>{result.quantity}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </Container>
     );
 };
 
