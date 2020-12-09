@@ -4,6 +4,7 @@ import Product from "../components/Product";
 
 const InventoryPage = () => {
   return (
+    <div className="fader">
     <Container fluid>
        
       <br />
@@ -15,6 +16,7 @@ const InventoryPage = () => {
         <Product></Product>
       </div>
     </Container>
+    </div>
   );
 };
 

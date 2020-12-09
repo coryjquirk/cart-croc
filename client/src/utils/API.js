@@ -31,6 +31,7 @@ export default {
   },
 
   updateItem: function (itemData, id) {
+    console.log(itemData)
     fetch(`/updateItem/${id}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },

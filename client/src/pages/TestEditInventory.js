@@ -11,21 +11,16 @@ function Testing() {
     const [item, setItem] = useState();
     const match = useRouteMatch();
 
-    // useEffect(() => {
-    //     const getInventory = async () => {
-    //         let inventoryItems = await API.getAllItems()
-    //         console.log(inventoryItems)
-    //         setinventoryList(inventoryItems)
-    //     }
-    //     getInventory();
-    // }, [])
-
     useEffect(() => {
         const fetchItem = async () => {
             console.log("About to attempt");
             let editItem = await API.getItem(match.params.id)
-            editItem = [ editItem ]
-            setItem(editItem)
+            editItem = [ editItem ];
+            setItem(editItem);
+            setNewItemName(editItem[0].itemName);
+            setNewPrice(editItem[0].price);
+            setNewQuantity(editItem[0].quantity);
+            setnewDescription(editItem[0].description);
         }
         fetchItem()
     }, []);
@@ -60,7 +55,7 @@ function Testing() {
 
     function handleDescriptionChange(event) {
         const description = event.target.value;
-        setnewDescription(description)
+        setnewDescription(description);
     }
 
     return (
@@ -124,12 +119,12 @@ function Testing() {
                 {item?.map((result) => {
                   return (
                     <tr key={result._id}>
-                      <td>{result.itemName}</td>
-                      <td>{result.price}</td>
+                      <td>{newItemName}</td>
+                      <td>{newPrice}</td>
                       {/* <td>
                                             {result.description}
                                         </td> */}
-                      <td>{result.quantity}</td>
+                      <td>{newQuantity}</td>
                     </tr>
                   );
                 })}
