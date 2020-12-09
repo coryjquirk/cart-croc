@@ -89,7 +89,7 @@ export default function CartItem() {
           <tr id="cartRow" key={result._id}>
             <td>
               <img
-                src={Tester}
+                src="https://cdn0.iconfinder.com/data/icons/commerce-and-shopping-4/24/shopping-tote-512.png"
                 alt="product preview"
                 id="productPreview"
               ></img>

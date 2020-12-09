@@ -1,0 +1,13 @@
+{
+    "itemName" : "Printer",
+    "price" : 36,
+    "description" : "The enemy",
+    "quantity" :2533,
+    "__v" : 0,
+    "images" :[ 
+        "https://i.ytimg.com/vi/Mz8m1wYoCWI/hqdefault.jpg", 
+"https://lh3.googleusercontent.com/proxy/oJa0Bm-Ue3_3NBOQLrWcvEzphl-Tx7BJ1c2WvEi-prs6-NIFb3Gyd-kufXmIUhGD5DyAyUTnTL-UHqggXU1HKBwI_9RKLuSglJI7mqLRJg",
+       "https://images.tedium.co/2018/01/0118_epson.jpg",
+       "https://s3-eu-west-1.amazonaws.com/pictures.reviewcentre/b6c/56d/be1/a50.jpg"
+    ]
+}
