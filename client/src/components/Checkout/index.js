@@ -27,6 +27,10 @@ export default function Checkout() {
   const [cartList, setCart] = useState([]);
   const [currentCartId, setCurrentCartId] = useState([]);
   const [modalIsOpen,setIsOpen] = React.useState(false);
+  const [subtotal, setsubtotal] = useState();
+  const [taxRate, setTaxRate] = useState(.07);
+  const [salesTax, setSalesTax] = useState();
+  const [orderTotal, setOrderTotal] = useState();
 
   function openModal() {
     setIsOpen(true);
@@ -38,15 +42,26 @@ export default function Checkout() {
     setIsOpen(false);
   }
 
+  function setMoneys () {
+    
+  }
+
   useEffect(() => {
+    let tempSubTotal = 0;
+    let tempTax = 0;
     const getCart = async () => {
       let cartItems = await API.getAllCartItems();
       var userCart = cartItems.filter(function(cartItem){
         return cartItem.username == user;
     });
-
-      console.log(userCart);
       setCart(userCart);
+      userCart.forEach(item => {
+        tempSubTotal += item.price
+      });
+      setsubtotal(tempSubTotal);
+      tempTax= tempSubTotal * taxRate;
+      setSalesTax(tempTax);
+      setOrderTotal(tempSubTotal + tempTax)
     };
     getCart();
   }, []);
@@ -75,7 +90,9 @@ const submitOrder = () => {
           API.getItemByName(cartItem.itemName)
           .then(tempInventoryItem => {
               let id = tempInventoryItem._id
+              console.log(tempInventoryItem.quantity, "-",  cartItem.sellQuantity)
               let newInventoryQuantity = (tempInventoryItem.quantity - cartItem.sellQuantity) 
+              console.log(newInventoryQuantity)
               let newInventoryObj = {quantity : newInventoryQuantity}
               API.updateItem(newInventoryObj, id);
            });
@@ -102,10 +119,11 @@ const submitOrder = () => {
           <button className="btn btn-secondary" style={clearBtnStyle} onClick={closeModal}>Cancel</button>
         </Modal>
       <hr />
-      <p className="totalInfo">Subtotal: </p>
-      <p className="totalInfo">Sales tax: </p>
-      <p className="totalInfo">Total: </p>
+      <p className="totalInfo">Subtotal: ${subtotal} </p>
+      <p className="totalInfo">Sales tax: ${salesTax}</p>
+      <p className="totalInfo">Total: ${orderTotal} </p>
       <button onClick={submitOrder()} className="btn btn-primary totalInfo">Submit order</button>
     </div>
   );
+
 }

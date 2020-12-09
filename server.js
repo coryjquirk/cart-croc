@@ -202,9 +202,10 @@ app.post("/updateItem/:id", (req, res) => {
       item
         .save()
         .then((item) => {
+          console.log(item);
           res.json(item);
         })
-        .catch((err) => res.status(500).send("I hate bologna" + err.message));
+        .catch((err) => res.status(500).send(err.message));
     }
   });
 });
