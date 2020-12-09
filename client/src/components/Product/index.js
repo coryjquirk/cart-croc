@@ -111,13 +111,13 @@ export default function Product() {
                             <div>
                                 <ReactImageMagnify {...{
                                     smallImage: {
-                                        alt: 'stapler1',
+                                        alt: 'preview 1',
                                         isFluidWidth: true,
-                                        src: result.itemName+1,
+                                        src: result.images[0],
                                         enlargedImagePosition: 'over',
                                     },
                                     largeImage: {
-                                        src: "./images/"+(result.itemName)+"/1.jpg",
+                                        src: result.images[0],
                                         width: 800,
                                         height: 800
                                     },
@@ -128,13 +128,13 @@ export default function Product() {
                             <div>
                                 <ReactImageMagnify {...{
                                     smallImage: {
-                                        alt: 'stapler2!!!!!!!!!!',
+                                        alt: 'preview 2',
                                         isFluidWidth: true,
-                                        src: stapler2,
+                                        src: result.images[1],
                                         enlargedImagePosition: 'over',
                                     },
                                     largeImage: {
-                                        src: stapler2,
+                                        src: result.images[1],
                                         width: 800,
                                         height: 800
                                     },
@@ -145,13 +145,13 @@ export default function Product() {
                             <div>
                                 <ReactImageMagnify {...{
                                     smallImage: {
-                                        alt: 'stapler3!!!!!!!!!!',
+                                        alt: 'preview 3',
                                         isFluidWidth: true,
-                                        src: stapler3,
+                                        src: result.images[2],
                                         enlargedImagePosition: 'over',
                                     },
                                     largeImage: {
-                                        src: stapler3,
+                                        src: result.images[2],
                                         width: 1200,
                                         height: 1800
                                     },
@@ -162,13 +162,13 @@ export default function Product() {
                             <div>
                                 <ReactImageMagnify {...{
                                     smallImage: {
-                                        alt: 'stapler4!!!!!!!!!!',
+                                        alt: 'preview 4',
                                         isFluidWidth: true,
-                                        src: stapler4,
+                                        src: result.images[3],
                                         enlargedImagePosition: 'over',
                                     },
                                     largeImage: {
-                                        src: stapler4,
+                                        src: result.images[3],
                                         width: 1200,
                                         height: 1800
                                     },

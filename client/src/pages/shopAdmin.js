@@ -9,6 +9,7 @@ function shopAdmin() {
   const [newPrice, setNewPrice] = useState("");
   const [newDescription, setnewDescription] = useState("");
   const [newQuantity, setNewQuantity] = useState("");
+  const [newImgArray, setImgArray] = useState([]);
 
   useEffect(() => {
     const getInventory = async () => {
@@ -39,11 +40,13 @@ function shopAdmin() {
   function submitThisForm(event) {
     event.preventDefault();
 
+
     var itemData = {
       itemName: newItemName,
       price: newPrice,
       description: newDescription,
       quantity: newQuantity,
+      images: newImgArray
     };
     console.log(itemData);
     API.saveItem(itemData);
@@ -65,15 +68,11 @@ function shopAdmin() {
     setNewQuantity(quantity);
   }
 
-  function handleDescriptionChange(event) {
-    const description = event.target.value;
-    setnewDescription(description);
-  }
   return (
     <div>
       <div id="shopAdmin">
         <h2>Add items to inventory</h2>
-        <form className="login" onSubmit={submitThisForm}>
+        <form onSubmit={submitThisForm}>
           <div className="form-group">
             <input
               type="text"
@@ -101,15 +100,42 @@ function shopAdmin() {
               placeholder="# of items"
             />
           </div>
-          <div className="form-group">
+          {/* <div className="form-group">
             <input
-              type="text"
-              onChange={handleDescriptionChange}
+              type="url"
+              onChange={setImgLinkFunction1}
               id="adminForm"
               className="form-control"
-              placeholder="Description"
+              placeholder="link to image 1"
             />
           </div>
+          <div className="form-group">
+            <input
+              type="url"
+              onChange={setImgLinkFunction2}
+              id="adminForm"
+              className="form-control"
+              placeholder="link to image 2"
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="url"
+              onSubmit={handleImg3}
+              id="adminForm"
+              className="form-control"
+              placeholder="link to image 3"
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="url"
+              onSubmit={handleImg4}
+              id="adminForm"
+              className="form-control"
+              placeholder="link to image 4"
+            />
+          </div> */}
           <button type="submit" className="btn btn-primary adminShopAdd">
             Add item to shop inventory
           </button>

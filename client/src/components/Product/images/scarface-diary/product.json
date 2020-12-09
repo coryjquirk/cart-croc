@@ -1,0 +1,13 @@
+{
+    "itemName" : "Scarface 'The Diary' CD",
+    "price" : 4,
+    "description" : "'I can't talk to my mother, so I talk to my diary'",
+    "quantity" :30,
+    "__v" : 0,
+    "images" :[ 
+        "https://upload.wikimedia.org/wikipedia/en/e/ed/Scarface_-_The_Diary.jpg", 
+        "https://i.ebayimg.com/images/g/RMYAAOSw8Udd5ZQE/s-l400.jpg", 
+        "https://i.imgur.com/eaH9MYB.jpg", 
+        "https://images.genius.com/87eda94ebb751baa1e7f83bda3c0e4e8.820x820x1.jpg"
+    ]
+}
