@@ -22,30 +22,27 @@
 # User Overview:
 - New users can register themselves with credentials of their choosing.
 
-![Register](registerimage)
+![Register](register.jpeg)
 
 - Existing users can login to the application.
 
-![Login](loginimage)
+![Login](login.jpeg)
 
 - Usercan can view products that are for sale.
 
-![Shop](shopimage)
+![Shop](shop.jpeg)
 
 - Users can add items from inventory into their cart.
 
-![fullCart](cartimage)
+![fullCart](fullCart.jpeg)
 
 # Business Owner Overview:
-- Owners can update their inventory with products.
+- Owners can update their inventory with products. Cart Croc automatically updates items in the inventory when they are purchased.
 
-![Inventory](addInventory)
+![Inventory](inventory.jpeg)
 
-- Owners can view a history of transactions.
 
-![Receipts](receipts)
-
-# Tech used
+# Technologies: 
 - Back-End:
 
     - Database: MongoDB
