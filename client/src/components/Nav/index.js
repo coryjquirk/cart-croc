@@ -34,37 +34,37 @@ function Nav() {
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="home">
+              <a class="nav-link" href="/home">
                 home
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="shop">
+              <a class="nav-link" href="/shop">
                 shop
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="checkout">
+              <a class="nav-link" href="/checkout">
                 checkout
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="printreceipt">
+              <a class="nav-link" href="/printreceipt">
                 print receipt
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="receipts">
+              <a class="nav-link" href="/receipts">
                 order history
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="shopAdmin">
+              <a class="nav-link" href="/shopAdmin">
                 admin
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="dashboard">
+              <a class="nav-link" href="/dashboard">
                 sign out
               </a>
             </li>

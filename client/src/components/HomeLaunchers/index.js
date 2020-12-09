@@ -25,10 +25,10 @@ function HomeLaunchers() {
                 <span>checkout</span>
               </h2>
             </div>
-          </a><a href="/shop">
+          </a><a href="/receipts">
             <div class="homeLauncher" style={cardStyle}>
               <h2>
-                <span>shop</span>
+                <span>order history</span>
               </h2>
             </div>
           </a><a href="/dashboard">

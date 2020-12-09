@@ -1,4 +1,4 @@
-import React from "react";
+import React, {state} from "react";
 import { useStoreContext } from "../../utils/GlobalState";
 import "./style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -27,13 +27,11 @@ function SearchBar() {
   function closeModal() {
     setIsOpen(false);
   }
-
   const loggedIn = localStorage.getItem("jwtToken");
   if (loggedIn) {
     return (
       <div id="searchBar">
-            <p id="searchPrompt">Find what you're looking for: </p> <input type="text"
-            placeholder="product search"></input> <button id="cartBtn" onClick={openModal}
+             <button id="cartBtn" onClick={openModal}
             className="btn btn-primary"
           ><FontAwesomeIcon icon={faShoppingCart} id="cart icon"/></button>
             {store.loading ? <a className="navbar-brand ml-auto">loading...</a> : <></>}

@@ -13,6 +13,7 @@ import Texture from '../Images/45-degree-fabric-light.png';
 // https://www.transparenttextures.com/
 import "./style.css";
 import API from "../../utils/API";
+import { Col, Row, Container } from "../Grid";
 const user = JSON.parse(localStorage.getItem('username'));
 
 const cardStyle = {
@@ -104,7 +105,7 @@ export default function Product() {
             {inventoryList?.map((result) => {
                 return (
 
-                    <div id="productCard" style={cardStyle} key={result._id}>
+                    <div id="productCard" class="col" style={cardStyle} key={result._id}>
                         <Slider {...settings}>
                             <div>
                                 <ReactImageMagnify {...{
@@ -180,7 +181,7 @@ export default function Product() {
                         <div id="namePriceEtc">
                         <p class="productInfo">Name: {result.itemName}</p>
                         <p class="productInfo">Price: ${result.price}</p>
-                        <p class="productInfo">Description: {result.description}</p>
+                        <p class="productInfo">Info: {result.description}</p>
                         <p class="productInfo">In stock: {result.quantity}</p>
                         </div>
                         <div id="controls">

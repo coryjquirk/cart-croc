@@ -1,12 +1,15 @@
 #productCard {
     width: 30%;
     height: 40%;
-    margin: 10px;
+    margin: 10px 10px 10px 10px;
     padding: 28px 28px 28px 28px;
     border-radius: 5px;
     float:left;
     background-color: white;
     position: relative;
+}
+#productCard p {
+    font-size: 15px;
 }
 #productGallery{    
     margin-bottom: 200px;
@@ -55,9 +58,9 @@
     padding: 10px;
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 920px) {
     #productCard{
-        width: 42%;
+        width: 45%;
     }
 }
 @media screen and (max-width: 600px) {

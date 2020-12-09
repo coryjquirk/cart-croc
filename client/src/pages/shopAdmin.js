@@ -1,75 +1,74 @@
 import React, { useState, useEffect } from "react";
 import { Col, Row, Container } from "../components/Grid";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import API from "../utils/API";
 
 function shopAdmin() {
-    const [inventoryList, setinventoryList] = useState([]);
-    const [newItemName, setNewItemName] = useState("");
-    const [newPrice, setNewPrice] = useState("");
-    const [newDescription, setnewDescription] = useState("");
-    const [newQuantity, setNewQuantity] = useState("");
+  const [inventoryList, setinventoryList] = useState([]);
+  const [newItemName, setNewItemName] = useState("");
+  const [newPrice, setNewPrice] = useState("");
+  const [newDescription, setnewDescription] = useState("");
+  const [newQuantity, setNewQuantity] = useState("");
 
-    useEffect(() => {
+  useEffect(() => {
+    const getInventory = async () => {
+      let inventoryItems = await API.getAllItems();
+      console.log(inventoryItems);
+      setinventoryList(inventoryItems);
+    };
+    getInventory();
+  }, []);
 
-        const getInventory = async () => {
-            let inventoryItems = await API.getAllItems()
-            console.log(inventoryItems)
-            setinventoryList(inventoryItems)
-        }
-        getInventory();
-    }, []) 
+  // This code looks kinda weird, its nested in the way it is so that we can access
+  // the ID passed in to it and still use event.preventdefault, which can only be used on top
+  // level functions
+  const getAndAddToCart = (itemId) => {
+    return (event) => {
+      event.preventDefault();
+      let itemToAdd = API.getItem(itemId);
+      itemToAdd.then((return_value) => {
+        // TODO: when we get actual logged in users, reroute "username" to the loged in user
+        let username = "Placeholder Username";
+        let defaultSellQuantity = 1;
+        return_value = { ...return_value, username, defaultSellQuantity };
+        API.saveCartItem(return_value);
+      });
+    };
+  };
 
-    // This code looks kinda weird, its nested in the way it is so that we can access
-    // the ID passed in to it and still use event.preventdefault, which can only be used on top
-    // level functions
-    const getAndAddToCart = itemId => {
-        return event => {
-          event.preventDefault();
-           let itemToAdd = API.getItem(itemId)
-            itemToAdd.then( return_value => {
-                // TODO: when we get actual logged in users, reroute "username" to the loged in user
-                let username = "Placeholder Username";
-                let defaultSellQuantity= 1;
-                return_value = { ...return_value, username , defaultSellQuantity};
-                API.saveCartItem(return_value);
-            })
-        }
-      };
-    
-    function submitThisForm(event) {
-        event.preventDefault()
+  function submitThisForm(event) {
+    event.preventDefault();
 
-        var itemData = {
-            itemName: newItemName,
-            price: newPrice,
-            description: newDescription,
-            quantity: newQuantity
-        }
-        console.log(itemData)
-        API.saveItem(itemData);
-    }
+    var itemData = {
+      itemName: newItemName,
+      price: newPrice,
+      description: newDescription,
+      quantity: newQuantity,
+    };
+    console.log(itemData);
+    API.saveItem(itemData);
+  }
 
-    function handleNameChange(event) {
-        const name = event.target.value;
-        console.log(name);
-        setNewItemName(name)
-    }
+  function handleNameChange(event) {
+    const name = event.target.value;
+    console.log(name);
+    setNewItemName(name);
+  }
 
-    function handlePriceChange(event) {
-        const price = event.target.value;
-        setNewPrice(price)
-    }
+  function handlePriceChange(event) {
+    const price = event.target.value;
+    setNewPrice(price);
+  }
 
-    function handleQuantityChange(event) {
-        const quantity = event.target.value;
-        setNewQuantity(quantity)
-    }
+  function handleQuantityChange(event) {
+    const quantity = event.target.value;
+    setNewQuantity(quantity);
+  }
 
-    function handleDescriptionChange(event) {
-        const description = event.target.value;
-        setnewDescription(description)
-    }
+  function handleDescriptionChange(event) {
+    const description = event.target.value;
+    setnewDescription(description);
+  }
 
     return (
         <Container fluid>

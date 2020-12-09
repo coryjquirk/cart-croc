@@ -40,7 +40,7 @@ export const loginUser = userData => dispatch => {
         payload: err.response.data
       })
     ).then(function() {
-      window.location.replace("/");
+      window.location.replace("/home");
   });;
 };
 
