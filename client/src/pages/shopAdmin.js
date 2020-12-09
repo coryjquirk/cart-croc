@@ -72,9 +72,9 @@ function shopAdmin() {
 
     return (
         <Container fluid>
-            <div id="shopAdmin">
+            <div id="shopAdmin" style={{"minWidth": "350px"}}>
             <h2>Add items to inventory</h2>
-            <form className="login" onSubmit={submitThisForm}>
+            <form className="login mb-5" onSubmit={submitThisForm}>
                 <div className="form-group">
                     <input type="text" onChange={handleNameChange} id="adminForm" className="form-control" placeholder="Item Name" />
                 </div>
@@ -88,10 +88,11 @@ function shopAdmin() {
                     <input type="text" onChange={handleDescriptionChange} id="adminForm" className="form-control" placeholder="Description" />
                 </div>
                 <button type="submit" className="btn btn-default  green darken-3">Add item to shop inventory</button>
-            </form>
-            <div className="container">
-                <div id="tableWrapper" className="row">
-                    <table className="table table-striped table-hover">
+            </form >
+            <div className="container" >
+                <div id="tableWrapper" className="row" style={{"minWidth": "295px"}}>
+                  <div >
+                    <table className="table table-striped table-hover" >
                         <thead>
                             <tr id="tableHeader">
                                 <th scope="col">
@@ -120,6 +121,7 @@ function shopAdmin() {
                             })}
                         </tbody>
                     </table>
+                </div>
                 </div>
             </div>
             </div>
