@@ -26,7 +26,7 @@ Cart Croc is a point of sale (POS) application optimized for: Tracking consumers
 
 ![Login](login.jpeg)
 
-- Usercan can view products that are for sale.
+- User can can view products that are for sale.
 
 ![Shop](shop.jpeg)
 
